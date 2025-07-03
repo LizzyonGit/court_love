@@ -4,30 +4,79 @@
 <!doctype html>
 <html lang="en">
   <head>
+
+    {% block meta %}
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!--Need to be adapted to blocks-->
-    <title>Court Love | </title>
+    {% endblock %}
+
+    {% block extra_meta %}
+    {% endblock %}
 
     <!--Google Fonts-->
 
     <!--Font Awesome-->
     
     <!--Bootstrap CSS-->
+    {% block corecss %}
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     
     <!--Custom CSS-->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    {% endblock %}
+
+    {% block extra_css %}
+    {% endblock %}
+
+    
+    <title>Court Love {% block extra_title %}{% endblock %} </title>  
 
 </head>
   <body>
+
+    {% if messages %}
+    <div>
+        display message
+    </div>
+    {% endif %}
+
+    <nav>
+    </nav>
+
+    <header>
+    </header>
+
+    {% block content %}
+    <main>
+    </main>
+    {% endblock %}
+
+    
+
+    <footer>
+    </footer>
+
     
 
 
-
+    
+    
+    
+    
+    {% block corejs %}
     <!--Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-  
+    {% endblock %}
+
+    {% block extra_js %}
+    {% endblock %}
+    
+    {% block postloadjs %}
+    {% endblock %}
+
 </body>
 </html>
