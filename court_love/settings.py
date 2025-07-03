@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home',
 
     # allauth apps
     'django.contrib.sites',
@@ -47,8 +48,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     # crispy when installed
-    'crispy_forms',
-    'crispy_bootstrap5',
+    #'crispy_forms',
+    #'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -66,7 +67,10 @@ ROOT_URLCONF = 'court_love.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates', 'allauth'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

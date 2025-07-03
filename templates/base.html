@@ -33,7 +33,7 @@
     {% endblock %}
 
     
-    <title>Court Love {% block extra_title %}{% endblock %} </title>  
+    <title>Court Love {% block extra_title %}{% endblock %}</title>  
 
 </head>
   <body>
@@ -47,12 +47,11 @@
     <nav>
     </nav>
 
-    <header>
-    </header>
+    {% block page_header%}
+    {% endblock %}
+
 
     {% block content %}
-    <main>
-    </main>
     {% endblock %}
 
     
