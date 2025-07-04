@@ -23,10 +23,10 @@ class Lesson(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
     date_time = models.DateTimeField()
-    duration = models.DurationField(default = )
-    capacity = 
-    level = 
-    place = 
+    duration = models.IntegerField(choices=, default=)# check movie project because i want this to be created in admin
+    capacity = models.PositiveIntegerField() #needs to reduce when ordered, how?
+    level = models.IntegerField(choices=, default=)# check movie project because i want this to be created in admin
+    place = models.IntegerField(choices=, default=)# check movie project because i want this to be created in admin
 
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
