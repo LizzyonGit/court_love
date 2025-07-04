@@ -2,8 +2,8 @@
 
 
 <!doctype html>
-<html lang="en">
-  <head>
+<html lang="en" class="h-100">
+    <head>
 
     {% block meta %}
 
@@ -37,11 +37,11 @@
     
     <title>Court Love{% block extra_title %}{% endblock %}</title>  
 
-</head>
-  <body>
+    </head>
+    <body class="d-flex flex-column h-100">
 
     {% if messages %}
-    <div>
+    <div class="container">
         display message
     </div>
     {% endif %}
@@ -151,5 +151,5 @@
     {% block postloadjs %}
     {% endblock %}
 
-</body>
+    </body>
 </html>
