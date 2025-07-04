@@ -23,3 +23,20 @@ body {
     font-family: var(--primary-font);
     color: var(--highlight-color);
 }
+
+h1, h2 {
+    font-family: var(--secondary-font);
+}
+
+
+/*Button styles*/
+
+.category-button{
+    background-color: var(--secondary-color);
+
+}
+
+.category-button > a {
+    text-decoration: none;
+    color: var(--contrast-color);
+}
