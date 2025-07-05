@@ -58,7 +58,9 @@ class Capacity(models.Model):
         ordering = ["capacity"]
 
     def __str__(self):
-        return self.capacity
+        """returns only the nr in admin"""
+        return str(self.capacity)
+
 
 
 class Level(models.Model):
