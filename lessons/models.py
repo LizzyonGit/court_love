@@ -16,20 +16,72 @@ class Category(models.Model):
 
 
 class Lesson(models.Model):
-    category = models.ForeignKey('Category', null=True, blank=True,
-                                 on_delete=models.SET_NULL)
+    """Store the lesson product"""
+    category = models.ForeignKey('Category', null=True, on_delete=models.SET_NULL, related_name="lessons")
     name = models.CharField(max_length=254)
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
     date_time = models.DateTimeField()
-    duration = models.IntegerField(choices=, default=)# check movie project because i want this to be created in admin
-    capacity = models.PositiveIntegerField() #needs to reduce when ordered, how?
-    level = models.IntegerField(choices=, default=)# check movie project because i want this to be created in admin
-    place = models.IntegerField(choices=, default=)# check movie project because i want this to be created in admin
+    duration = models.ForeignKey('Duration', null=True, on_delete=models.SET_NULL, related_name="lessons")
+    capacity = models.ForeignKey('Capacity', null=True, on_delete=models.SET_NULL, related_name="lessons")
+    level_interval = models.ForeignKey('Level', null=True, on_delete=models.SET_NULL, related_name="lessons")
+    place = models.ForeignKey('Place', null=True, on_delete=models.SET_NULL, related_name="lessons")
 
-    image_url = models.URLField(max_length=1024, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    #image_url = models.URLField(max_length=1024, null=True, blank=True)
+    #image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.name
+
+
+class Duration(models.Model):
+    """
+    Stores a duration time.
+    """
+    duration = models.CharField(max_length=20)
+
+    class Meta:
+        ordering = ["duration"]
+
+    def __str__(self):
+        return self.duration
+
+
+class Capacity(models.Model):
+    """
+    Stores a capacity number.
+    """
+    capacity = models.PositiveIntegerField()
+
+    class Meta:
+        ordering = ["capacity"]
+
+    def __str__(self):
+        return self.capacity
+
+
+class Level(models.Model):
+    """
+    Stores a level interval.
+    """
+    level = models.CharField(max_length=254)
+
+    class Meta:
+        ordering = ["level"]
+
+    def __str__(self):
+        return self.level
+
+
+class Place(models.Model):
+    """
+    Stores a place where the lesson is.
+    """
+    place = models.CharField(max_length=254)
+
+    class Meta:
+        ordering = ["place"]
+
+    def __str__(self):
+        return self.place
