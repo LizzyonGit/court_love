@@ -64,7 +64,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == lessons_url %}active" aria-current="page{% endif %}"
-                            href="#">All lessons</a>
+                            href="{% url 'lessons' %}">All lessons</a>
                     </li>
 
                     {% if user.is_authenticated %}
