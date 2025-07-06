@@ -35,7 +35,8 @@ class Lesson(models.Model):
     #image = models.ImageField(null=True, blank=True)
 
     class Meta:
-        ordering = ['-date_time']
+        """Order from earliest to later"""
+        ordering = ['date_time']
 
     def __str__(self):
         return self.name

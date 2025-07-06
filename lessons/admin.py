@@ -12,6 +12,9 @@ class LessonAdmin(admin.ModelAdmin):
     list_display = ('date_time', 'category', 'capacity', 'place', 'duration')
     list_filter = ('date_time', 'category', 'capacity', 'place')
 
+    # order from newest dates because old dates will appear here
+    ordering = ('-date_time',)
+
 
 admin.site.register(Category)
 admin.site.register(Level)
