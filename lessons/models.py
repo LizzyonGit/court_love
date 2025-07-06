@@ -5,6 +5,9 @@ from django.db import models
 
 class Category(models.Model):
     """Category model copied from Boutique Ado"""
+    class Meta:
+        verbose_name_plural = 'Categories'
+
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -31,6 +34,9 @@ class Lesson(models.Model):
     #image_url = models.URLField(max_length=1024, null=True, blank=True)
     #image = models.ImageField(null=True, blank=True)
 
+    class Meta:
+        ordering = ['-date_time']
+
     def __str__(self):
         return self.name
 
@@ -41,9 +47,6 @@ class Duration(models.Model):
     """
     duration = models.CharField(max_length=20)
 
-    class Meta:
-        ordering = ["duration"]
-
     def __str__(self):
         return self.duration
 
@@ -52,10 +55,10 @@ class Capacity(models.Model):
     """
     Stores a capacity number.
     """
-    capacity = models.PositiveIntegerField()
-
     class Meta:
-        ordering = ["capacity"]
+        verbose_name_plural = 'Capacities'
+
+    capacity = models.PositiveIntegerField()
 
     def __str__(self):
         """returns only the nr in admin"""
@@ -69,9 +72,6 @@ class Level(models.Model):
     """
     level = models.CharField(max_length=254)
 
-    class Meta:
-        ordering = ["level"]
-
     def __str__(self):
         return self.level
 
@@ -81,9 +81,6 @@ class Place(models.Model):
     Stores a place where the lesson is.
     """
     place = models.CharField(max_length=254)
-
-    class Meta:
-        ordering = ["place"]
 
     def __str__(self):
         return self.place
