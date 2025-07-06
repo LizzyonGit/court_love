@@ -13,10 +13,33 @@
 
 {% block content %}
     <main>
-        <div class="container">
+        <div class="container-fluid d-flex justify-content-center">
             <div class="row">
                 <div class="col">
-                    {{ lessons }}
+                {% for lesson in lessons %}               
+                    <div class="card mb-3" style="max-width: 600px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ lesson.date_time }} - {{ lesson.duration }} - {{ lesson.name }}</h5>
+                                    <p class="card-text">{{ lesson.description }}</p>
+                                    <p class="card-text"><small class="text-body-secondary">Place: {{ lesson.place }}</small></p>
+                                    <p class="card-text"><small class="text-body-secondary">Level: {{ lesson.level }}</small></p>
+                                    <p class="card-text"><small class="text-body-secondary">Capacity: {{ lesson.capacity }}</small></p>
+                                    <p class="card-text bold">$ {{ lesson.price | floatformat }}</p> 
+                                    <a href="#" class="btn book-button">Book</a>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
                 </div>
             </div>
         </div>

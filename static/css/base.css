@@ -36,7 +36,11 @@ h1, h2 {
 
 }
 
-.category-button > a {
+.category-button > a, .book-button > a {
     text-decoration: none;
     color: var(--contrast-color);
+}
+
+.book-button {
+    background-color: var(--primary-button-color);
 }
