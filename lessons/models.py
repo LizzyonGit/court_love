@@ -20,16 +20,25 @@ class Category(models.Model):
 
 class Lesson(models.Model):
     """Store the lesson product"""
-    category = models.ForeignKey('Category', null=True, on_delete=models.SET_NULL, related_name="lessons")
+    category = models.ForeignKey('Category', null=True,
+                                 on_delete=models.SET_NULL,
+                                 related_name="lessons")
     name = models.CharField(max_length=254)
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
     date_time = models.DateTimeField()
-    duration = models.ForeignKey('Duration', null=True, on_delete=models.SET_NULL, related_name="lessons")
-    capacity = models.ForeignKey('Capacity', null=True, on_delete=models.SET_NULL, related_name="lessons")
-    level_interval = models.ForeignKey('Level', null=True, on_delete=models.SET_NULL, related_name="lessons")
-    place = models.ForeignKey('Place', null=True, on_delete=models.SET_NULL, related_name="lessons")
+    duration = models.ForeignKey('Duration', null=True,
+                                 on_delete=models.SET_NULL,
+                                 related_name="lessons")
+    capacity = models.ForeignKey('Capacity', null=True,
+                                 on_delete=models.SET_NULL,
+                                 related_name="lessons")
+    level_interval = models.ForeignKey('Level', null=True,
+                                       on_delete=models.SET_NULL,
+                                       related_name="lessons")
+    place = models.ForeignKey('Place', null=True, on_delete=models.SET_NULL,
+                              related_name="lessons")
 
     #image_url = models.URLField(max_length=1024, null=True, blank=True)
     #image = models.ImageField(null=True, blank=True)
@@ -64,7 +73,6 @@ class Capacity(models.Model):
     def __str__(self):
         """returns only the nr in admin"""
         return str(self.capacity)
-
 
 
 class Level(models.Model):

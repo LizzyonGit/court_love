@@ -33,4 +33,3 @@ def all_lessons(request):
     }
 
     return render(request, 'lessons/lessons.html', context)
-
