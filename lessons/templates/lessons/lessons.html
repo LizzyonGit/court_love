@@ -4,20 +4,27 @@
 
 {% block page_header%}
     <header>
-        <div class="container-fluid d-flex justify-content-center">
-            <div class="row my-2"> 
-                <div class="col">  
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center my-2">
+             
+                <div class="col-6 mb-2 mb-sm-0 col-sm-3 d-flex justify-content-center">  
                     <div class="category-button btn">
                         <a href="{% url 'lessons' %}?category=group&place=indoor">Group - Indoor</a>
                     </div>
+                 </div>  
+                <div class="col-6 mb-2 mb-sm-0 col-sm-3 d-flex justify-content-center"> 
 
                     <div class="category-button btn">
                         <a href="{% url 'lessons' %}?category=group&place=outdoor">Group - Outdoor</a>
                     </div>
+                </div>  
+                <div class="col-6 col-sm-3 d-flex justify-content-center"> 
                 
                     <div class="category-button btn">
                         <a href="{% url 'lessons' %}?category=private&place=indoor">Private - Indoor</a>
                     </div>
+                 </div>  
+                <div class="col-6 col-sm-3 d-flex justify-content-center"> 
 
                     <div class="category-button btn">
                         <a href="{% url 'lessons' %}?category=private&place=outdoor">Private - Outdoor</a>
