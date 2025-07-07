@@ -43,9 +43,16 @@ h1, h2 {
 
 .book-button {
     background-color: var(--primary-button-color);
+
 }
 
 .category-button:hover, .book-button:hover,
 .category-button:focus, .book-button:focus {
     background-color: var(--highlight-color);
 }
+
+/*Override bootstrap class*/
+.btn:hover {
+    color:var(--contrast-color);
+}
+
