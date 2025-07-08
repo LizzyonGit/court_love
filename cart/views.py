@@ -23,6 +23,16 @@ def add_to_cart(request, item_id):
         cart[item_id] = quantity
 
     request.session['cart'] = cart
-    # check if it works
-    print(request.session['cart'])
+
+    return redirect(redirect_url)
+
+
+def remove_from_cart(request, item_id):
+    """Remove item from cart"""
+    redirect_url = request.POST.get('redirect_url')
+    cart = request.session.get('cart', {})
+    cart.pop(item_id)
+
+    request.session['cart'] = cart
+
     return redirect(redirect_url)
