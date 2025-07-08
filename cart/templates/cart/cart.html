@@ -25,8 +25,28 @@
 
                         <!--iterate through cart items-->
                         {% if cart_items %}
+                            {% for item in cart_items %}
+                        
+                            <div class="card mb-3" style="max-width: 600px;">
+                                <div class="row g-0">
+                                    
+                                    <div class="col">
+                                        <div class="card-body">
 
-                        {{ cart_items }}
+                                        <h5 class="card-title">{{ item.lesson.date_time }} - {{ item.lesson.duration }} - {{ item.lesson.name }}</h5>
+                                            <p class="card-text"><small class="text-body-secondary">Place: {{ item.lesson.place }}</small></p>
+                                            
+                                            <p class="card-text bold">$ {{ item.lesson.price | floatformat }}</p> 
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                    
+                            </div>
+
+                        {% endfor %}
+
+
                         {% else %}
 
                         <p>There are no lessons here.</p>
