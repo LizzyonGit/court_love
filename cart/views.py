@@ -17,6 +17,7 @@ def add_to_cart(request, item_id):
     cart = request.session.get('cart', {})
 
     if item_id in list(cart.keys()):
+        # should I prevent adding item to cart?
         cart[item_id] += quantity
     else:
         cart[item_id] = quantity

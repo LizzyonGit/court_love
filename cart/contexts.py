@@ -3,7 +3,9 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from lessons.models import Lesson
 
+
 def cart_contents(request):
+    """Handles adding lesson to cart"""
 
     cart_items = []
     product_count = 0
