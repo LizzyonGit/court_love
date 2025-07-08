@@ -49,8 +49,10 @@
     <body class="d-flex flex-column h-100">
 
     {% if messages %}
-    <div class="container">
-        display message
+    <div class="message-container">
+        {% for message in messages %}
+            {% include 'includes/toasts/toast_success.html' %}
+        {% endfor %}
     </div>
     {% endif %}
 
@@ -157,6 +159,18 @@
     {% endblock %}
     
     {% block postloadjs %}
+    <!--From bootstrap toast documentation-->
+    <script type="text/javascript">
+        // Adapted from https://www.w3schools.com/bootstrap5/bootstrap_toast.php
+      
+            let toastMessageList = [].slice.call(document.querySelectorAll('.toast'))
+            let toastList = toastMessageList.map(function(toastEl) {
+                return new bootstrap.Toast(toastEl)
+            })
+            toastList.forEach(toast => toast.show())
+        
+    </script>
+
     {% endblock %}
 
     </body>
