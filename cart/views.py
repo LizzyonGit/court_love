@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from lessons.models import Lesson
 
@@ -13,7 +13,7 @@ def view_cart(request):
 def add_to_cart(request, item_id):
     """Add lesson to cart"""
     # get lessons for message
-    lesson = Lesson.objects.get(pk=item_id)
+    lesson = get_object_or_404(Lesson, pk=item_id)
 
     quantity = int(request.POST.get('quantity'))
 
@@ -36,10 +36,19 @@ def add_to_cart(request, item_id):
 
 def remove_from_cart(request, item_id):
     """Remove item from cart"""
+    lesson = get_object_or_404(Lesson, pk=item_id)
+
     redirect_url = request.POST.get('redirect_url')
-    cart = request.session.get('cart', {})
-    cart.pop(item_id)
 
-    request.session['cart'] = cart
+    try:
+        cart = request.session.get('cart', {})
+        cart.pop(item_id)
+        messages.success(request, f'Removed {lesson.name} from cart')
 
-    return redirect(redirect_url)
+        request.session['cart'] = cart
+
+        return redirect(redirect_url)
+
+    except Exception as e:
+        messages.error(request, f'Error removing item: {e}')
+        return redirect(redirect_url)

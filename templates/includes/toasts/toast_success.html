@@ -1,9 +1,41 @@
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-header">
-    
-    <strong class="me-auto text-black">Success</strong>
-    
-    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-  </div>
-  <div class="toast-body text-black">{{ message }}</div>
+<div class="toast w-100" role="alert" aria-live="assertive" aria-atomic="true">
+            
+    <div class="toast-header">
+        
+        <strong class="me-auto text-black">Success</strong>
+        
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body text-black cart-notification-wrapper">
+        <div class="row">
+            <div class="col">
+                {{ message }}
+            </div>
+        </div>
+        <hr class="px-1">
+        <p>Your cart ({{ product_count }})</p>
+        {% if grand_total %}
+            
+                {% for item in cart_items %}
+                    <div class="row">
+                        <div class="col">
+                            <p><strong>{{ item.lesson.name }}</strong></p>
+                            <p><strong>{{ item.lesson.date_time }}</strong></p> 
+                        </div>
+                    </div>
+                    <hr class="px-1">
+                {% endfor %}
+            
+            <div class="row">
+                <div class="col">
+                    <strong><p>Total: ${{ grand_total|floatformat:2 }}</p></strong>
+                    <a href="{% url 'view_cart' %}" class="btn book-button">
+                        <span class="text-uppercase">Go directly to checkout</span>
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+        
 </div>

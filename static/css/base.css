@@ -57,7 +57,7 @@ h1, h2 {
 }
 
 
-/*Toast styling same as Boutique Ado*/
+/*Toast styling adapted from Boutique Ado*/
 
 .message-container{
     position: fixed;
@@ -66,3 +66,8 @@ h1, h2 {
     z-index: 99999999999;
 }
 
+.cart-notification-wrapper {
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
