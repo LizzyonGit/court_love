@@ -79,6 +79,7 @@ h1, h2 {
 
 /*Checkout styles*/
 .payment-note {
+    display: inline-block;
     background-color: var(--highlight-color);
 }
 
