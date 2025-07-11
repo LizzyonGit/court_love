@@ -46,6 +46,10 @@ h1, h2 {
 
 }
 
+.pay-button {
+    background-color: var(--secondary-color);
+}
+
 .category-button:hover, .book-button:hover,
 .category-button:focus, .book-button:focus {
     background-color: var(--highlight-color);
@@ -71,3 +75,31 @@ h1, h2 {
     overflow-x: hidden;
     overflow-y: auto;
 }
+
+/*Checkout styles*/
+.payment-note {
+    background-color: var(--highlight-color);
+}
+
+/*override bootsrap input checked, because blue is like my background*/
+.form-check-input:checked {
+    background-color: var(--primary-button-color);
+    border-color: var(--primary-button-color);
+}
+
+/*media queries*/
+
+/*fix buttons in checkout to be left aligned on all screens sizes larger than 330px*/
+@media screen and (width > 330px  ) {
+.checkout-buttons {
+    justify-content: start;
+
+
+}}
+/*fix buttons in checkout to be on each side of the screen on small screens under 330px*/
+
+@media screen and (width < 330px  ) {
+.checkout-buttons {
+    justify-content: space-between;
+
+}}
