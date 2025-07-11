@@ -22,7 +22,7 @@
     <div class="container-fluid d-flex justify-content-center">
         <div class="row">
             <div class="col-md-7">
-                <h2 class="h3">Details & payment</h2>
+                <h2>Details & payment</h2>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
                     <fieldset class="rounded px-1 mb-1">
@@ -57,8 +57,7 @@
 						
 					</div>
                     <div class="payment-note small text-danger my-2 rounded">
-					<span class="icon"><i class="fas fa-exclamation-circle px-1"></i></span>
-					<p>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></p>
+					<p><i class="fas fa-exclamation-circle px-1"></i>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></p>
 					</div>
                 </form>
 

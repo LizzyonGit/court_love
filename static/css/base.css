@@ -51,7 +51,8 @@ h1, h2 {
 }
 
 .category-button:hover, .book-button:hover,
-.category-button:focus, .book-button:focus {
+.category-button:focus, .book-button:focus,
+.pay-button:hover, .pay-button:focus {
     background-color: var(--highlight-color);
 }
 
