@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
 
 {% block page_header%}
     <header>
@@ -25,13 +28,13 @@
                 <h2>Details & payment</h2>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
-                    <fieldset class="rounded px-1 mb-1">
+                    <fieldset class="rounded mb-1">
                         <legend class="fieldset-label small text-black px-2 w-auto">Personal details</legend>
                         {{ order_form.full_name | as_crispy_field }}
                         {{ order_form.email | as_crispy_field }}
                         {{ order_form.phone | as_crispy_field }}
                     </fieldset>
-                    <fieldset class="rounded px-1 mb-1">  
+                    <fieldset class="rounded mb-1">  
                         <div class="form-check form-check-inline mr-0">
 							{% if user.is_authenticated %}
 								<label class="form-check-label" for="id-save-info">Save this information to my profile</label>
@@ -44,7 +47,7 @@
 							{% endif %}
 						</div>
                     </fieldset>  
-                    <fieldset class="px-1">
+                    <fieldset class="rounded">
                         <legend class="fieldset-label small text-black px-2 w-auto">Payment details</legend>
                         <!-- A Stripe card element will go here -->
                         <div class="mb-3" id="card-element">
