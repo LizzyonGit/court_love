@@ -35,3 +35,9 @@
     color: #000;
     border: 1px solid #000;
 }
+
+/*Whit background for errors*/
+#card-errors {
+    background-color: #fff;
+    display: inline-block;
+}

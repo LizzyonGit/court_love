@@ -28,10 +28,10 @@ card.addEventListener('change', function (event) {
     let errorDiv = document.getElementById('card-errors');
     if (event.error) {
         let html = `
-            <span class="icon" role="alert">
+            <span class="icon ps-1" role="alert">
                 <i class="fas fa-times"></i>
             </span>
-            <span>${event.error.message}</span>
+            <span class="pe-1">${event.error.message}</span>
         `;
         errorDiv.innerHTML = html;
     } else {
