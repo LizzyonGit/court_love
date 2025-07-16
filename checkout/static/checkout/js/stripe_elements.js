@@ -12,7 +12,7 @@ let style = {
         fontSmoothing: 'antialiased',
         fontSize: '16px',
         '::placeholder': {
-            color: '#aab7c4'
+            color: '#aab7c4',
         }
     },
     invalid: {
