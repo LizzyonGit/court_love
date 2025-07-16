@@ -39,3 +39,4 @@ card.addEventListener('change', function (event) {
     }
 });
 
+// Handle form submit
