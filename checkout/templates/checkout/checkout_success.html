@@ -31,7 +31,8 @@
             <div class="col-md-5">
 
                 <h2>Order details</h2>
-                <p>Order number: {{ order.order_number|truncatechars:10 }}.</p><!--too large nr messes up responsiveness-->
+                <!--too large order nr messes up responsiveness-->
+                <p>Order number: {{ order.order_number|truncatechars:10 }}.</p>
                 
                 <!--iterate through order items-->
 
