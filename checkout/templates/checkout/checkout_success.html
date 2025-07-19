@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header%}
+    <header>
+        <div class="container-fluid d-flex justify-content-center">
+        
+            <div class="row">
+                <div class="col"><h1>Payment successful</h1></div>
+            </div>
+        </div>
+        
+    </header>
+{% endblock %}
+
+
+
+
+{% block content %}
+<main>
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="row">
+            <div class="col-md-7">
+                <h2>Thank you for your order.</h2>
+                <p>A confirmation will be sent to {{ order.email }}.</p>
+            </div>
+            <div class="col-md-5">
+
+                <!--iterate through cart items-->
+                <h2>Order details</h2>
+                <p>Order number: <small>{{ order.order_number }}</small>.</p>
+            
+                {% for item in order.lineitems.all %}            
+                <div class="card mb-3" style="max-width: 600px;">
+                    <div class="row g-0">
+                        
+                        <div class="col">
+                            <div class="card-body">
+
+                                <h5 class="card-title">{{ item.lesson.date_time }} - {{ item.lesson.duration }} - {{ item.lesson.name }}</h5>
+                                <p class="card-text"><small class="text-body-secondary">Place: {{ item.lesson.place }}</small></p>
+                                <p class="card-text bold">{{ item.quantity }} x $ {{ item.lesson.price | floatformat }}</p>
+                                
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                        
+                </div>
+                {% endfor %}
+
+            
+
+                <p>Grand total: {{ order.grand_total }}</p>
+
+
+
+                    
+
+            </div>
+        </div>
+    </div>
+        
+
+
+
+</main>
+{% endblock %}
+
+
