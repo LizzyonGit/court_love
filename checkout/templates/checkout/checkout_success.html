@@ -30,10 +30,11 @@
             </div>
             <div class="col-md-5">
 
-                <!--iterate through cart items-->
                 <h2>Order details</h2>
-                <p>Order number: <small>{{ order.order_number }}</small>.</p>
-            
+                <p>Order number: {{ order.order_number|truncatechars:10 }}.</p><!--too large nr messes up responsiveness-->
+                
+                <!--iterate through order items-->
+
                 {% for item in order.lineitems.all %}            
                 <div class="card mb-3" style="max-width: 600px;">
                     <div class="row g-0">
