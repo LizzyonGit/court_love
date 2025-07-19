@@ -1,9 +1,9 @@
 /*Adapted from Boutique Ado, js instead of jQuery*/
 
-let stripe_public_key = document.querySelector('#id_stripe_public_key').textContent.slice(1, -1);
-let client_secret = document.querySelector('#id_client_secret').textContent.slice(1, -1);
+let stripePublicKey = document.querySelector('#id_stripe_public_key').textContent.slice(1, -1);
+let clientSecret = document.querySelector('#id_client_secret').textContent.slice(1, -1);
 
-const stripe = Stripe(stripe_public_key);
+const stripe = Stripe(stripePublicKey);
 let elements = stripe.elements();
 let style = {
     base: {
@@ -40,3 +40,32 @@ card.addEventListener('change', function (event) {
 });
 
 // Handle form submit
+const form = document.getElementById('payment-form');
+
+form.addEventListener('submit', function(ev) {
+    ev.preventDefault();
+    card.update({ 'disabled': true});
+    let submitButton = document.querySelector('#payment-button')
+    submitButton.disabled = true;
+    stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+            card: card,
+        }
+    }).then(function(result) {
+        if (result.error) {
+            let errorDiv = document.getElementById('card-errors');
+            let html = `
+                <span class="icon ps-1" role="alert">
+                <i class="fas fa-times"></i>
+                </span>
+                <span class="pe-1">${result.error.message}</span>`;
+            errorDiv.innerHTML = html;
+            card.update({ 'disabled': false});
+            submitButton.disabled = false;
+        } else {
+            if (result.paymentIntent.status === 'succeeded') {
+                form.submit();
+            }
+        }
+    });
+});
