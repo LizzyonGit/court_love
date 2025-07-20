@@ -38,7 +38,7 @@ h1, h2 {
     color: var(--contrast-color);
 }
 
-.book-button {
+.book-button, .login-button {
     background-color: var(--primary-button-color);
 
 }
@@ -49,6 +49,7 @@ h1, h2 {
 
 .category-button:hover, .book-button:hover,
 .category-button:focus, .book-button:focus,
+.login-button:focus, .login-button:hover,
 .pay-button:hover, .pay-button:focus {
     background-color: var(--highlight-color);
 }
@@ -58,6 +59,16 @@ h1, h2 {
     color:var(--contrast-color);
 }
 
+/*Link styles*/
+.link-text {
+    color: var(--secondary-color);
+
+}
+
+.link-text:hover {
+    color: var(--highlight-color);
+
+}
 
 /*Toast styling adapted from Boutique Ado*/
 
