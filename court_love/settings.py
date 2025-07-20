@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'lessons',
     'cart',
     'checkout',
+    'profiles',
 
     # allauth apps
     'django.contrib.sites',
