@@ -32,7 +32,7 @@
 
                 <h2>Order details</h2>
                 <!--too large order nr messes up responsiveness-->
-                <p>Order number: {{ order.order_number|truncatechars:10 }}.</p>
+                <p>Order number: <span title="{{ order.order_number }}">{{ order.order_number|truncatechars:6 }}</span>.</p>
                 
                 <!--iterate through order items-->
 
@@ -60,11 +60,21 @@
 
                 <p>Grand total: {{ order.grand_total }}</p>
 
+                {% if from_profile %}
+                    <a href="{% url 'profile' %}" class="btn login-button">
+                        <span class="icon mr-2">
+                            <i class="fas fa-angle-left"></i>
+                        </span>
+                        Back to profile
+                    </a>
+                {% endif %}
+
 
 
                     
 
             </div>
+
         </div>
     </div>
         

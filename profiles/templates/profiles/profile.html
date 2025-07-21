@@ -38,7 +38,14 @@
             <div class="col-md-5 mt-2">
 
                 <h2>Order history</h2>
-                {{ orders }}
+
+                {% for order in orders %}
+                <p>
+                {{ order.date }} <a class="link-text" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">{{ order.order_number|truncatechars:6 }}</a>
+                </p>
+                {% endfor %}
+
+                
                 
                 
 

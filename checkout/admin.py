@@ -13,12 +13,22 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ('order_number', 'order_date',
                        'grand_total',)
 
-    fields = ('order_number', 'order_date', 'full_name',
+    fields = ('order_number', 'user_profile', 'order_date', 'full_name',
               'email', 'phone', 'grand_total',)
 
-    list_display = ('order_number', 'order_date', 'full_name',)
+    list_display = ('order_number', 'order_date', 'user_profile',
+                    'user_profile__level',)
 
     ordering = ('-order_date',)
+
+
+@admin.register(OrderLineItem)
+class OrderLineItemAdmin(admin.ModelAdmin):
+    list_display = ('order', 'lesson', 'lesson__date_time',
+                    'lesson__level_interval',
+                    'order__user_profile', 'order__user_profile__level',)
+
+    list_filter = ('lesson__date_time',)
 
 
 admin.site.register(Order, OrderAdmin)
