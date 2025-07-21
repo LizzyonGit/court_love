@@ -1,6 +1,5 @@
 from django import forms
 from .models import UserProfile
-from django.utils.safestring import mark_safe
 
 
 class UserProfileForm(forms.ModelForm):
@@ -16,10 +15,9 @@ class UserProfileForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
 
+        # Customise label
         self.fields['default_phone'].label = 'Phone number'
-        self.fields['level'].label = mark_safe('Your level according to <br><a href="https://activenetwork.my.salesforce-sites.com/usta/articles/en_US/Article/League-NTRP-Rating-Information" target="_blank"></a>')
 
-        
         placeholders = {
             'default_phone': 'Phone number',
             'level': 'Level',
