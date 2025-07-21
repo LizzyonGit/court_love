@@ -13,9 +13,9 @@
             </div>
         </div>
         <hr class="px-1">
-        <p>Your cart ({{ product_count }})</p>
-        {% if grand_total %}
-            
+        
+        {% if grand_total and not on_profile_page %}
+            <p>Your cart ({{ product_count }})</p>
                 {% for item in cart_items %}
                     <div class="row">
                         <div class="col">
