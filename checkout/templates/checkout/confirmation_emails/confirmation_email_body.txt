@@ -1,0 +1,23 @@
+Hello {{ order.full_name }}!
+
+This is a confirmation of your booking at Court Love. 
+
+You booked the following lessons:
+
+{% for item in order.lineitems.all %}            
+
+Lesson info: {{ item.lesson.date_time }} - {{ item.lesson.duration }} - {{ item.lesson.name }} - {{ item.lesson.place }}
+
+{% endfor %}
+
+Order number: {{ order.order_number }}
+Order date: {{ order.date }}
+Total: ${{ order.grand_total }}
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you and see you on court!
+
+Sincerely,
+
+Court Love
