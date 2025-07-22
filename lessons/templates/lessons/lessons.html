@@ -81,19 +81,30 @@
                                         <div>
                                             <div class="col-12">
                                                 
-                                                <div class="">
+                                                
                                                     <div class="input-group">
                                                         <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="1">
                                                     </div>
-                                                </div>
+                                                
                                             </div>
-                                            <div class="col-12">
+                                            <div class="col-12 py-2">
                                                 
                                                 <input type="submit" class="btn book-button" value="Add to cart">
                                             </div>
                                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                         </div>
                                     </form>
+
+                                    <!--Edit and delete button for superusers only-->
+                                    {% if request.user.is_superuser %}
+                                    <div class="card-footer">
+                                            <a class="btn book-button" href="{% url 'edit_lesson' lesson.id %}">Edit</a>
+                                            <a class="btn cancel-button" href="{% url 'delete_lesson' lesson.id %}">Delete</a>
+                                    </div>
+                                    {% endif %}
+
+
+
 
 
 
