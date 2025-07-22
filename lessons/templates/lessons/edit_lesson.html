@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header%}
+    <header>
+        <div class="container-fluid d-flex justify-content-center">
+        
+            <div class="row">
+                <div class="col"><h1>Lesson management</h1></div>
+            </div>
+        </div>
+        
+    </header>
+{% endblock %}
+
+
+
+
+{% block content %}
+<main>
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="row">
+            <div class="col">
+                <h2>Edit lesson</h2>
+                
+                <form method="POST" action="{% url 'edit_lesson' lesson.id %}" class="form mb-2" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    
+                        <a class="btn cancel-button" href="{% url 'lessons' %}">Cancel</a>
+                        <button class="btn book-button" type="submit">Update lesson</button>
+                    
+                </form>
+
+
+
+
+
+
+            </div>
+            
+        </div>
+    </div>
+        
+
+
+
+</main>
+{% endblock %}
+
+
