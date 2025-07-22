@@ -99,7 +99,25 @@
                                     {% if request.user.is_superuser %}
                                     <div class="card-footer">
                                             <a class="btn book-button" href="{% url 'edit_lesson' lesson.id %}">Edit</a>
-                                            <a class="btn cancel-button" href="{% url 'delete_lesson' lesson.id %}">Delete</a>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn cancel-button" data-bs-toggle="modal" data-bs-target="#deleteLessonModal_{{ lesson.id }}">Delete</button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="deleteLessonModal_{{ lesson.id }}" tabindex="-1" aria-labelledby="deleteLessonModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="deleteLessonModalLabel">Are you sure you want to delete this lesson?</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn book-button" data-bs-dismiss="modal">Do not delete</button>
+                                                            <a class="btn cancel-button" href="{% url 'delete_lesson' lesson.id %}">Delete lesson</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                     </div>
                                     {% endif %}
 

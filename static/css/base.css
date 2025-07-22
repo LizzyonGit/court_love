@@ -54,6 +54,7 @@ h1, h2 {
 .pay-button:hover, .pay-button:focus,
 .cancel-button:hover, .cancel-button:focus {
     background-color: var(--highlight-color);
+    border-color: var(--contrast-color);
 }
 
 .cancel-button {
@@ -63,6 +64,7 @@ h1, h2 {
 /*Override bootstrap class*/
 .btn:hover {
     color:var(--contrast-color);
+    border-color: var(--contrast-color);
 }
 
 /*Link styles*/
