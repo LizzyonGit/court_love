@@ -97,7 +97,7 @@
                         
                         {% if request.user.is_superuser %}
                             <a class="nav-link {% if request.path == manage_url %}active" aria-current="page{% endif %}"
-                            href="#">Lesson management</a>
+                            href="{% url 'add_lesson' %}">Lesson management</a>
                         {% endif %}
 
                     <li class="nav-item">

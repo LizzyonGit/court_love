@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from .models import Lesson, Category, Place
+from .forms import LessonForm
+
+from django.contrib import messages
+
 # Create your views here.
 
 
@@ -33,3 +37,24 @@ def all_lessons(request):
     }
 
     return render(request, 'lessons/lessons.html', context)
+
+
+def add_lesson(request):
+    """Add lesson to website"""
+    if request.method == 'POST':
+        form = LessonForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added lesson')
+            return redirect(reverse('add_lesson'))
+        else:
+            messages.error(request,
+                           'Failed to add lesson. Ensure the form is valid.')
+    else:
+        form = LessonForm()
+    template = 'lessons/add_lesson.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
