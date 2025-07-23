@@ -44,7 +44,7 @@ def all_lessons(request):
 def add_lesson(request):
     """Add lesson to website"""
     if not request.user.is_superuser:
-        messages.error(request, 'You are not authorised.')
+        messages.error(request, 'You are not authorised to do this.')
         return redirect(reverse('home'))
 
     if request.method == 'POST':
@@ -70,7 +70,7 @@ def add_lesson(request):
 def edit_lesson(request, lesson_id):
     """ Edit a lesson on the website"""
     if not request.user.is_superuser:
-        messages.error(request, 'You are not authorised.')
+        messages.error(request, 'You are not authorised to do this.')
         return redirect(reverse('home'))
 
     lesson = get_object_or_404(Lesson, pk=lesson_id)
@@ -100,7 +100,7 @@ def edit_lesson(request, lesson_id):
 def delete_lesson(request, lesson_id):
     """ Delete a lesson from the website"""
     if not request.user.is_superuser:
-        messages.error(request, 'You are not authorised.')
+        messages.error(request, 'You are not authorised to do this.')
         return redirect(reverse('home'))
 
     lesson = get_object_or_404(Lesson, pk=lesson_id)

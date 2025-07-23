@@ -39,7 +39,7 @@
                                             <p class="card-text bold">{{ item.quantity }} x $ {{ item.lesson.price | floatformat }}</p>
                                             <form action="{% url 'remove_from_cart' item.lesson.id %}" method="POST">
                                                 {% csrf_token %}
-                                                <input type="submit" class="remove-item" value="Remove" />
+                                                <input type="submit" class="btn cancel-button remove-item" value="Remove" />
 
                                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                             </form>
