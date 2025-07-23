@@ -3,6 +3,7 @@ from .models import Lesson, Category, Place
 from .forms import LessonForm
 
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -39,8 +40,13 @@ def all_lessons(request):
     return render(request, 'lessons/lessons.html', context)
 
 
+@login_required
 def add_lesson(request):
     """Add lesson to website"""
+    if not request.user.is_superuser:
+        messages.error(request, 'You are not authorised.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = LessonForm(request.POST, request.FILES)
         if form.is_valid():
@@ -60,8 +66,13 @@ def add_lesson(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_lesson(request, lesson_id):
     """ Edit a lesson on the website"""
+    if not request.user.is_superuser:
+        messages.error(request, 'You are not authorised.')
+        return redirect(reverse('home'))
+
     lesson = get_object_or_404(Lesson, pk=lesson_id)
     if request.method == 'POST':
         form = LessonForm(request.POST, request.FILES, instance=lesson)
@@ -85,8 +96,13 @@ def edit_lesson(request, lesson_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_lesson(request, lesson_id):
     """ Delete a lesson from the website"""
+    if not request.user.is_superuser:
+        messages.error(request, 'You are not authorised.')
+        return redirect(reverse('home'))
+
     lesson = get_object_or_404(Lesson, pk=lesson_id)
     lesson.delete()
     messages.success(request, 'Lesson deleted.')
