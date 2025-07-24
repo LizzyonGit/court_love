@@ -71,6 +71,7 @@ class OrderLineItem(models.Model):
         In the MVP, quantity is always 1, but it is still calculated.
         """
         self.lineitem_total = self.lesson.price * self.quantity
+
         super().save(*args, **kwargs)
 
     def __str__(self):

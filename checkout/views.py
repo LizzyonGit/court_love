@@ -6,7 +6,7 @@ from django.contrib import messages
 from .forms import OrderForm
 from cart.contexts import cart_contents
 
-from lessons.models import Lesson
+from lessons.models import Lesson, Capacity
 from .models import OrderLineItem, Order
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
@@ -36,11 +36,12 @@ def checkout(request):
                         lesson=lesson,
                         quantity=quantity,
                     )
+
                     order_line_item.save()
-                    
+
                 except Lesson.DoesNotExist:
                     messages.error(request, (
-                        "One of the lesson in your cart was not found in our database. "
+                        "One of the lessons in your cart was not found in our database. "
                         "Call us for assistance.")
                     )
                     order.delete()
