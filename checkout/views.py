@@ -81,8 +81,7 @@ def checkout(request):
 
         current_cart = cart_contents(request)
 
-        # if places_left is 0, should remove from cart and give message, reload checkout view
-        # for item_id, quantity in current_cart.items():
+        
         print(current_cart)
 
 
