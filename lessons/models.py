@@ -34,6 +34,7 @@ class Lesson(models.Model):
     capacity = models.ForeignKey('Capacity', null=True,
                                  on_delete=models.SET_NULL,
                                  related_name="lessons")
+    places_left = models.PositiveIntegerField(null=True, blank=True)
     level_interval = models.ForeignKey('Level', null=True,
                                        on_delete=models.SET_NULL,
                                        related_name="lessons")
@@ -49,6 +50,12 @@ class Lesson(models.Model):
 
     def __str__(self):
         return self.name
+
+    # Via https://stackoverflow.com/questions/4380879/django-model-field-default-based-off-another-field-in-same-model
+    def save(self, *args, **kwargs):
+        if not self.places_left:
+            self.places_left = self.capacity.capacity
+        super(Lesson, self).save(*args, **kwargs)
 
 
 class Duration(models.Model):

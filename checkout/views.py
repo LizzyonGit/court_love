@@ -37,12 +37,11 @@ def checkout(request):
                         quantity=quantity,
                     )
 
-                    # capacity handler (https://stackoverflow.com/questions/61310901/how-to-update-a-value-from-table-accessed-via-foreign-key-django-orm)
-                    # this does not work as the capacity model is changed, it should not. I should change this to a normal field I think. Or have new model?
-                    print(f'old: {lesson.capacity.capacity}')
-                    lesson.capacity.capacity -= order_line_item.quantity
-                    lesson.capacity.save()
-                    print(f'new: {lesson.capacity.capacity}')
+                    # capacity handler
+                    print(f'old: {lesson.places_left}')
+                    lesson.places_left -= order_line_item.quantity
+                    print(f'new: {lesson.places_left}')
+                    lesson.save()
 
                     order_line_item.save()
 
