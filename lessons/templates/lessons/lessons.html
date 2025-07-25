@@ -70,8 +70,10 @@
                                     <h5 class="card-title">{{ lesson.date_time }} - {{ lesson.duration }} - {{ lesson.name }}</h5>
                                     <p class="card-text">{{ lesson.description }}</p>
                                     <p class="card-text"><small class="text-body-secondary">Place: {{ lesson.place }}</small></p>
-                                    <p class="card-text"><small class="text-body-secondary">Level: {{ lesson.level }}</small></p>
+                                    <p class="card-text"><small class="text-body-secondary">Level: {{ lesson.level_interval }}</small></p>
                                     <p class="card-text"><small class="text-body-secondary">Capacity: {{ lesson.capacity }}</small></p>
+                                    <p class="card-text"><small class="text-body-secondary">Places left: {{ lesson.places_left }}</small></p>
+
                                     <p class="card-text bold">$ {{ lesson.price | floatformat }}</p> 
                                     
                                     

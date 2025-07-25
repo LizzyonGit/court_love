@@ -52,6 +52,7 @@ class Lesson(models.Model):
         return self.name
 
     # Via https://stackoverflow.com/questions/4380879/django-model-field-default-based-off-another-field-in-same-model
+    # if not set, set it to same as capacity value. Can be altered after manually.
     def save(self, *args, **kwargs):
         if not self.places_left:
             self.places_left = self.capacity.capacity
