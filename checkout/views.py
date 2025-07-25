@@ -31,6 +31,7 @@ def checkout(request):
             for item_id, quantity in cart.items():
                 try:
                     lesson = Lesson.objects.get(id=item_id)
+
                     order_line_item = OrderLineItem(
                         order=order,
                         lesson=lesson,
@@ -65,8 +66,26 @@ def checkout(request):
         if not cart:
             messages.error(request, "Your cart is empty")
             return redirect(reverse('lessons'))
+        print(cart)
+        print(cart.items())
+        # if places_left is 0, should remove from cart and give message, reload checkout view
+        for item_id in list(cart):
+            lesson = Lesson.objects.get(id=item_id)
+            if lesson.places_left == 0:
+                del cart[item_id]
+                messages.error(request, 'One or more lesson in your cart did not have places left. They have been removed.')
+
+        print(cart)
+
+
 
         current_cart = cart_contents(request)
+
+        # if places_left is 0, should remove from cart and give message, reload checkout view
+        # for item_id, quantity in current_cart.items():
+        print(current_cart)
+
+
         total = current_cart['grand_total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key

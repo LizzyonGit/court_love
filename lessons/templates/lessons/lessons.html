@@ -89,9 +89,13 @@
                                                     </div>
                                                 
                                             </div>
+                                            
                                             <div class="col-12 py-2">
-                                                
+                                            {% if not lesson.places_left %}
+                                                <button class="btn cancel-button" value="Not bookable" disabled>Not bookable</button>
+                                            {% else %}
                                                 <input type="submit" class="btn book-button" value="Add to cart">
+                                            {% endif %}
                                             </div>
                                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                         </div>
