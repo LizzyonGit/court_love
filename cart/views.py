@@ -7,6 +7,27 @@ from lessons.models import Lesson
 
 def view_cart(request):
     """Returns cart contents page"""
+    cart = request.session.get('cart', {})
+    print(cart)
+    print(cart.items())
+
+    # if places_left is 0, should remove from cart and give message
+    # https://www.geeksforgeeks.org/python/python-delete-items-from-dictionary-while-iterating/
+    for item_id in list(cart):
+        lesson = Lesson.objects.get(id=item_id)
+        try:
+            if lesson.places_left == 0:
+                del cart[item_id]
+                messages.error(request, 'One or more lessons in your cart did not have places left. They have been removed.')
+        except:
+            pass
+
+    print(cart)
+
+    # update cart so chekout gets correct cart
+    request.session['cart'] = cart
+
+
     return render(request, 'cart/cart.html')
 
 

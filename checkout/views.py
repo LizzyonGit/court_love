@@ -66,24 +66,19 @@ def checkout(request):
         if not cart:
             messages.error(request, "Your cart is empty")
             return redirect(reverse('lessons'))
-        print(cart)
-        print(cart.items())
-        # if places_left is 0, should remove from cart and give message, reload checkout view
+        
+        # in case user passes cart view, when there is no place left it should go back to updated cart,
+        # there you get the message about removed lesson
         for item_id in list(cart):
             lesson = Lesson.objects.get(id=item_id)
-            if lesson.places_left == 0:
-                del cart[item_id]
-                messages.error(request, 'One or more lesson in your cart did not have places left. They have been removed.')
-
-        print(cart)
-
+            try:
+                if lesson.places_left == 0:
+                    return redirect(reverse('view_cart'))
+            except:
+                pass
 
 
         current_cart = cart_contents(request)
-
-        
-        print(current_cart)
-
 
         total = current_cart['grand_total']
         stripe_total = round(total * 100)
