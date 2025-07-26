@@ -43,9 +43,8 @@ def add_to_cart(request, item_id):
     cart = request.session.get('cart', {})
 
     if item_id in list(cart.keys()):
-        # should I prevent adding item to cart?
-        cart[item_id] += quantity
-        messages.success(request, f'Added {lesson.name} to cart')
+        # prevent adding lesson to cart, max qty 1 per lesson
+        messages.error(request, f'Lesson {lesson.name} is already in your cart')
     else:
         cart[item_id] = quantity
         messages.success(request, f'Added {lesson.name} to cart')
