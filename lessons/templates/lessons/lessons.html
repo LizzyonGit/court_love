@@ -52,6 +52,8 @@
                     - {{ p.place }}</h2>
                 {% endfor %}
                 {% if not current_categories %}<h2>All lessons</h2>{% endif %}
+                <p>Outdoor lessons are at Outdoor street 2, 12345 Tennisville.</p>
+                <p>Indoor lessons are at Indoor street 1 12345 Tennicity.</p>
                 </div>
             </div>
         </div>
@@ -81,7 +83,7 @@
                                     <form action="{% url 'add_to_cart' lesson.id %}" method="POST">
                                         {% csrf_token %}
                                         <div>
-                                            <div class="col-12">
+                                            <div class="col-12 visually-hidden">
                                                 
                                                 
                                                     <div class="input-group">
