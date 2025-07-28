@@ -45,27 +45,70 @@ const form = document.getElementById('payment-form');
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
     card.update({ 'disabled': true});
-    let submitButton = document.querySelector('#payment-button')
+    let submitButton = document.querySelector('#payment-button');
     submitButton.disabled = true;
-    stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-            card: card,
+
+    let saveInfo = Boolean(document.querySelector('#id-save-info').getAttribute('checked'));
+    // From using {% csrf_token %} in the form
+    let csrfToken = form.querySelector('input[name="csrfmiddlewaretoken"]').value;
+    let postData = {
+        'csrfmiddlewaretoken': csrfToken,
+        'client_secret': clientSecret,
+        'save_info': saveInfo,
+    };
+    console.log(postData)
+    const url = '/checkout/cache_checkout_data/';
+    
+    // Conversion from jQuery to JS via https://youmightnotneedjquery.com/ and https://md-null0.medium.com/how-to-post-data-to-the-server-using-fetch-method-b961ae18d6fb
+    async function postDataFunction(url, postData) {
+        try {
+            const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'csrfmiddlewaretoken': csrfToken,
+                'client_secret': clientSecret,
+                'save_info': saveInfo,
+            })
+            });
+        
+        
+            if (response.ok) {
+                const result = await response.json(); 
+
+                stripe.confirmCardPayment(clientSecret, {
+                    payment_method: {
+                        card: card,
+                        billing_details: {
+                            name: form.querySelector('input[name="full_name"]').value.trim(),
+                            phone: form.querySelector('input[name="phone"]').value.trim(),
+                            email: form.querySelector('input[name="email"]').value.trim(),
+                        }
+                    },
+                    }).then(function(result) {
+                        if (result.error) {
+                            let errorDiv = document.getElementById('card-errors');
+                            let html = `
+                                <span class="icon ps-1" role="alert">
+                                <i class="fas fa-times"></i>
+                                </span>
+                                <span class="pe-1">${result.error.message}</span>`;
+                            errorDiv.innerHTML = html;
+                            card.update({ 'disabled': false});
+                            submitButton.disabled = false;
+                        } else {
+                            if (result.paymentIntent.status === 'succeeded') {
+                                form.submit();
+                            }
+                        }
+                    })}}
+        catch (error) {
+            // just reload the page, the error will be in django messages
+            location.reload();
         }
-    }).then(function(result) {
-        if (result.error) {
-            let errorDiv = document.getElementById('card-errors');
-            let html = `
-                <span class="icon ps-1" role="alert">
-                <i class="fas fa-times"></i>
-                </span>
-                <span class="pe-1">${result.error.message}</span>`;
-            errorDiv.innerHTML = html;
-            card.update({ 'disabled': false});
-            submitButton.disabled = false;
-        } else {
-            if (result.paymentIntent.status === 'succeeded') {
-                form.submit();
-            }
-        }
-    });
+    };
+    
+    postDataFunction(url, postData)          
 });
