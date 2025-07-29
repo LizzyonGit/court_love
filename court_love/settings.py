@@ -196,4 +196,4 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 
 # Email confirmation
-DEFAULT_FROM_EMAIL = 'courtlove@example.com'
+DEFAULT_FROM_EMAIL = 'info@courtlove.com'
