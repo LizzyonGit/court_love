@@ -1,4 +1,4 @@
-/*Adapted from Boutique Ado, js instead of jQuery*/
+/*Adapted from Boutique Ado*/
 
 let stripePublicKey = document.querySelector('#id_stripe_public_key').textContent.slice(1, -1);
 let clientSecret = document.querySelector('#id_client_secret').textContent.slice(1, -1);
@@ -48,7 +48,7 @@ form.addEventListener('submit', function(ev) {
     let submitButton = document.querySelector('#payment-button');
     submitButton.disabled = true;
 
-    let saveInfo = Boolean(document.querySelector('#id-save-info').getAttribute('checked'));
+    let saveInfo = Boolean($('#id-save-info').attr('checked'));
     // From using {% csrf_token %} in the form
     let csrfToken = form.querySelector('input[name="csrfmiddlewaretoken"]').value;
     let postData = {
@@ -56,35 +56,17 @@ form.addEventListener('submit', function(ev) {
         'client_secret': clientSecret,
         'save_info': saveInfo,
     };
-    console.log(postData)
+    
     const url = '/checkout/cache_checkout_data/';
     
-    // Conversion from jQuery to JS via https://youmightnotneedjquery.com/ and https://md-null0.medium.com/how-to-post-data-to-the-server-using-fetch-method-b961ae18d6fb
-    async function postDataFunction(url, postData) {
-        try {
-            const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                'csrfmiddlewaretoken': csrfToken,
-                'client_secret': clientSecret,
-                'save_info': saveInfo,
-            })
-            });
-        
-        
-            if (response.ok) {
-                const result = await response.json(); 
-
-                stripe.confirmCardPayment(clientSecret, {
+    $.post(url, postData).done(function () {
+        stripe.confirmCardPayment(clientSecret, {
                     payment_method: {
                         card: card,
                         billing_details: {
-                            name: form.querySelector('input[name="full_name"]').value.trim(),
-                            phone: form.querySelector('input[name="phone"]').value.trim(),
-                            email: form.querySelector('input[name="email"]').value.trim(),
+                            name: $.trim(form.full_name.value),
+                            phone: $.trim(form.phone.value),
+                            email: $.trim(form.email.value),
                         }
                     },
                     }).then(function(result) {
@@ -103,12 +85,9 @@ form.addEventListener('submit', function(ev) {
                                 form.submit();
                             }
                         }
-                    })}}
-        catch (error) {
-            // just reload the page, the error will be in django messages
-            location.reload();
-        }
-    };
-    
-    postDataFunction(url, postData)          
+                    });
+                }).fail(function () {
+                    // just reload the page, the error will be in django messages
+                    location.reload();
+                })       
 });
