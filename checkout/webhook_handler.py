@@ -42,7 +42,6 @@ class StripeWH_Handler:
         billing_details = stripe_charge.billing_details
         grand_total = round(stripe_charge.amount / 100, 2)
 
-
         # Update profile information if save_info was checked
         profile = None
         username = intent.metadata.username

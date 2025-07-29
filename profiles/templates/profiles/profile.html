@@ -45,7 +45,7 @@
 
                 {% for order in orders %}
                 <p>
-                {{ order.date }} <a class="link-text" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">{{ order.order_number|truncatechars:6 }}</a>
+                {{ order.order_date }} <a class="link-text" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">{{ order.order_number|truncatechars:6 }}</a>
                 </p>
                 {% endfor %}
 
