@@ -9,7 +9,7 @@ class LessonAdmin(admin.ModelAdmin):
     """
     Adds fields to table and adds filter.
     """
-    list_display = ('date_time', 'category', 'capacity', 'places_left', 'place', 'duration')
+    list_display = ('name', 'date_time', 'category', 'capacity', 'places_left', 'place', 'duration')
     list_filter = ('date_time', 'category', 'capacity', 'places_left', 'place')
 
     # order from newest dates because old dates will appear here

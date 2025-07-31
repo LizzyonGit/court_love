@@ -5,7 +5,7 @@ from .forms import LessonForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-import datetime
+from django.utils import timezone
 
 # Create your views here.
 
@@ -16,7 +16,7 @@ def all_lessons(request):
     sorting and categories
     """
     # lessons with future date
-    lessons = Lesson.objects.filter(date_time__gt=datetime.datetime.now())
+    lessons = Lesson.objects.filter(date_time__gt=timezone.now())
 
     categories = None  # if not set to None, error
     places = None
@@ -52,6 +52,14 @@ def add_lesson(request):
     if request.method == 'POST':
         form = LessonForm(request.POST, request.FILES)
         if form.is_valid():
+            # info message if places left is higher than capacity
+            if form.cleaned_data['places_left'] > form.cleaned_data['capacity'].capacity:
+                messages.info(request,
+                              'Note that places left is more than the lesson capacity.')
+            # info message if date has passed
+            if form.cleaned_data['date_time'] <= timezone.now():
+                messages.info(request,
+                              "The lesson's date has passed, the lesson will not be displayed but is visible in admin.")
             form.save()
             messages.success(request, 'Successfully added lesson')
             return redirect(reverse('add_lesson'))
@@ -79,6 +87,14 @@ def edit_lesson(request, lesson_id):
     if request.method == 'POST':
         form = LessonForm(request.POST, request.FILES, instance=lesson)
         if form.is_valid():
+            # info message if places left is higher than capacity
+            if form.cleaned_data['places_left'] > form.cleaned_data['capacity'].capacity:
+                messages.info(request,
+                              'Note that places left is more than the lesson capacity.')
+            # info message if date has passed
+            if form.cleaned_data['date_time'] <= timezone.now():
+                messages.info(request,
+                              "The lesson's date has passed, the lesson will not be displayed but is visible in admin.")
             form.save()
             messages.success(request, 'Successfully updated lesson.')
             return redirect(reverse('lessons'))
