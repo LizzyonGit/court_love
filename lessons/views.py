@@ -5,16 +5,18 @@ from .forms import LessonForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+import datetime
+
 # Create your views here.
 
 
 def all_lessons(request):
     """
-    A view to show all lessons,
+    A view to show all future lessons,
     sorting and categories
     """
-
-    lessons = Lesson.objects.all()
+    # lessons with future date
+    lessons = Lesson.objects.filter(date_time__gt=datetime.datetime.now())
 
     categories = None  # if not set to None, error
     places = None
