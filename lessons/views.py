@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import Lesson, Category, Place
 from .forms import LessonForm
+from checkout.models import OrderLineItem
+
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -95,6 +97,7 @@ def edit_lesson(request, lesson_id):
             if form.cleaned_data['date_time'] <= timezone.now():
                 messages.info(request,
                               "The lesson's date has passed, the lesson will not be displayed but is visible in admin.")
+
             form.save()
             messages.success(request, 'Successfully updated lesson.')
             return redirect(reverse('lessons'))
@@ -103,7 +106,11 @@ def edit_lesson(request, lesson_id):
                 request, 'Failed to update lesson. Ensure the form is valid.')
     else:
         form = LessonForm(instance=lesson)
-        messages.info(request, f'You are editing {lesson.name}')
+        messages.info(request, f'You are editing {lesson.name}.')
+
+        # info message in case this lesson already has been booked
+        if OrderLineItem.objects.filter(lesson=lesson).exists():
+            messages.info(request, 'This lesson has been booked before. Users who have booked it will not be informed about changes automatically.')
 
     template = 'lessons/edit_lesson.html'
     context = {
@@ -122,6 +129,10 @@ def delete_lesson(request, lesson_id):
         return redirect(reverse('home'))
 
     lesson = get_object_or_404(Lesson, pk=lesson_id)
+
     lesson.delete()
     messages.success(request, 'Lesson deleted.')
+    # info message in case this lesson already has been booked
+    if OrderLineItem.objects.filter(lesson=lesson).exists():
+        messages.info(request, "The lesson you deleted has been booked before. Check admin for users' contact information.")
     return redirect(reverse('lessons'))
