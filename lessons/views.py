@@ -35,10 +35,14 @@ def all_lessons(request):
             lessons = lessons.filter(place__place__in=places)
             places = Place.objects.filter(place__in=places)
 
+    # get orderlineitem model for message in modal when ordered lesson is about to be deleted
+    ordered_lessons = OrderLineItem.objects.values_list('lesson', flat=True)
+
     context = {
         'lessons': lessons,
         'current_categories': categories,
         'current_places': places,
+        'ordered_lessons': ordered_lessons,
     }
 
     return render(request, 'lessons/lessons.html', context)
@@ -134,7 +138,4 @@ def delete_lesson(request, lesson_id):
     lesson.delete()
     messages.success(request, 'Lesson deleted.')
 
-    # info message in case this lesson already has been booked
-    if OrderLineItem.objects.filter(lesson=lesson).exists():
-        messages.info(request, "The lesson you deleted has been booked before. Check admin for users' contact information.")
     return redirect(reverse('lessons'))
