@@ -70,6 +70,7 @@ def add_lesson(request):
                            'Failed to add lesson. Ensure the form is valid.')
     else:
         form = LessonForm()
+
     template = 'lessons/add_lesson.html'
     context = {
         'form': form,
@@ -132,6 +133,7 @@ def delete_lesson(request, lesson_id):
 
     lesson.delete()
     messages.success(request, 'Lesson deleted.')
+
     # info message in case this lesson already has been booked
     if OrderLineItem.objects.filter(lesson=lesson).exists():
         messages.info(request, "The lesson you deleted has been booked before. Check admin for users' contact information.")
