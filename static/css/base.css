@@ -25,6 +25,10 @@ h1, h2 {
     font-family: var(--secondary-font);
 }
 
+/*Menu active class bootstrap override to make it more clear which menu item you are on*/
+nav a.active {
+    text-decoration: underline;
+}
 
 /*Button styles*/
 

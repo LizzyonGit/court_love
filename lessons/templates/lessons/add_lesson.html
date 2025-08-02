@@ -6,7 +6,7 @@
         <div class="container-fluid d-flex justify-content-center">
         
             <div class="row">
-                <div class="col"><h1>Lesson management</h1></div>
+                <div class="col"><h1>Add lesson</h1></div>
             </div>
         </div>
         
@@ -21,7 +21,7 @@
     <div class="container-fluid d-flex justify-content-center">
         <div class="row">
             <div class="col">
-                <h2>Add lesson</h2>
+                
                 
                 <form method="POST" action="{% url 'add_lesson' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}

@@ -5,7 +5,7 @@
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
 {% url 'profile' as profile_url %}
-{% url 'lesson_management' as manage_url %}
+{% url 'add_lesson' as manage_url %}
 
 
 
@@ -102,8 +102,10 @@
                     {% if user.is_authenticated %}
                         
                         {% if request.user.is_superuser %}
+                        <li class="nav-item">
                             <a class="nav-link {% if request.path == manage_url %}active" aria-current="page{% endif %}"
-                            href="{% url 'add_lesson' %}">Lesson management</a>
+                            href="{% url 'add_lesson' %}">Add lesson</a>                        
+                        </li>
                         {% endif %}
 
                     <li class="nav-item">
