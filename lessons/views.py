@@ -58,6 +58,10 @@ def add_lesson(request):
     if request.method == 'POST':
         form = LessonForm(request.POST)
         if form.is_valid():
+            if form.cleaned_data['places_left'] is None:
+                form.cleaned_data['places_left'] = form.cleaned_data['capacity'].capacity
+            form.save()
+            messages.success(request, 'Successfully added lesson')
             # info message if places left is higher than capacity
             if form.cleaned_data['places_left'] > form.cleaned_data['capacity'].capacity:
                 messages.info(request,
@@ -66,8 +70,6 @@ def add_lesson(request):
             if form.cleaned_data['date_time'] <= timezone.now():
                 messages.info(request,
                               "The lesson's date has passed, the lesson will not be displayed but is visible in admin.")
-            form.save()
-            messages.success(request, 'Successfully added lesson')
             return redirect(reverse('add_lesson'))
         else:
             messages.error(request,
@@ -94,6 +96,10 @@ def edit_lesson(request, lesson_id):
     if request.method == 'POST':
         form = LessonForm(request.POST, instance=lesson)
         if form.is_valid():
+            if form.cleaned_data['places_left'] is None:
+                form.cleaned_data['places_left'] = form.cleaned_data['capacity'].capacity
+            form.save()
+            messages.success(request, 'Successfully updated lesson.')
             # info message if places left is higher than capacity
             if form.cleaned_data['places_left'] > form.cleaned_data['capacity'].capacity:
                 messages.info(request,
@@ -102,9 +108,6 @@ def edit_lesson(request, lesson_id):
             if form.cleaned_data['date_time'] <= timezone.now():
                 messages.info(request,
                               "The lesson's date has passed, the lesson will not be displayed but is visible in admin.")
-
-            form.save()
-            messages.success(request, 'Successfully updated lesson.')
             return redirect(reverse('lessons'))
         else:
             messages.error(
