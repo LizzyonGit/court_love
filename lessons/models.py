@@ -1,5 +1,23 @@
 from django.db import models
 
+# Set image choices
+
+BERNARDO = 'bernardo.webp'
+MARINA = 'marina.webp'
+ABEL = 'abel.webp'
+SERVE = 'serve.webp'
+ATTACK = 'attack.webp'
+GENERAL = 'general.webp'
+
+IMAGE_CHOICES = (
+    (GENERAL, 'general'),
+    (SERVE, 'serve'),
+    (BERNARDO, 'Bernardo'),
+    (MARINA, 'Marina'),
+    (ABEL, 'Abel'),
+    (ATTACK, 'attack'),
+)
+
 # Create your models here.
 
 
@@ -40,9 +58,7 @@ class Lesson(models.Model):
                                        related_name="lessons")
     place = models.ForeignKey('Place', null=True, on_delete=models.SET_NULL,
                               related_name="lessons")
-
-    #image_url = models.URLField(max_length=1024, null=True, blank=True)
-    #image = models.ImageField(null=True, blank=True)
+    image = models.CharField(max_length=255, choices=IMAGE_CHOICES, null=True, blank=True)
 
     class Meta:
         """Order from earliest to later"""

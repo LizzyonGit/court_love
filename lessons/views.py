@@ -56,7 +56,7 @@ def add_lesson(request):
         return redirect(reverse('home'))
 
     if request.method == 'POST':
-        form = LessonForm(request.POST, request.FILES)
+        form = LessonForm(request.POST)
         if form.is_valid():
             # info message if places left is higher than capacity
             if form.cleaned_data['places_left'] > form.cleaned_data['capacity'].capacity:
@@ -92,7 +92,7 @@ def edit_lesson(request, lesson_id):
 
     lesson = get_object_or_404(Lesson, pk=lesson_id)
     if request.method == 'POST':
-        form = LessonForm(request.POST, request.FILES, instance=lesson)
+        form = LessonForm(request.POST, instance=lesson)
         if form.is_valid():
             # info message if places left is higher than capacity
             if form.cleaned_data['places_left'] > form.cleaned_data['capacity'].capacity:
