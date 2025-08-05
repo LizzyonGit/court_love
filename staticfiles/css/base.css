@@ -25,6 +25,10 @@ h1, h2 {
     font-family: var(--secondary-font);
 }
 
+/*Menu active class bootstrap override to make it more clear which menu item you are on*/
+nav a.active {
+    text-decoration: underline;
+}
 
 /*Button styles*/
 
@@ -136,4 +140,11 @@ footer * {
 .checkout-buttons {
     justify-content: space-between;
 
+}}
+
+/*Lesson image adjustment on screens below 768px*/
+@media screen and (width < 768px  ) {
+.lesson-image {
+    display: flex;
+    justify-content:  center;
 }}
