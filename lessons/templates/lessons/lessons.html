@@ -64,9 +64,9 @@
                 {% for lesson in lessons %}               
                     <div class="card mb-3" style="max-width: 600px;">
                         <div class="row g-0">
-                            <div class="col-md-4">
+                            <div class="col-md-4 lesson-image p-1 p-md-0">
                                 {% if lesson.image %}
-                                <img src="{% static 'images/' %}{{ lesson.image }}" class="img-fluid rounded rounded-md-start" alt="{{ lesson.name }} image">
+                                <img src="{% static 'images/' %}{{ lesson.image }}" class="img-fluid rounded" alt="{{ lesson.name }} image">
                                 {% endif %}
                             </div>
                             <div class="col-md-8">
