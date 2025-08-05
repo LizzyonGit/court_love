@@ -145,6 +145,6 @@ footer * {
 /*Lesson image adjustment on screens below 768px*/
 @media screen and (width < 768px  ) {
 .lesson-image {
-    display: flex;
-    justify-content: center;
+    display: flex !important;
+    justify-content:  !important;
 }}
