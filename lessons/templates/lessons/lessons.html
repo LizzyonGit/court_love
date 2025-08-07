@@ -54,7 +54,7 @@
                 {% if not current_categories %}<h2>All lessons</h2>{% endif %}
                 <p>Outdoor lessons are at Outdoor street 2, 12345 Tennisville (clay).</p>
                 <p>Indoor lessons are at Indoor street 1 12345 Tennicity (hard).</p>
-                {{ current_places }}
+                
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            {{ lesson.id }}
+                                                            
                                                                 {% if lesson.id in ordered_lessons %}
                                                                 <!--When a lesson id is in the orderlineitem model, it has been booked so superuser is notified-->
                                                                 <p>Note that this lesson has been booked before. Users will not be informed or refunded automatically.</p>
