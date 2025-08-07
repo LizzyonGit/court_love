@@ -84,7 +84,7 @@ All content is written by me.
 
 ### Existing features
 
--__Navbar__
+- __Navbar__
 
     - The navbar holds the logo, menu links depending on the login state of the user, the cart icon (tennis rackquet) and current cost for all lessons in the cart. 
 
@@ -107,7 +107,7 @@ All content is written by me.
 
 - __All lessons page__
     - Buttons **Group - indoor**, **Group - outdoor**, **Private - indoor** and **Private - outdoor** to filter the list of lessons.
-    - Adjusted title **All lessons** or based on which button was clicked
+    - Adjusted title **All lessons** or based on which button was clicked: **All group lessons - indoor**, **All group lessons - outdoor**, **All private lessons - indoor**, or **All private lessons - outdoor**.
     - Again the adresses for indoor and outdoor, as I did not want to have that in the lesson cards, and maybe users don't read the footer.
     - A list of lesson cards.
     __Lesson card__
@@ -122,3 +122,140 @@ All content is written by me.
     - **Add to cart** button, or when there are no places left, **Not bookable** disabled button.
     - For site admin only: **Edit** and **Delete** buttons.
 
+- __Cart__
+
+- __Checkout__
+    - Details & payment
+    - Order summary (number of lessons)
+
+- __Order confirmation__
+
+- __My profile__
+    - Default personal information
+
+    - Booking history
+
+- __Register__
+- __Log in__
+- __Log out__
+
+- __Feedback messages__
+
+- __The 404 page__
+
+
+#### Site admin only
+- __Add lesson__
+    - 
+
+- __Edit lesson__
+
+- __Delete lesson__
+
+### Features left to implement
+
+## Testing
+
+See [TESTING.md](TESTING.md).
+
+## Technologies used
+
+### Languages
+
+- HTML
+- CSS
+- Python
+- JavaScript
+
+### Frameworks - libraries - programs used
+
+- [Django](https://www.djangoproject.com/) version 5.2.4
+  - Including *django-allauth*, *django-crispy-forms*.
+  - With installed whitenoise and gunicorn.
+- [Bootstrap](https://getbootstrap.com/) version 5.3
+- [jQuery](https://jquery.com/) version 3.5.1
+- [Stripe](https://stripe.com/)
+- [Lucidchart](https://lucid.co/) for database planning
+- [Figma](https://www.figma.com/) for wireframes
+- [VS Code](https://code.visualstudio.com/) as IDE
+- [GitHub](https://github.com/) for version control
+- [Heroku](https://www.heroku.com/) for hosting
+- [Cloudinary](https://cloudinary.com/) for image hosting
+- [Google Fonts](https://fonts.google.com/) for my font pair
+- [Canva](https://www.canva.com/) for creating the logo
+- Windows Paint for adjusting images
+- Windows snipping tool for the favicon
+- [TinyPNG](https://tinypng.com/) for compressing image size and converting to .webp
+- [RealFaviconGenerator](https://realfavicongenerator.net/) for creating favicon icons and the HTML code, and checking the favicon
+- DevTools for verifying responsibility and troubleshooting code
+- [Responsinator](http://www.responsinator.com/) for checking responsiveness
+- [Am I Responsive](https://ui.dev/amiresponsive) for an image displaying the website on different screens
+- [Autoprefixer](https://autoprefixer.github.io/) for adding the necessary prefixes to my CSS stylesheet
+
+## Deployment and development
+
+### Deployment
+The site was deployed to Heroku. The steps to deploy are:
+
+1. Go to your Heroku dashboard and create a new app.
+2. In the **Deploy** tab of your new app, under **Deployment method**, click **GitHub**. 
+3. Under **Connect to GitHub**, in the field next to your username on Github, type the repository name (*LizzyonGit/rates_r_us*) of the project and click **Search**. 
+4. The corresponding repository name appears below, click the **Connect** button.
+5. In **Settings**, under **Config Vars**, add a value for keys *SECRET_KEY*, *DATABASE_URL* and *CLOUDINARY_URL*.
+6. Scroll down to **Manual deploy**, select the main branch to deploy and click **Deploy Branch**.
+7. At the top of the page, click **Open app** to open the site.
+
+### Local development
+To fork the repository:
+  - In the GitHub repository, click the **Fork** button in the top right corner.
+
+To clone the repository:
+  1. In the GitHub repository, click the **Code** button.
+  2. In the **Local** tab, select if you want to clone with HTTPS, SSH, or GitHub CLI, and copy the link below it.
+  3. Open the terminal in your code editor and change the current working directory to the location you want to clone this repository to.
+  4. Type *git clone* and paste the link from step 2, and press Enter.
+
+Set up your IDE
+  1. Set up a virtual environment.
+  2. Install the packages from the requirements.txt file.
+  3. Create variables for *SECRET_KEY*, *DATABASE_URL* and *CLOUDINARY_URL*.
+  4. Apply migrations.
+  5. Collect static files.
+  6. Run the development server.
+
+## Credits 
+
+### Media
+
+- Free images from [pixabay](https://pixabay.com/).
+
+### Resources
+
+__Planning__
+- For a font pairing idea, 
+
+- For getting a colour scheme, [Coolors.co](https://coolors.co).
+
+__During development and testing__
+- Inspiration and code bits from CI walkthrough projects *I think therefore I blog* and *Boutique Ado*.
+- [Bootstrap documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/).
+- [Django documentation](https://docs.djangoproject.com/)
+- Forums for specific questions:
+  - [Django forum](https://forum.djangoproject.com/)
+  - [Stackoverflow](https://stackoverflow.com/)
+  - [Reddit](https://www.reddit.com/)
+  - [GitHub issue](https://github.com/GoogleChrome/lighthouse/issues/16404)
+  - [GitHub django-summernote](https://github.com/lqez/django-summernote/blob/main/README.md)
+  - CI Slack community.
+- Informative sources for reading up on concepts:
+  - [W3schools](https://www.w3schools.com/)
+  - [MDN Web Docs](https://developer.mozilla.org/en-US/)
+  - [JavaScript in Plain English](https://javascript.plainenglish.io/)
+  - [Medium.com](https://medium.com/).
+
+__Project finalisation__ 
+- [Grammarly](https://www.grammarly.com/grammar-check) spellchecker.
+- [Diffchecker](https://www.diffchecker.com/text-compare/) for checking Autoprefixer changes.
+
+### Acknowledgments
+- My mentor Jubril for the feedback.
