@@ -14,8 +14,8 @@ Order number: {{ order.order_number }}
 Order date: {{ order.date }}
 Total: ${{ order.grand_total }}
 
-Outdoor lessons are at Outdoor street 2, 12345 Tennisville.
-Indoor lessons are at Indoor street 1 12345 Tennicity.
+Outdoor lessons (on clay) are at Outdoor street 2, 12345 Tennisville.
+Indoor lessons (on hardcourt) are at Indoor street 1 12345 Tennicity.
 
 If you have any questions, feel free to contact us at {{ contact_email }}.
 

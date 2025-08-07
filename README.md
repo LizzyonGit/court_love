@@ -86,7 +86,7 @@ All content is written by me.
 
 -__Navbar__
 
-    - The navbar holds the logo, menu links depending on the login state of the user, the cart logo and current cost for all lessons in the cart. 
+    - The navbar holds the logo, menu links depending on the login state of the user, the cart icon (tennis rackquet) and current cost for all lessons in the cart. 
 
     ![Navbar logged in user]()
     ![Navbar logged out user]()
@@ -94,3 +94,31 @@ All content is written by me.
     ![Navbar compressed]()
 
     Project file: templates/base.html
+
+- __Home page__
+
+    - Buttons **Private lessons** and **Group lesson** to go to all private or group lessons.
+    - **About Court Love** section with image carousel.
+    - **How does it work** and **Register** sections and single image.
+
+- __Footer__
+    - **Contact** section with cancellation info, phone and email, social media links.
+    - **Places we teach at** with outdoor and indoor adresses.
+
+- __All lessons page__
+    - Buttons **Group - indoor**, **Group - outdoor**, **Private - indoor** and **Private - outdoor** to filter the list of lessons.
+    - Adjusted title **All lessons** or based on which button was clicked
+    - Again the adresses for indoor and outdoor, as I did not want to have that in the lesson cards, and maybe users don't read the footer.
+    - A list of lesson cards.
+    __Lesson card__
+    - Image, if selected by site admin.
+    - Date and time, duration, name as heading
+    - Description
+    - Place: outdoor or indoor
+    - Level
+    - Capacity: how many people can join
+    - Places left: how many places are left to book
+    - Price
+    - **Add to cart** button, or when there are no places left, **Not bookable** disabled button.
+    - For site admin only: **Edit** and **Delete** buttons.
+
