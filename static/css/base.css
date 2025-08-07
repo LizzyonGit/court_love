@@ -30,6 +30,12 @@ nav a.active {
     text-decoration: underline;
 }
 
+/*Log style*/
+#logo {
+    max-width: 50px;
+    max-height:  50px;
+}
+
 /*Button styles*/
 
 .category-button{

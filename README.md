@@ -183,8 +183,7 @@ See [TESTING.md](TESTING.md).
 - [Cloudinary](https://cloudinary.com/) for image hosting
 - [Google Fonts](https://fonts.google.com/) for my font pair
 - [Canva](https://www.canva.com/) for creating the logo
-- Windows Paint for adjusting images
-- Windows snipping tool for the favicon
+- Windows Paint and Windows Photo for adjusting images
 - [TinyPNG](https://tinypng.com/) for compressing image size and converting to .webp
 - [RealFaviconGenerator](https://realfavicongenerator.net/) for creating favicon icons and the HTML code, and checking the favicon
 - DevTools for verifying responsibility and troubleshooting code

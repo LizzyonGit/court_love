@@ -80,13 +80,14 @@
 
      <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid">
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        <div class="container-xxl">
+            <!--Logo-->
+            <a href="{% url 'home' %}"><img src="{% static 'images/logo.webp' %}" id="logo" alt="logo tennis ball with Court Love written inside"></a>
+
+            <button class="navbar-toggler ms-1 me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a href="{% url 'home' %}">Link to home</a>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -134,6 +135,7 @@
                 </ul>
                 
             </div>
+            
             <!--Cart icon-->
             <a class="{% if grand_total %}text-success{% else %}text-secondary{% endif %}" href="{% url 'view_cart' %}">
               <div class="text-center">
