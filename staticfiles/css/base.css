@@ -106,7 +106,7 @@ nav a.active {
 }
 
 .cart-notification-wrapper {
-    max-height: 200px;
+    max-height: 400px;
     overflow-x: hidden;
     overflow-y: auto;
 }
