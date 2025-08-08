@@ -6,8 +6,6 @@ from django.core.validators import MinLengthValidator
 
 class LessonForm(forms.ModelForm):
 
-    name = forms.CharField(max_length=254, min_length=1, validators=[MinLengthValidator(1)])
-
     class Meta:
         model = Lesson
         fields = '__all__'
