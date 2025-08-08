@@ -41,8 +41,8 @@ class Lesson(models.Model):
     category = models.ForeignKey('Category', null=True,
                                  on_delete=models.SET_NULL,
                                  related_name="lessons")
-    name = models.CharField(max_length=254, blank=False, null=False)
-    description = models.TextField( blank=False, null=False)
+    name = models.CharField(max_length=254)
+    description = models.TextField(max_length=3000)
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
     date_time = models.DateTimeField()
