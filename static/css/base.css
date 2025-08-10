@@ -30,7 +30,7 @@ nav a.active {
     text-decoration: underline;
 }
 
-/*Log style*/
+/*Logo style*/
 #logo {
     max-width: 50px;
     max-height:  50px;
@@ -95,6 +95,12 @@ nav a.active {
     background-color: var(--highlight-color);
 }
 
+/*Lesson card styles*/
+.add-cart-footer {
+    background-color: var(--highlight-color);
+    border-top: 0;
+}
+
 /*Toast styling adapted from Boutique Ado*/
 
 .message-container{
@@ -133,6 +139,8 @@ footer {
 footer * {
     color: var(--contrast-color);
 }
+
+
 /*media queries*/
 
 /*fix buttons in checkout to be left aligned on all screens sizes larger than 330px*/

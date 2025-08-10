@@ -76,13 +76,13 @@
                 <div class="col-sm-6 col-xxl-4 mb-3">    
                                
                     <div class="card h-100">
-                        <div class="row g-0">
+                        <div class="row g-0 h-100">
                             <div class="col-md-4 lesson-image p-3 p-md-1">
                                 {% if lesson.image %}
                                 <img src="{% static 'images/' %}{{ lesson.image }}" class="img-fluid rounded" alt="{{ lesson.name }} image">
                                 {% endif %}
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 d-flex flex-column">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ lesson.date_time }} - {{ lesson.duration }} - {{ lesson.name }}</h5>
                                     <p class="card-text">{{ lesson.description }}</p>
@@ -93,8 +93,9 @@
 
                                     <p class="card-text bold">$ {{ lesson.price | floatformat }}</p> 
                                     
-                                    
-                                    <!--Form to add to cart-->
+                                </div>
+                                <!--Form to add to cart-->
+                                <div class="card-footer add-cart-footer">
                                     <form action="{% url 'add_to_cart' lesson.id %}" method="POST">
                                         {% csrf_token %}
                                         <div>
@@ -117,46 +118,48 @@
                                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                         </div>
                                     </form>
+                                </div>
+                                
 
-                                    <!--Edit and delete button for superusers only-->
-                                    {% if request.user.is_superuser %}
-                                    <div class="card-footer">
-                                            <a class="btn book-button" href="{% url 'edit_lesson' lesson.id %}">Edit</a>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn cancel-button" data-bs-toggle="modal" data-bs-target="#deleteLessonModal_{{ lesson.id }}">Delete</button>
+                                <!--Edit and delete button for superusers only-->
+                                {% if request.user.is_superuser %}
+                                <div class="card-footer">
+                                        <a class="btn book-button" href="{% url 'edit_lesson' lesson.id %}">Edit</a>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn cancel-button" data-bs-toggle="modal" data-bs-target="#deleteLessonModal_{{ lesson.id }}">Delete</button>
 
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="deleteLessonModal_{{ lesson.id }}" tabindex="-1" aria-labelledby="deleteLessonModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="deleteLessonModalLabel">Are you sure you want to delete this lesson?</h1>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            
-                                                                {% if lesson.id in ordered_lessons %}
-                                                                <!--When a lesson id is in the orderlineitem model, it has been booked so superuser is notified-->
-                                                                <p>Note that this lesson has been booked before. Users will not be informed or refunded automatically.</p>
-                                                            {% endif %}
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn book-button" data-bs-dismiss="modal">Do not delete</button>
-                                                            <a class="btn cancel-button" href="{% url 'delete_lesson' lesson.id %}">Delete lesson</a>
-                                                        </div>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="deleteLessonModal_{{ lesson.id }}" tabindex="-1" aria-labelledby="deleteLessonModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="deleteLessonModalLabel">Are you sure you want to delete this lesson?</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        
+                                                            {% if lesson.id in ordered_lessons %}
+                                                            <!--When a lesson id is in the orderlineitem model, it has been booked so superuser is notified-->
+                                                            <p>Note that this lesson has been booked before. Users will not be informed or refunded automatically.</p>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn book-button" data-bs-dismiss="modal">Do not delete</button>
+                                                        <a class="btn cancel-button" href="{% url 'delete_lesson' lesson.id %}">Delete lesson</a>
                                                     </div>
                                                 </div>
                                             </div>
-                                    </div>
-                                    {% endif %}
-
-
-
-
-
-
-
+                                        </div>
                                 </div>
+                                {% endif %}
+
+
+
+
+
+
+
+                               
                             </div>
                         </div>
                     </div>
