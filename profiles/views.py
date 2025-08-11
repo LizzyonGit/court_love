@@ -22,7 +22,7 @@ def profile(request):
             messages.error(request, 'Update failed. Ensure the form is valid.')
 
     else:
-        form = UserProfileForm()#instance=profile)
+        form = UserProfileForm(instance=profile)
 
     orders = profile.orders.all().order_by('-order_date',)
 
@@ -31,6 +31,7 @@ def profile(request):
         'form': form,
         'orders': orders,
         'on_profile_page': True,
+        'profile': profile,
 
     }
 

@@ -5,7 +5,7 @@ from .models import UserProfile
 
 class UserProfileForm(forms.ModelForm):
     """Adapted from Boutique Ado"""
-    profile_image = CloudinaryFileField(required=False)
+    #profile_image = CloudinaryFileField(required=False)
     
     class Meta:
         model = UserProfile
