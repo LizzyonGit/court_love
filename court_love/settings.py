@@ -18,6 +18,8 @@ from pathlib import Path
 if os.path.isfile('env.py'):
     import env
 
+import cloudinary
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -47,11 +49,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cloudinary_storage',
-    'cloudinary',
     'home',
     'lessons',
     'cart',
     'checkout',
+    'cloudinary',
     'profiles',
 
     # allauth apps
@@ -115,6 +117,10 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
+# Cloudinary fix for https (https://code-institute-room.slack.com/archives/C026PTF46F5/p1706623233793149?thread_ts=1706622757.171679&cid=C026PTF46F5)
+cloudinary.config(
+    secure=True,
+)
 
 # Ensuring bootstrap v 5
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -141,6 +147,11 @@ WSGI_APPLICATION = 'court_love.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeinstitute-ide.net/",
+    "https://*.herokuapp.com"
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

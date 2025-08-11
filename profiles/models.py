@@ -1,10 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
+
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+
 # Level 1.5 - 7
 LEVEL = [(i/2, i/2) for i in range(3, 15, 1)]
+
 
 class UserProfile(models.Model):
     """
@@ -14,6 +18,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_phone = models.CharField(max_length=20, null=True, blank=True)
     level = models.DecimalField(choices=LEVEL, decimal_places=1, max_digits=4, null=True, blank=True)
+    profile_image = CloudinaryField('image', null=True, blank=True)
 
     def __str__(self):
         return self.user.username
