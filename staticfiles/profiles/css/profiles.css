@@ -1,0 +1,12 @@
+/*profile image*/
+.profile-image {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+/*custom width crispy fields*/
+input, select {
+    max-width: 85vw;
+
+}
+

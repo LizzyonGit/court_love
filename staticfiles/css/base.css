@@ -118,11 +118,7 @@ nav a.active {
     overflow-y: auto;
 }
 
-/*profile image*/
-.profile-image {
-    max-width: 300px;
-    max-height: 300px;
-}
+
 
 /*Checkout styles*/
 .payment-note {
