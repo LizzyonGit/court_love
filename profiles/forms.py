@@ -1,4 +1,5 @@
 from django import forms
+from .widgets import CustomClearableFileInput
 from .models import UserProfile
 
 
@@ -7,6 +8,8 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('default_phone', 'level', 'profile_image',)
+    
+    profile_image = forms.ImageField(label='Profile image', required=False, widget=CustomClearableFileInput) 
 
     def __init__(self, *args, **kwargs):
         """
