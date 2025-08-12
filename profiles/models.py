@@ -25,6 +25,7 @@ class UserProfile(models.Model):
                                     null=True,
                                     blank=True,
                                     # By Andy Guttridge https://code-institute-room.slack.com/archives/C026PTF46F5/p1674207577510609?thread_ts=1674167504.408779&cid=C026PTF46F5
+                                    # restricts size of uploaded image before saving in cloudinary
                                     transformation={
                                         'crop': 'limit',
                                         'width': 500,

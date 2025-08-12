@@ -93,7 +93,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-xxl">
             <!--Logo-->
-            <a href="{% url 'home' %}"><img src="{% static 'images/logo.webp' %}" id="logo" alt="logo tennis ball with Court Love written inside"></a>
+            <a href="{% url 'home' %}" class="d-none d-lg-inline"><img src="{% static 'images/logo.webp' %}" id="logo" alt="logo tennis ball with Court Love written inside"></a>
 
             <button class="navbar-toggler ms-1 me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -146,9 +146,13 @@
                 </ul>
                 
             </div>
+
+            <!--Logo-->
+            <a href="{% url 'home' %}" class="ms-auto me-auto d-lg-none"><img src="{% static 'images/logo.webp' %}" id="logo" alt="logo tennis ball with Court Love written inside"></a>
+
             
             <!--Cart icon-->
-            <a class="{% if grand_total %}text-success{% else %}text-secondary{% endif %}" href="{% url 'view_cart' %}">
+            <a class="ms-auto {% if grand_total %}text-success{% else %}text-secondary{% endif %}" href="{% url 'view_cart' %}">
               <div class="text-center">
                 <div><span class="material-symbols-outlined">sports_tennis</span></div>
                 <p class="my-0">
