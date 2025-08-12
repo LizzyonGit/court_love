@@ -31,8 +31,10 @@
                     {{ form.default_phone | as_crispy_field }}
                     {{ form.level | as_crispy_field }}
                     {{ form.profile_image | as_crispy_field }}
-                    {% if profile.profile_image %}                        
-                        <img src="{{ profile.profile_image.url }}" class="d-block profile-image pb-3">
+                    {% if 'placeholder' in profile.profile_image %} 
+                    <p>You have not added a profile image</p>
+                    {% else %}                       
+                        <img src="{{ profile.profile_image.url }}" alt="{{ request.user }} profile image" class="d-block profile-image pb-3">
                     {% endif %}
 
                     
