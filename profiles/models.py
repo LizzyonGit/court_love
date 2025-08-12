@@ -18,7 +18,11 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_phone = models.CharField(max_length=20, null=True, blank=True)
     level = models.DecimalField(choices=LEVEL, decimal_places=1, max_digits=4, null=True, blank=True)
-    profile_image = CloudinaryField('image', null=True, blank=True)
+    profile_image = CloudinaryField('image', null=True, blank=True, transformation={
+            'crop': 'limit',
+            'width': 500,
+            'height': 500
+        },)
 
     def __str__(self):
         return self.user.username
