@@ -17,12 +17,19 @@ class UserProfile(models.Model):
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_phone = models.CharField(max_length=20, null=True, blank=True)
-    level = models.DecimalField(choices=LEVEL, decimal_places=1, max_digits=4, null=True, blank=True)
-    profile_image = CloudinaryField('image', null=True, blank=True, transformation={
-            'crop': 'limit',
-            'width': 500,
-            'height': 500
-        },)
+    level = models.DecimalField(choices=LEVEL,
+                                decimal_places=1,
+                                max_digits=4,
+                                null=True, blank=True)
+    profile_image = CloudinaryField('image',
+                                    null=True,
+                                    blank=True,
+                                    # By Andy Guttridge https://code-institute-room.slack.com/archives/C026PTF46F5/p1674207577510609?thread_ts=1674167504.408779&cid=C026PTF46F5
+                                    transformation={
+                                        'crop': 'limit',
+                                        'width': 500,
+                                        'height': 500
+                                    },)
 
     def __str__(self):
         return self.user.username
