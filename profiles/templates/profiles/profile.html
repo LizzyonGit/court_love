@@ -32,7 +32,7 @@
                     {{ form.level | as_crispy_field }}
                     {{ form.profile_image | as_crispy_field }}
                     {% if profile.profile_image %}                        
-                        <img src="{{ profile.profile_image.url }}" class="profile-image pb-3">
+                        <img src="{{ profile.profile_image.url }}" class="d-block profile-image pb-3">
                     {% endif %}
 
                     
