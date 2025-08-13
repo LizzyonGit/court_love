@@ -1,8 +1,5 @@
 {% if widget.is_initial %}
-<p>{{ widget.initial_text }}:</p>
-    <a href="{{ widget.value.url }}">
-        <img class="profile-image" src="{{ widget.value.url }}">
-    </a>
+<p>{{ widget.initial_text }}</p>
     {% if not widget.required %}
         <div class="custom-control custom-checkbox mt-2">
             <input class="form-check-input-remove" type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
