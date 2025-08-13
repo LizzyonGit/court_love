@@ -10,3 +10,23 @@ input, select {
 
 }
 
+/*image button styles, copied from Boutique Ado*/
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.custom-checkbox > .form-check-input-remove:checked {
+    background-color: var(--secondary-button-color);
+    border-color: var(--secondary-button-color);
+}
