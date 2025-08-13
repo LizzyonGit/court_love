@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block extra_meta %}
+<meta name="description" content="Page not found">
+{% endblock %}
+
+{% block extra_title %} | 404 not found{% endblock %}
+
+{% block page_header%}
+    <header>
+        <div class="container-fluid d-flex justify-content-center">
+        
+            <div class="row">
+                <div class="col"><h1>No match</h1></div>
+            </div>
+        </div>
+        
+    </header>
+{% endblock %}
+
+
+
+
+{% block content %}
+<main>
+        <div class="container-fluid d-flex justify-content-center">
+        <div class="row">
+            <div class="col my-2">
+                <p>Nothing found here.</p>
+                <a href="{% url 'home' %}" class="btn category-button">Home</a>
+
+                        
+            </div>
+        </div>
+    </div>
+        
+
+
+
+</main>
+{% endblock %}
+

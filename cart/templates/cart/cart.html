@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_meta %}
+<meta name="description" content="Overview of your lessons in the cart">
+{% endblock %}
+
+{% block extra_title %} | Cart{% endblock %}
 
 {% block page_header%}
     <header>

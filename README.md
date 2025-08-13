@@ -47,6 +47,7 @@ See [project board](https://github.com/users/LizzyonGit/projects/6/views/1) for 
 **User profile milestone**
 - see my order history so that I can check what lessons I have booked.
 - manage my self-rated level so that I can update it along my tennis lesson journey.
+- add a profile image so that I can personalise my profile page.
 
 ### Design
 #### Database

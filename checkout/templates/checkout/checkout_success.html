@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_meta %}
+<meta name="description" content="Checkout has been successful">
+{% endblock %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
+
+{% block extra_title %} | Checkout success{% endblock %}
 
 {% block page_header%}
     <header>

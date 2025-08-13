@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_meta %}
+<meta name="description" content="Add a new lesson here">
+{% endblock %}
+
+{% block extra_title %} | Add lesson{% endblock %}
+
 {% block page_header%}
     <header>
         <div class="container-fluid d-flex justify-content-center">
