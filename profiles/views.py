@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -18,6 +18,8 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile updated successfully')
+            # reload page so removebutton dissappears or appears when it should
+            return redirect('profile')
         else:
             messages.error(request, 'Update failed. Ensure the form is valid.')
 

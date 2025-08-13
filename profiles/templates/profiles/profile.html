@@ -86,7 +86,7 @@
     {{ block.super }}
     <script type="text/javascript">
         $('#new-image').change(function() {
-            var file = $('#new-image')[0].files[0];
+            let file = $('#new-image')[0].files[0];
             $('#filename').text(`Click Update to set image to: ${file.name}`);
         });
     </script>
