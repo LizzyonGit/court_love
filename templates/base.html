@@ -150,7 +150,7 @@
             </div>
 
             <!--Logo for small screens when navbar is collapsed-->
-            <a href="{% url 'home' %}" class="me-auto d-lg-none"><img src="{% static 'images/logo.webp' %}" id="logo" alt="logo tennis ball with Court Love written inside"></a>
+            <a href="{% url 'home' %}" id="logo-expanded" class="ms-auto me-auto d-lg-none"><img src="{% static 'images/logo.webp' %}" id="logo" alt="logo tennis ball with Court Love written inside"></a>
 
             
             <!--Cart icon-->
@@ -228,6 +228,15 @@
     
     <!--Stripe-->
     <script src="https://js.stripe.com/basil/stripe.js"></script>
+
+    <!--Adjust logo placement when expanded navbar-->
+    <script type="text/javascript">
+        const logo = document.querySelector('#logo-expanded');
+        const navBar = document.querySelector('button.navbar-toggler');
+        navBar.onclick = function(){
+            logo.classList.toggle('ms-auto');
+        };
+    </script>
     {% endblock %}
 
     {% block extra_js %}
@@ -245,7 +254,7 @@
             toastList.forEach(toast => toast.show())
         
     </script>
-
+    
     {% endblock %}
 
     </body>
