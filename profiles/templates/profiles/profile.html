@@ -35,17 +35,15 @@
                     
                     {{ form.default_phone | as_crispy_field }}
                     {{ form.level | as_crispy_field }}
-                    {{ form.profile_image }}
-
-                
-
+                    
                     {% if not profile.profile_image.url %} 
                     <p>You have not added a profile image</p>
                     {% else %}                       
-                        <p>Current profile image:<img src="{{ profile.profile_image.url }}" alt="{{ request.user }} profile image" class="d-block profile-image py-3"></p>
+                        <p class="mb-0">Current profile image:<img src="{{ profile.profile_image.url }}" alt="{{ request.user }} profile image" class="d-block profile-image py-3"></p>
                     {% endif %}
 
-                    
+                    {{ form.profile_image }}
+
                     <button class="btn login-button">Update</button>
                 </form> 
                 

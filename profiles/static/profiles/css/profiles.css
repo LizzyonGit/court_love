@@ -26,7 +26,10 @@ input, select {
     cursor: pointer;
 }
 
-.custom-checkbox > .form-check-input-remove:checked {
-    background-color: var(--secondary-button-color);
-    border-color: var(--secondary-button-color);
+/*Remove image text styles*/
+
+.custom-control {
+    display: inline-block;
+    background-color: var(--highlight-color);
 }
+

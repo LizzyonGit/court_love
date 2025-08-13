@@ -1,13 +1,15 @@
 {% if widget.is_initial %}
-<p>{{ widget.initial_text }}</p>
+
+    
+    
     {% if not widget.required %}
-        <div class="custom-control custom-checkbox mt-2">
-            <input class="form-check-input-remove" type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
-            <label for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
-        </div>
-    {% endif %}<br>
-    {{ widget.input_text }}
+    <div class="custom-control custom-checkbox my-2 px-1 rounded">
+        <input class="form-check-input-remove" type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
+        <label class="text-danger" for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
+    </div>
+    {% endif %}<br><p>{{ widget.initial_text }}</p>
 {% endif %}
-<span class="btn login-button btn-file">
+<span class="btn login-button btn-file mb-1">
 Select image <input id="new-image" type="{{ widget.type }}" name="{{ widget.name }}" {% include "django/forms/widgets/attrs.html" %}>
 </span><p id="filename"></p>
+
