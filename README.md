@@ -7,7 +7,9 @@
 
 The website aims to offer users:
 - a way to book individual tennis lessons online.
-- a way to keep a profile with a self-rated level.
+- a way to keep a personal profile with a self-rated level.
+
+Inspired by [Matchi](https://www.matchi.se/) and [Grands](https://playgrands.com/se).
 
 ### User stories
 
@@ -28,6 +30,7 @@ See [project board](https://github.com/users/LizzyonGit/projects/6/views/1) for 
 #### As a site user, I can
 **Website layout milestone**
 - arrive at a clear landing page so that I can know what the website is about.
+- get back to the top of the page with one click when there are a lot of lessons, so that I can easily get back to the menu.
 **Product information milestone**
 - find neccessary information about lessons so that I can book lessons that suit my needs.
 - narrow down the list of lessons to specific characteristics so that I can easily view lessons that match my needs.
@@ -122,9 +125,12 @@ All content is written by me.
     - Order summary (number of lessons)
 
 - __Order confirmation__
+    - Page
+    - Email
 
 - __My profile__
     - Default personal information
+    - Profile image
 
     - Booking history
 
@@ -147,6 +153,17 @@ All content is written by me.
 
 ### Features left to implement
 
+- Possibility to select a date range to filter the lesson list.
+- Email address field on My profile with possibility to change it and prepopulate checkout form with it.
+- Link directly to lesson after editing/adding a lesson, and for the user, from the cart page.
+- When site admin cancels an order in admin, lessons' **Places left** is increased automatically.
+
+#### Future ideas
+- See the **Places left** updated in the order history.
+- Make profile visible for others attending a lesson, so you can see each other's level and profile image. Maybe even with chat groups automatically created so you can talk with the attendees before and after a lesson. This would of course need much more security both for the image which now is only visible for the user and in admin, but also for chat messages.
+
+
+
 ## Testing
 
 See [TESTING.md](TESTING.md).
@@ -167,14 +184,14 @@ See [TESTING.md](TESTING.md).
   - With installed whitenoise and gunicorn.
 - [Bootstrap](https://getbootstrap.com/) version 5.3
 - [jQuery](https://jquery.com/) version 3.5.1
-- [Stripe](https://stripe.com/)
+- [Stripe](https://stripe.com/) for payment solution
 - [Lucidchart](https://lucid.co/) for database planning
 - [Figma](https://www.figma.com/) for wireframes
 - [VS Code](https://code.visualstudio.com/) as IDE
 - [GitHub](https://github.com/) for version control
 - [Heroku](https://www.heroku.com/) for hosting
 - [Cloudinary](https://cloudinary.com/) for image hosting
-- [Google Fonts](https://fonts.google.com/) for my font pair
+- [Google Fonts](https://fonts.google.com/) for my font pair and tennis racquet cart icon
 - [Canva](https://www.canva.com/) for creating the logo
 - Windows Paint and Windows Photo for adjusting images
 - [TinyPNG](https://tinypng.com/) for compressing image size and converting to .webp
@@ -219,12 +236,12 @@ Set up your IDE
 
 ### Media
 
-- Free images from [pixabay](https://pixabay.com/).
+- Free images from [pixabay](https://pixabay.com/). Logo adapted from [Canva](https://www.canva.com/).
 
 ### Resources
 
 __Planning__
-- For a font pairing idea, 
+- For a font pairing idea, [Google Fonts](https://fonts.google.com/) based on font used in logo from [Canva](https://www.canva.com/).
 
 - For getting a colour scheme, [Coolors.co](https://coolors.co).
 
