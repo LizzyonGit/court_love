@@ -194,7 +194,7 @@ footer * {
 }
 }
 
-/*Toast styling for small screens*/
+/*Toast styling for small screens to reduce right margin, does not fit otherwise*/
 @media screen and (width < 361px  ) {
 .message-container{
     right: 5px;
