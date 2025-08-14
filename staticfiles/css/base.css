@@ -193,3 +193,10 @@ footer * {
     max-height: 700px;
 }
 }
+
+/*Toast styling for small screens*/
+@media screen and (width < 361px  ) {
+.message-container{
+    right: 5px;
+}
+}

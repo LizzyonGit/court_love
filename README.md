@@ -159,8 +159,12 @@ All content is written by me.
 - When site admin cancels an order in admin, lessons' **Places left** is increased automatically.
 
 #### Future ideas
-- See the **Places left** updated in the order history.
 - Make profile visible for others attending a lesson, so you can see each other's level and profile image. Maybe even with chat groups automatically created so you can talk with the attendees before and after a lesson. This would of course need much more security both for the image which now is only visible for the user and in admin, but also for chat messages.
+- Sell gift cards for tennis lessons.
+- Users can add themselves to a wait list for fully booked lessons and get notified in case someone canceled.
+- Users can choose to get notified by email when new lessons have been added.
+- Reviews page for Court Love as a company.
+
 
 
 
