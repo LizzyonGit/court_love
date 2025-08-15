@@ -150,8 +150,11 @@
                                                             {% if lesson.id in ordered_lessons %}
                                                             <!--When a lesson id is in the orderlineitem model, it has been booked so superuser is notified-->
                                                             <p>Note that this lesson has been booked before. Users will not be informed or refunded automatically.</p>
+                                                            <p>The lesson will still be accessible in admin. You can delete it permanently after you delete the connected orders.</p>
+                                                            {% else %}
+                                                            <!--Complete deletion because no connected orders-->
+                                                            <p>The lesson will be deleted permanently.</p>
                                                             {% endif %}
-                                                            <p>The lesson will still be accessible in admin.</p>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn book-button" data-bs-dismiss="modal">Do not delete</button>
