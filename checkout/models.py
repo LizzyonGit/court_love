@@ -59,8 +59,8 @@ class OrderLineItem(models.Model):
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True,
                                      related_name='ordered_lessons')
-    lesson = models.ForeignKey(Lesson, null=False, blank=False,
-                               on_delete=models.CASCADE)
+    lesson = models.ForeignKey(Lesson, null=True, blank=False,
+                               on_delete=models.SET_NULL)
     quantity = models.PositiveIntegerField(null=False,
                                            blank=False, default=1)  # should be 1
     lineitem_total = models.DecimalField(max_digits=6,
