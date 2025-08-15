@@ -59,6 +59,7 @@ class OrderLineItem(models.Model):
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True,
                                      related_name='ordered_lessons')
+    # NULL on delete so site admin can see who ordered a deleted lesson
     lesson = models.ForeignKey(Lesson, null=True, blank=False,
                                on_delete=models.SET_NULL)
     quantity = models.PositiveIntegerField(null=False,
