@@ -30,10 +30,13 @@
 <main>
     <div class="container-fluid d-flex justify-content-center">
         <div class="row">
+            <section>
             <div class="col-md-7 mb-2">
                 <h2>Thank you for your order.</h2>
                 <p>A confirmation will be sent to {{ order.email }}.</p>
             </div>
+            </section>
+            <section>
             <div class="col-md-5 mb-2">
 
                 <h2>Order details</h2>
@@ -42,7 +45,8 @@
                 
                 <!--iterate through order items-->
 
-                {% for item in order.lineitems.all %}            
+                {% for item in order.lineitems.all %} 
+                <article>           
                 <div class="card mb-3" style="max-width: 600px;">
                     <div class="row g-0">
                         
@@ -61,6 +65,7 @@
                     </div>
                         
                 </div>
+                </article>
                 {% endfor %}
 
             
@@ -81,6 +86,7 @@
                     
 
             </div>
+            </section>
 
         </div>
     </div>

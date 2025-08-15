@@ -104,7 +104,7 @@ All content is written by me.
 - __All lessons page__
     - Buttons **Group - indoor**, **Group - outdoor**, **Private - indoor** and **Private - outdoor** to filter the list of lessons.
     - Adjusted title **All lessons** or based on which button was clicked: **All group lessons - indoor**, **All group lessons - outdoor**, **All private lessons - indoor**, or **All private lessons - outdoor**.
-    - Again the adresses for indoor and outdoor, as I did not want to have that in the lesson cards, and maybe users don't read the footer.
+    - Again the adresses for indoor and outdoor, as I did not want to have that in the lesson cards, and maybe users don't read the footer. Both addresses show when you click **All lessons**, only one shows when one of the buttons for outdoor or indoor were clicked.
     - A list of lesson cards.
     __Lesson card__
     - Image, if selected by site admin.

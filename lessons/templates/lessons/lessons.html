@@ -46,6 +46,7 @@
 
 {% block content %}
     <main>
+        <header>
 
         <div class="container-fluid d-flex justify-content-center">
             <!--This text differs depending on which button the user clicked on, or when user is viewing all lessons-->
@@ -74,10 +75,12 @@
                 </div>
             </div>
         </div>
+        </header>
 
         <div class="container-fluid d-flex justify-content-center">
             <div class="row">
                 {% for lesson in lessons %}
+                <article>
                 <div class="col-sm-6 col-xxl-4 mb-4">    
                                
                     <div class="card h-100">
@@ -171,6 +174,7 @@
                 
                 </div>
                 {% endfor %}
+                </article>
             </div>
         </div>
         <div class="btt-button">
