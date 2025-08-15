@@ -60,8 +60,8 @@ class OrderLineItem(models.Model):
                                      null=True, blank=True,
                                      related_name='ordered_lessons')
     # NULL on delete so site admin can see who ordered a deleted lesson
-    lesson = models.ForeignKey(Lesson, null=True,
-                               on_delete=models.SET_NULL)
+    lesson = models.ForeignKey(Lesson, null=False, blank=False,
+                               on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(null=False,
                                            blank=False, default=1)  # should be 1
     lineitem_total = models.DecimalField(max_digits=6,
