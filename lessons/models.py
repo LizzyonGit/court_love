@@ -58,6 +58,7 @@ class Lesson(models.Model):
                                        related_name="lessons")
     place = models.ForeignKey('Place', null=True, on_delete=models.SET_NULL,
                               related_name="lessons")
+    deleted = models.BooleanField(default=False)
     image = models.CharField(max_length=255, choices=IMAGE_CHOICES, null=True, blank=True)
 
     class Meta:

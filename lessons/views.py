@@ -17,8 +17,8 @@ def all_lessons(request):
     A view to show all future lessons,
     sorting and categories
     """
-    # lessons with future date
-    lessons = Lesson.objects.filter(date_time__gt=timezone.now())
+    # lessons with future date and not deleted
+    lessons = Lesson.objects.filter(date_time__gt=timezone.now(), deleted=False)
 
     categories = None  # if not set to None, error
     places = None
@@ -137,8 +137,9 @@ def delete_lesson(request, lesson_id):
         return redirect(reverse('home'))
 
     lesson = get_object_or_404(Lesson, pk=lesson_id)
+    lesson.deleted = True
+    lesson.save()
 
-    lesson.delete()
     messages.success(request, 'Lesson deleted.')
 
     return redirect(reverse('lessons'))
