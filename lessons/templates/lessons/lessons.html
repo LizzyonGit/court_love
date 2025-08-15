@@ -52,11 +52,11 @@
             <!--This text differs depending on which button the user clicked on, or when user is viewing all lessons-->
             <div class="row my-2">
                 <div class="col">  
-                <h2>{% for c in current_categories %}
-                    All {{ c.friendly_name|lower }}s
-                {% endfor %}{% for p in current_places %}
-                    - {{ p.place }}
-                {% endfor %}</h2>
+                {% for c in current_categories %}
+                    <h2 class="d-inline">All {{ c.friendly_name|lower }}s</h2>
+                {% endfor %}{% for p in current_places %}<h2 class="d-inline">
+                    - {{ p.place }}</h2>
+                {% endfor %}
                 {% if not current_categories %}<h2>All lessons</h2>{% endif %}
                 {% if not current_places %}
                     <p>Indoor lessons are at Indoor street 1 12345 Tennicity (hard).</p>
