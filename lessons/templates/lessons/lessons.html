@@ -138,11 +138,11 @@
                                         <button type="button" class="btn cancel-button" data-bs-toggle="modal" data-bs-target="#deleteLessonModal_{{ lesson.id }}">Delete</button>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="deleteLessonModal_{{ lesson.id }}" tabindex="-1" aria-labelledby="deleteLessonModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="deleteLessonModal_{{ lesson.id }}" tabindex="-1" aria-labelledby="deleteLessonModalLabel_{{ lesson.id }}" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="deleteLessonModalLabel">Are you sure you want to delete this lesson?</h1>
+                                                        <h1 class="modal-title fs-5" id="deleteLessonModalLabel_{{ lesson.id }}">Are you sure you want to delete this lesson?</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
