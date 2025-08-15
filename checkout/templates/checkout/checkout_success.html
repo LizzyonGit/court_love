@@ -30,15 +30,17 @@
 <main>
     <div class="container-fluid d-flex justify-content-center">
         <div class="row">
-            <section>
+            
             <div class="col-md-7 mb-2">
+                <section>
                 <h2>Thank you for your order.</h2>
                 <p>A confirmation will be sent to {{ order.email }}.</p>
+                </section>
             </div>
-            </section>
-            <section>
+            
+            
             <div class="col-md-5 mb-2">
-
+                <section>
                 <h2>Order details</h2>
                 <!--too large order nr messes up responsiveness-->
                 <p>Order number: <span title="{{ order.order_number }}">{{ order.order_number|truncatechars:6 }}</span>.</p>
@@ -84,9 +86,9 @@
 
 
                     
-
+                </section>
             </div>
-            </section>
+            
 
         </div>
     </div>

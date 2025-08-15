@@ -80,11 +80,12 @@
         <div class="container-fluid d-flex justify-content-center">
             <div class="row">
                 {% for lesson in lessons %}
-                <article>
+                
                 <div class="col-sm-6 col-xxl-4 mb-4">    
                                
                     <div class="card h-100">
                         <div class="row g-0 h-100">
+                            <article>
                             <div class="col-md-4 lesson-image p-3 p-md-1">
                                 {% if lesson.image %}
                                 <img src="{% static 'images/' %}{{ lesson.image }}" class="img-fluid rounded" alt="{{ lesson.name }} image">
@@ -169,12 +170,14 @@
 
                                
                             </div>
+                            </article>
+
                         </div>
                     </div>
                 
                 </div>
                 {% endfor %}
-                </article>
+                
             </div>
         </div>
         <div class="btt-button">
