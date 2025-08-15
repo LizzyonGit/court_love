@@ -13,7 +13,7 @@ No current errors in the [HTML validator](https://validator.w3.org/). Below I li
 
 - On the **My profile** page, I got an error about a duplicate id attribute, caused by the django widget handling the image upload. [Slack](https://code-institute-room.slack.com/archives/C026VTHQDNY/p1683142277576629) helped me to understand the issue, so I replaced the id "new-image" I set with a class of the same name, and updated the jQuery for this. This worked and the error dissapeared.
 
-Another issue on the same page was that I had set a placeholder for a select element (**level**), I found a similar error on [Slack](https://code-institute-room.slack.com/archives/C026VTHQDNY/p1714631167308539). I decided to remove the code about placeholders (this was copied and adapted from other fields) because it actually only was applicable to the **Phone number** field, which already had a label. So the error also dissapeared.
+  Another issue on the same page was that I had set a placeholder for a select element (**level**), I found a similar error on [Slack](https://code-institute-room.slack.com/archives/C026VTHQDNY/p1714631167308539). I decided to remove the code about placeholders (this was copied and adapted from other fields) because it actually only was applicable to the **Phone number** field, which already had a label. So the error also dissapeared.
 
 - 
 
@@ -73,6 +73,11 @@ i put a code in chekout that it goes back to cart incase there is a lesson with 
 Lizzy_4P
   11:05 AM
 now you can comple purchase and then add same lesson and pay again. Unfixed bug. But however, not a lot will force themselces to pay twice :)
+
+#### Delete functionality
+I had implemented the same delete functionality as in Boutique Ado, but faced issues accessing orders containing only deleted lessons. Opening order lines with a deleted lesson or orders with only deleted lessons resulted in a 500 error in admin. I tried to change the OrderLineItem model setting deleted lessons to Null, but this did not fix it. So I went for a 'soft delete', as suggested on [Stackoverflow](https://stackoverflow.com/questions/42954063/storing-products-in-order-product-is-deleted-after-order-placed). So now from the frontend, site admins can delete a lesson but it will just set the *deleted* field to True, and it will not appear on the website. The site admin will still receive a notification when deleting a lesson that already has been booked before, so they can go to admin and find the order and user details to inform the user about the deletion. They simply go to Order line items, find the order line items with the delete lesson, and go to the orders via the eye ball on the order line item pages.
+
+To prevent issues when a site admin 'hard deletes' a lesson in admin, I set *on_delete=models.PROTECT* for the lesson foreign key on the OrderLineItem model, so site admins should first manually delete order lines/orders if they want to delete a lesson. 
 
 #### Date range (unfixed)
 Lizzy_4P

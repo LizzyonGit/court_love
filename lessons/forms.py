@@ -8,7 +8,7 @@ class LessonForm(forms.ModelForm):
 
     class Meta:
         model = Lesson
-        fields = '__all__'
+        exclude = ('deleted',)
         # code below by 'Kriss' from https://stackoverflow.com/questions/68491041/django-forms-datetimeinput-widgets-instace-value
         widgets = {
             'date_time': forms.DateTimeInput(format=('%Y-%m-%dT%H:%M'),

@@ -137,6 +137,7 @@ def delete_lesson(request, lesson_id):
         return redirect(reverse('home'))
 
     lesson = get_object_or_404(Lesson, pk=lesson_id)
+    # does not hard delete the lesson, only flagged and removed from frontend
     lesson.deleted = True
     lesson.save()
 
