@@ -7,6 +7,7 @@
 
 
 ### HTML validator
+- Some issue came up about h2 tags on the **All lessons** page. This is because I adjust the heading content depending on which button is clicked, and I did not separate the h2 per category or place, so this resulted in either an empty h2 tag or a trailing h2 tag. So I fixed this with separate h2 blocks and added a class to display them on one line next to each other. So in case there is both a category and a place, there is a correct heading visible, that consists of two h2 blocks next to each other.
 
 ### CSS validator
 
