@@ -21,18 +21,3 @@ class UserProfileForm(forms.ModelForm):
 
         # Customise label
         self.fields['default_phone'].label = 'Phone number'
-
-        placeholders = {
-            'default_phone': 'Phone number',
-            'level': 'Level',
-        }
-
-        self.fields['default_phone'].widget.attrs['autofocus'] = True
-        for field in self.fields:
-            if field != 'profile_image':
-                if self.fields[field].required:
-                    placeholder = f'{placeholders[field]} *'
-                else:
-                    placeholder = placeholders[field]
-                self.fields[field].widget.attrs['placeholder'] = placeholder
-                self.fields[field].widget.attrs['class'] = 'rounded'
