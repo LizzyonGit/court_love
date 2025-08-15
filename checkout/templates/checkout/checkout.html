@@ -31,8 +31,8 @@
     <div class="container-fluid d-flex justify-content-center">
         <div class="row">
             
-            <div class="col-md-7">
-                <section>
+            <section class="col-md-7">
+                
                 <h2>Details & payment</h2>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
@@ -83,19 +83,19 @@
 
 
 
-                </section>
-            </div>
+            </section>
             
             
-            <div class="col-md-5">
-                <section>
+            
+            <section class="col-md-5">
+                
 
                 <!--iterate through cart items-->
                 <h2>Order summary ({{ product_count }})</h2>
             
                 {% for item in cart_items %}
-                <article>
-                <div class="card mb-3" style="max-width: 600px;">
+                
+                <article class="card mb-3" style="max-width: 600px;">
                     <div class="row g-0">
                         
                         <div class="col">
@@ -111,7 +111,7 @@
                         
                     </div>
                         
-                </div>
+                
                 </article>
                 {% endfor %}
 
@@ -121,9 +121,9 @@
 
 
 
-                </section> 
+            </section> 
 
-            </div>
+            
             
         </div>
     </div>
