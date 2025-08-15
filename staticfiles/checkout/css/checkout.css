@@ -36,8 +36,19 @@
     border: 1px solid #000;
 }
 
-/*Whit background for errors*/
+/*White background for errors*/
 #card-errors {
     background-color: #fff;
     display: inline-block;
+}
+
+
+/*Media queries for error block because when there is a lot of text, it goes to max-width and changes everything
+399.2px is what the fields normally are before the large error comes up when you start your card with 424242 but then change numbers
+Since all the fields change, I set this max-with to the fields as well to prevent the hop in lay-out*/
+
+@media screen and (width > 767px  ) {
+#card-errors, #card-element, input {
+  max-width: 399.2px;
+}
 }

@@ -11,6 +11,10 @@
 
 - On the **My profile** page, I got an error about a duplicate id attribute, caused by the django widget handling the image upload. [Slack](https://code-institute-room.slack.com/archives/C026VTHQDNY/p1683142277576629) helped me to understand the issue, so I replaced the id "new-image" I set with a class of the same name, and updated the jQuery for this. This worked and the error dissapeared.
 
+Another issue on the same page was that I had set a placeholder for a select element (**level**), I found a similar error on [Slack](https://code-institute-room.slack.com/archives/C026VTHQDNY/p1714631167308539). I decided to remove the code about placeholders (this was copied and adapted from other fields) because it actually only was applicable to the **Phone number** field, which already had a label. So the error also dissapeared.
+
+- 
+
 
 ### CSS validator
 
@@ -91,6 +95,9 @@ The **Add lesson** form has the CharField **Name** and TextField **Description**
 remove checkbox in image selection, very weird that it stayd vlue when selected. Something with bootstrap. In the devtools, the correct background colour was set, but it was actually blue. Even though I managed to override it in the checkout form to green, i did not manage to change it to red. So I redid it with a white background and red text.
 
 because my image solution is different than in the walkthrough which has different views for adding and editing, I had an issue since updating hte image is in the same view, and I needed to refresh the page to see the remove button, or to see it removed. So I tried with javascript but that did not work. In the end, a simple redirect to profile url fixes this issue, now the remove option is gone directly after removing an image, and it is added directlt after adding an image.
+
+#### Card error width
+By accident, when I put a card number starting with 42424242 but but still not the correct test number from Stripe, I got a long error on the **Checkout** page which changed the whole form. So I set media queries on all fields there to keep the original widths, so now nothing changes when this large error comes up.
 
 ### Full testing
 
