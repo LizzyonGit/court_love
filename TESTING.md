@@ -19,6 +19,7 @@ No current errors in the [HTML validator](https://validator.w3.org/). Below I li
 
 
 ### CSS validator
+No errors, only mention of variables not being checked and that the border-color and background-color are the same for a checkbox, which is intentional.
 
 ### Python validator
 
