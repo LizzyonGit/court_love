@@ -143,10 +143,10 @@ def delete_lesson(request, lesson_id):
         # does not hard delete the lesson, only flagged and removed from frontend
         lesson.deleted = True
         lesson.save()
+        messages.success(request, 'Lesson deleted.')
     else:
         # hard delete from db
         lesson.delete()
-
-    messages.success(request, 'Lesson deleted.')
+        messages.success(request, 'Lesson permanently deleted.')
 
     return redirect(reverse('lessons'))
