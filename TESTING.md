@@ -27,6 +27,7 @@ No errors, only mention of variables not being checked and that the border-color
 Checking the JavaScript and jQuery in [JSHint](https://jshint.com/), I get some undefined variables for *Stripe* and *bootstrap*, which can be ignored as they are coming from the Stripe and Bootstrap scripts.
 
 ### Lighthouse testing
+I had some contrast issues with my main background colour and white and yellow text. I chose to change my blue from #047cc5 to a darker shade #0366A4, and any black text I had I changed to white. 
 
 ### Favicon testing
 
@@ -55,14 +56,14 @@ Checking the JavaScript and jQuery in [JSHint](https://jshint.com/), I get some 
 |add lessons to my cart so that I can proceed to payment.|**Add to cart** button on each lesson card, if not fully booked already.|
 |see an overview of my cart so that I can see which lessons I am about to buy.|**Cart** page via the tennis racquet icon to the right in the navigation bar, or via the button in the toast messages coming up after adding a lesson to the cart.|
 |remove lessons from the cart so that I can manage what I am about to buy.|**Remove** button on each lesson card in the **Cart** page.|
-|navigate to a checkout page so that I can pay for my lessons.|On the **Cart** page, there is a **Pay** button taking you to the **Checkout** page.|
+|navigate to a checkout page so that I can pay for my lessons.|On the **Cart** page, there is a **Pay** button taking you to the **Checkout** page. The **Checkout** page hase|
 |complete a payment so that I am allowed to attend the lesson.|**Complete payment** button on the **Checkout** page, **Stripe** integrations and webhooks in case something goes wrong, so the order is still added.|
-|see a confirmation after payment so that I know that my payment has been successfull.|**Checkout successful** page after payment.|
+|see a confirmation after payment so that I know that my payment has been successfull.|**Checkout successful** page and toast message after payment.|
 |get an email after purchase so that I can review my purchase any time and see when I should go to the lesson, without the need to log in.| Order confirmation email sent after payment.|
 |register so that I can log in to the website.|**Register** page.|
 |log in so that I can see my order history and personal details.|**Log in** page.|
 |log out so that I can control whether I want to be logged in or not.|**Log out** page.|
-|see my order history so that I can check what lessons I have booked|**MY profile** page with **Booking history** column.|
+|see my order history so that I can check what lessons I have booked|**My profile** page with **Booking history** column.|
 |manage my self-rated level so that I can update it along my tennis lesson journey|**Level** field on the **My profile** page.|
 |manage a profile image so that I can personalise my profile page.|**Select image**  and **Update** buttons on **My profile** to add or update an image, **Remove current profile image after Update** checkbox to remove an image.|
 
