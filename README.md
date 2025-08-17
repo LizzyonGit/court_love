@@ -19,10 +19,12 @@ See [project board](https://github.com/users/LizzyonGit/projects/6/views/1) for 
 **Website layout milestone**
 - display contact info so that I can be contacted by users.
 - offer a clear landing page so that I can persuade users to book a lesson.
+
 **Product management**
 - add lessons to the website so that I can get bookings for them.
 - edit lessons so that I can update details if there are any changes.
 - delete a lesson so that I can prevent booking of a lesson if it is not offered anymore.
+
 **Book lesson milestone**
 - receive payments so that I get rewarded for my services.
 - prevent bookings on full lessons so that I do not get overbooked lessons leading to refunds.
@@ -31,10 +33,12 @@ See [project board](https://github.com/users/LizzyonGit/projects/6/views/1) for 
 **Website layout milestone**
 - arrive at a clear landing page so that I can know what the website is about.
 - get back to the top of the page with one click when there are a lot of lessons, so that I can easily get back to the menu.
+
 **Product information milestone**
 - find neccessary information about lessons so that I can book lessons that suit my needs.
 - narrow down the list of lessons to specific characteristics so that I can easily view lessons that match my needs.
 - see how many have booked lesson so that I can see how many will be joining.
+
 **Book lesson milestone**
 - add lessons to my cart so that I can proceed to payment.
 - see an overview of my cart so that I can see which lessons I am about to buy.
@@ -43,10 +47,12 @@ See [project board](https://github.com/users/LizzyonGit/projects/6/views/1) for 
 - complete a payment so that I am allowed to attend the lesson.
 - see a confirmation after payment so that I know that my payment has been successfull.
 - get an email after purchase so that I can review my purchase any time and see when I should go to the lesson, without the need to log in.
+
 **Authentication milestone**
 - register so that I can log in to the website.
 - log in so that I can see my order history and personal details.
 - log out so that I can control whether I want to be logged in or not.
+
 **User profile milestone**
 - see my order history so that I can check what lessons I have booked.
 - manage my self-rated level so that I can update it along my tennis lesson journey.

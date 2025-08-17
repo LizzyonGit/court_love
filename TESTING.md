@@ -28,12 +28,44 @@ Checking the JavaScript and jQuery in [JSHint](https://jshint.com/), I get some 
 
 ### Lighthouse testing
 
-
+### Favicon testing
 
 ## Manual testing
 
 
 ### User story testing
+
+|   User story                                                            | How it is achieved    |
+|  -----------                                                             | -----------           |
+|**As a site admin, I can:**|
+|display contact info so that I can be contacted by users,|Added social media links, email address and phone number in footer, and email address in confirmation email.|
+|offer a clear landing page so that I can persuade users to book a lesson,|**About Court Love**, **How does it work** and **Register** sections, photo carousel, buttons to lessons.|
+|add lessons to the website so that I can get bookings for them,|**Add lesson** page where you add more lessons to display on the **All lessons** page.|
+|edit lessons so that I can update details if there are any changes,|**Edit** button on each lesson, leading to the **Edit lesson** form where you can edit the lesson and update it.|
+|delete a lesson so that I can prevent booking of a lesson if it is not offered anymore,|**Delete** button on each lesson, opening a modal asking for confirmation before deleting the lesson. After deleting, the lesson is removed from the website, but may still be in admin, depending on if it was booked before. The site admin is informed about this in the modal.|
+|receive payments so that I get rewarded for my services,|Working Stripe integration.|
+|prevent bookings on full lessons so that I do not get overbooked lessons leading to refunds.|When adding a lesson, there is a field for **Capacity** and **Places left**. If you don't fill in **Places left**, it will be set to the **Capacity** amount. Each purchase the **Places left** will count down, when it is zero, the lesson can not be added to the cart anymore, or it will be removed from there if it was already added. If a user would pass the cart view and go direclty to checkout via the url, the user would be reverted back to the updated cart if there was a lesson with zero places left in the checkout, so it is not possible to book it.|
+| | |
+|**As a site user, I can:**|
+|arrive at a clear landing page so that I can know what the website is about.|**About Court Love**, **How does it work** and **Register** sections, photo carousel, buttons to lessons.|
+|get back to the top of the page with one click when there are a lot of lessons, so that I can easily get back to the menu.|A little icon with an arrow up which you can click at any time on the bottom right of the **All lessons** page, taking you to the top of the page|
+|find neccessary information about lessons so that I can book lessons that suit my needs.|The lesson cards with date, time, duration, description, place, level, capacity and price, and the addresses on top of the **All lessons** page, and in the footer.|
+|narrow down the list of lessons to specific characteristics so that I can easily view lessons that match my needs.|From the home page, you can click **Private lessons** and **Group lessons**, to filter on those categories. On the **All lessons** page, there are buttons to filter on **Group - Indoor**, **Group - Outdoor**, **Private - Indoor** or **Private - Outdoor**.|
+|see how many have booked lesson so that I can see how many will be joining.|**Places left** on the lesson cards, and in the booking history when you go to an old order confirmation, the updated **Places left** is there as well.|
+|add lessons to my cart so that I can proceed to payment.|**Add to cart** button on each lesson card, if not fully booked already.|
+|see an overview of my cart so that I can see which lessons I am about to buy.|**Cart** page via the tennis racquet icon to the right in the navigation bar, or via the button in the toast messages coming up after adding a lesson to the cart.|
+|remove lessons from the cart so that I can manage what I am about to buy.|**Remove** button on each lesson card in the **Cart** page.|
+|navigate to a checkout page so that I can pay for my lessons.|On the **Cart** page, there is a **Pay** button taking you to the **Checkout** page.|
+|complete a payment so that I am allowed to attend the lesson.|**Complete payment** button on the **Checkout** page, **Stripe** integrations and webhooks in case something goes wrong, so the order is still added.|
+|see a confirmation after payment so that I know that my payment has been successfull.|**Checkout successful** page after payment.|
+|get an email after purchase so that I can review my purchase any time and see when I should go to the lesson, without the need to log in.| Order confirmation email sent after payment.|
+|register so that I can log in to the website.|**Register** page.|
+|log in so that I can see my order history and personal details.|**Log in** page.|
+|log out so that I can control whether I want to be logged in or not.|**Log out** page.|
+|see my order history so that I can check what lessons I have booked|**MY profile** page with **Booking history** column.|
+|manage my self-rated level so that I can update it along my tennis lesson journey|**Level** field on the **My profile** page.|
+|add a profile image so that I can personalise my profile page.|**Select image**  and **Update** buttons on **My profile**.|
+
 
 ### Issues
 
