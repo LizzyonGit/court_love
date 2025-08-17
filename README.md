@@ -29,7 +29,7 @@ See [project board](https://github.com/users/LizzyonGit/projects/6/views/1) for 
 - receive payments so that I get rewarded for my services.
 - prevent bookings on full lessons so that I do not get overbooked lessons leading to refunds.
 
-#### As a site user, I can
+#### As a site user, I can:
 **Website layout milestone**
 - arrive at a clear landing page so that I can know what the website is about.
 - get back to the top of the page with one click when there are a lot of lessons, so that I can easily get back to the menu.
@@ -56,7 +56,7 @@ See [project board](https://github.com/users/LizzyonGit/projects/6/views/1) for 
 **User profile milestone**
 - see my order history so that I can check what lessons I have booked.
 - manage my self-rated level so that I can update it along my tennis lesson journey.
-- add a profile image so that I can personalise my profile page.
+- manage a profile image so that I can personalise my profile page.
 
 ### Design
 #### Database

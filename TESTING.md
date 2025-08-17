@@ -64,7 +64,7 @@ Checking the JavaScript and jQuery in [JSHint](https://jshint.com/), I get some 
 |log out so that I can control whether I want to be logged in or not.|**Log out** page.|
 |see my order history so that I can check what lessons I have booked|**MY profile** page with **Booking history** column.|
 |manage my self-rated level so that I can update it along my tennis lesson journey|**Level** field on the **My profile** page.|
-|add a profile image so that I can personalise my profile page.|**Select image**  and **Update** buttons on **My profile**.|
+|manage a profile image so that I can personalise my profile page.|**Select image**  and **Update** buttons on **My profile** to add or update an image, **Remove current profile image after Update** checkbox to remove an image.|
 
 
 ### Issues
