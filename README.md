@@ -69,7 +69,7 @@ Below are my initial wireframes for mobile and laptop screen sizes. I used [Figm
 #### Colour schemes
 I used colours related to tennis with a shade of blue, red and green to reflect the different surfaces hard court, clay and grass. Yellow is derived from the tennis ball colour, white is the line colour, and black is used as a contrast colour.
 
-This is my palette: https://coolors.co/047cc5-ffffff-ea592c-82b23d-000000-e3f121
+This is my palette: https://coolors.co/0366A4-ffffff-ea592c-82b23d-000000-e3f121
 
 #### Fonts
 I used a font recommended with my logo from Canva from Daily Creative (https://www.canva.com/design/DAGr7kiK5zA/dRQFAGHjN97D28Y8rcLtyg/edit?ui=eyJHIjp7IkQiOnsiRCI6eyJBPyI6IkYifX19fQ): IBM Plex Sans. In google fonts, it was recommended to pair it with IBM Plex Serif (https://fonts.google.com/specimen/IBM+Plex+Serif/about?preview.text=Court%20Love&query=IBM+Plex)
