@@ -24,6 +24,7 @@ No errors, only mention of variables not being checked and that the border-color
 ### Python validator
 
 ### Javascript validator
+Checking the JavaScript and jQuery in [JSHint](https://jshint.com/), I get some undefined variables for *Stripe* and *bootstrap*, which can be ignored as they are coming from the Stripe and Bootstrap scripts.
 
 ### Lighthouse testing
 

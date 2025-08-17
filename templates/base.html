@@ -247,11 +247,11 @@
     <script>
         // Adapted from https://www.w3schools.com/bootstrap5/bootstrap_toast.php
       
-            let toastMessageList = [].slice.call(document.querySelectorAll('.toast'))
+            let toastMessageList = [].slice.call(document.querySelectorAll('.toast'));
             let toastList = toastMessageList.map(function(toastEl) {
-                return new bootstrap.Toast(toastEl)
-            })
-            toastList.forEach(toast => toast.show())
+                return new bootstrap.Toast(toastEl);
+            });
+            toastList.forEach(toast => toast.show());
         
     </script>
     
