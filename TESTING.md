@@ -28,6 +28,19 @@ Checking the JavaScript and jQuery in [JSHint](https://jshint.com/), I get some 
 
 ### Lighthouse testing
 I had some contrast issues with my main background colour and white and yellow text. I chose to change my blue from #047cc5 to a darker shade #0366A4, and any black text I had I changed to white. 
+For my red **Delete** buttons, the contrast was also not good, so I changed from #ea592c to a lighter shade of red #F56B41. 
+
+https://court-love-8302d0b2e53d.herokuapp.com/lessons/
+
+A remaining accessibility issue for **All lessons** is that I have hidden form input that foes not have a label, but it is hidden so I ignore this issue.
+
+Best practices warns about third party cookies from Stripe, and about issues logged to the Issue panel, also related to Stripe, so I cannot change that. Actuelly, in incognito mode, this is gone and 100%.
+
+Performance testing did not give issues that I can fix, because I already cut down the size of my images so they would still be good at all screens sizes. So I'm happy with 90%.
+
+https://court-love-8302d0b2e53d.herokuapp.com/checkout/
+
+I get an accessibility warning *[aria-hidden="true"] elements contain focusable descendents*, but it refers to a Stripe element which I can not change.
 
 ### Favicon testing
 
