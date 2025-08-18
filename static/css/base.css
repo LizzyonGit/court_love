@@ -38,7 +38,7 @@ nav a.active {
 
 /*Button styles*/
 
-.category-button{
+.category-button, .login-button{
     background-color: var(--secondary-color);
 
 }
@@ -49,7 +49,7 @@ nav a.active {
     color: var(--contrast-color);
 }
 
-.book-button, .login-button {
+.book-button {
     background-color: var(--primary-button-color);
 
 }

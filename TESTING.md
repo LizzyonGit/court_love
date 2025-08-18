@@ -42,6 +42,10 @@ https://court-love-8302d0b2e53d.herokuapp.com/checkout/
 
 I get an accessibility warning *[aria-hidden="true"] elements contain focusable descendents*, but it refers to a Stripe element which I can not change.
 
+
+
+
+For some page I get an issue about the footer's heading not being in descending order. This is because the footer is written in the base template, so it can not consider the heading on each page. Also, not all pages have an h2 heading, but some have, so my footer is set to ahve h3 headings. I kept this like it is.
 ### Favicon testing
 In [RealFaviconGenerator's favicon checker](https://realfavicongenerator.net/favicon-checker) my favicon gets no warnings. The only issue is a missing touch web app title, but then the website's title will be used so it is no problem.
 
