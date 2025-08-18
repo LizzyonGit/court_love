@@ -43,6 +43,7 @@ https://court-love-8302d0b2e53d.herokuapp.com/checkout/
 I get an accessibility warning *[aria-hidden="true"] elements contain focusable descendents*, but it refers to a Stripe element which I can not change.
 
 ### Favicon testing
+In [RealFaviconGenerator's favicon checker](https://realfavicongenerator.net/favicon-checker) my favicon gets no warnings. The only issue is a missing touch web app title, but then the website's title will be used so it is no problem.
 
 ## Manual testing
 
@@ -166,9 +167,41 @@ By accident, when I put a card number starting with 42424242 but but still not t
 Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. All works well.
 
 #### Feature testing
+|Feature|Expected outcome|Testing performed|Result|Pass/Fail|
+| :--- | :--- | :--- | :--- | :--- |
+|Navbar|
+|Navbar links when logged out|**Log in** and **Register** appear when not logged in|Made sure I am logged out and clicked the links|The links appear and go to the correct pages|Pass|
+|Navbar links when logged in as user|**Log out** and **My profile** appear when logged in|Made sure I am logged in and clicked the links|The links appear and go to the correct pages|Pass|
+|Navbar links when logged in as admin|**Add lesson**, **Log out** and **My profile** appear when logged in|Made sure I am logged in and clicked the links|The links appear and go to the correct pages|Pass|
+|Navbar links to Home|**Home** is always visible, both **Home** and logo go to first home page|Clicked the links|Logo and **Home** go to (first) home page|Pass|
+|Navbar cart icon and total|Shows total of lessons in cart, shifts from grey to green when there are lessons, links to **Cart** page|Logo and **Home** go to (first) home page|Pass|
+|Home page|
+|**Private lessons** and **Group lessons** buttons|Starts roling when you initiate yourself|Made sure I am logged out and clicked the links|The links appear and go to the correct pages|Pass|
+|Carousel|Starts roling when you initiate yourself|Made sure I am logged out and clicked the links|The links appear and go to the correct pages|Pass|
+|Footer|
+|Footer|Links to social media opening in new tabs|Clicked links in footer|Links open in new tabs|Pass|
+|**All lessons** page|
+|Lesson filtering|Lessons filter according to the **Private lessons** and **Group lessons** buttons on home page, and the **Group - Indoor**, **Group - Outdoor**, **Private - Indoor** and **Private - Outdoor** buttons on this page||Pass|
+|Header text adjusts to filter|Header text changes according to which of the filter buttons is clicked||Pass|
+|**Add to cart** button adds lesson to cart|Header text changes according to which of the filter buttons is clicked||Pass|
+|**Add to cart** button gets disabled when lesson is full|Button changes text to **Not bookable** and gets disabled||Pass|
+|Can not add same lesson more than once|When clicking **Add to cart** on already added lesson, you get a message and the lesson is not added to the cart||Pass|
+|**Cart** page|
+|Lessons appear|If you have added lessons, they are here and there is a button to pay, if not, there is a text saying there are no lessons and a link to go back to all lessons||Pass|
+|Lessons that have become fully booked but were in a user's cart are removed|If you have added lessons, they are here and there is a button to pay, if not, there is a text saying there areno lessons and a link to go back to all lessons||Pass|
+|**Checkout** page|
+|Lessons from cart are in the overview|If you have added lessons, they are here and there is a button to pay, if not, there is a text saying there are no lessons and a link to go back to all lessons||Pass|
+|Not possible to pay for unbookable lessons|If you have passed the cart view and filled in the checkout url, any unbookable lessons that you had in the cart are removed and you are moved back to the **Cart** page with updated cart and feedback message||Pass|
+|If logged in, you can select to save phone number, if not logged in, you are advised to log in or register|If you have passed the cart view and filled in the checkout url, any unbookable lessons that you had in the cart are removed and you are moved back to the **Cart** page with updated cart and feedback message||Pass|
+
+
+|Add/edit/delete lessons when logged in as site admin|
+
+
+
 
 #### Unfixed bugs
-You cannot add a lesson to the cart more than once, but if you complete the purchase, you can add the same lesson to the empty cart and pay for it again. I left this like it is, because not a lot of people will force themselves to pay for the same lesson twice by actively adding the lesson to the cart again. If they would, it would be their mistake and they can contact Court Love to cancel it.
+You can not add a lesson to the cart more than once, but if you complete the purchase, you can add the same lesson to the empty cart and pay for it again. I left this like it is, because not a lot of people will force themselves to pay for the same lesson twice by actively adding the lesson to the cart again. If they would, it would be their mistake and they can contact Court Love to cancel it.
 
 
 
