@@ -192,10 +192,69 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 |**Checkout** page|
 |Lessons from cart are in the overview|If you have added lessons, they are here and there is a button to pay, if not, there is a text saying there are no lessons and a link to go back to all lessons||Pass|
 |Not possible to pay for unbookable lessons|If you have passed the cart view and filled in the checkout url, any unbookable lessons that you had in the cart are removed and you are moved back to the **Cart** page with updated cart and feedback message||Pass|
-|If logged in, you can select to save phone number, if not logged in, you are advised to log in or register|If you have passed the cart view and filled in the checkout url, any unbookable lessons that you had in the cart are removed and you are moved back to the **Cart** page with updated cart and feedback message||Pass|
+|If logged in, you can select to save phone number, if not logged in, you are advised to log in or register to save the information in the form|||Pass|
+|Stripe integration|The test card numbers from Stripe give the expected result||Pass|
+|Webhook order creation|An order is created when payment is received in Stripe, not depending on the checkout success page.||Pass|
+|**Back to cart** button|You can go back to the **Cart** page||Pass|
+|**Checkout success** page|
+|After payment, the user is referred to the **Checkout success** page|||Pass|
+|**Order confirmation** email|
+|After payment, the user gets a confirmation email|||Pass|
+|**Register** page|
+|The **Register** page is only visible when a user is not logged in|||Pass|
+|When you register, you need to confirm your email|||Pass|
+|**Log in** page|
+|The **Log in** page is only visible when a user is not logged in|||Pass|
+|After confirming your email from the registration step, you can log in with your username and password|||Pass|
+|**Log out** page|
+|The **Log out** page is only visible when a user is logged in|||Pass|
+|After you click **Log out**, you are logged out|||Pass|
+|**My profile** page|
+|A logged in user can go to **My profile**|||Pass|
+|You can add, edit and delete a phone number, a self-rated level, and a profile image|||Pass|
+|If you had selected to save your phone number in the checkout page, it is updated in the profile|||Pass|
+|You can find your booking history and go to old order confirmations|||Pass|
+|You can go back to your profile form the old order confirmations|||Pass|
+|Add lessons when logged in as site admin|
+|**Add lesson** page is visible only for site admins|||Pass|
+|When you fill in the required fields and submit the form, the lesson is added to the **All lessons** page|||Pass|
+|Lessons with passed date are not visible on the **All lessons** page|||Pass|
+|When **Places left** is not filled in, it is set to the same as **Capacity**|||Pass|
+|Toast message when **Places left** is set to higher value than **Capacity**|||Pass|
+|Toast message when **Date** is in the past|||Pass|
+|Form validation|||Pass|
+|Edit lessons when logged in as site admin|
+|**Edit** button is visible on each lesson card only for site admins|||Pass|
+|Toast message when editing and specifically when editing a lesson that has been booked|||Pass|
+|The form is prefilled with the current lesson information|||Pass|
+|Form validation|||Pass|
+|Same messages and unctionality as **Add lesson**|||Pass|
+|Edited lesson is updated on the **All lessons** page|||Pass|
+|Delete lessons when logged in as site admin|
+|**Delete** button is visible on each lesson card only for site admins|||Pass|
+|**Delete** button opens modal for confirmation|||Pass|
+|Modal text depends on whether or not a lesson has been booked before|||Pass|
+|When you delete a lesson that has been booked before, it will only be removed from the website. It is still visible in admin, as well as the connected orders lines. When the connected order lines are removed, the lesson can be deleted from the database.|||Pass|
+|A lesson that has not been booked before, will be deleted from the database|||Pass|
+|Toast messages confirm deletion or permanent deletion|||Pass|
+|Toast messages|
+||||Pass|
 
 
-|Add/edit/delete lessons when logged in as site admin|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

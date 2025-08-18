@@ -169,6 +169,7 @@ All content is written by me.
 - Sell gift cards for tennis lessons.
 - Users can add themselves to a wait list for fully booked lessons and get notified in case someone canceled.
 - Users can choose to get notified by email when new lessons have been added.
+- You can only book lessons according to your level.
 - Reviews page for Court Love as a company.
 
 
