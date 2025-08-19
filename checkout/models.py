@@ -35,7 +35,10 @@ class Order(models.Model):
         """
         Update grand total each time a line item is added
         """
-        self.grand_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        self.grand_total = self.lineitems.aggregate(Sum
+                                                    ('lineitem_total')
+                                                    )['lineitem_total__sum'
+                                                      ] or 0
         self.save()
 
     def save(self, *args, **kwargs):
@@ -62,7 +65,7 @@ class OrderLineItem(models.Model):
     lesson = models.ForeignKey(Lesson, null=False, blank=False,
                                on_delete=models.PROTECT)
     quantity = models.PositiveIntegerField(null=False,
-                                           blank=False, default=1)  # should be 1
+                                           blank=False, default=1)  # always 1
     lineitem_total = models.DecimalField(max_digits=6,
                                          decimal_places=2, null=False,
                                          blank=False, editable=False)

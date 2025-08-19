@@ -1,7 +1,5 @@
 from django import forms
 from .models import Lesson, Category
-from django.core.validators import MinLengthValidator
-
 
 
 class LessonForm(forms.ModelForm):

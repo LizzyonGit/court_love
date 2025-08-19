@@ -59,7 +59,8 @@ class Lesson(models.Model):
     place = models.ForeignKey('Place', null=True, on_delete=models.SET_NULL,
                               related_name="lessons")
     deleted = models.BooleanField(default=False)
-    image = models.CharField(max_length=255, choices=IMAGE_CHOICES, null=True, blank=True)
+    image = models.CharField(max_length=255, choices=IMAGE_CHOICES,
+                             null=True, blank=True)
 
     class Meta:
         """Order from earliest to later"""
@@ -69,7 +70,7 @@ class Lesson(models.Model):
         return self.name
 
     # Via https://stackoverflow.com/questions/4380879/django-model-field-default-based-off-another-field-in-same-model
-    # if not set, but not 0, set it to same as capacity value. Can be altered after manually.
+    # If not set, but not 0, set it to same as capacity value.
     def save(self, *args, **kwargs):
         if self.places_left is None:
             self.places_left = self.capacity.capacity
