@@ -18,7 +18,8 @@ def all_lessons(request):
     sorting and categories
     """
     # lessons with future date and not deleted
-    lessons = Lesson.objects.filter(date_time__gt=timezone.now(), deleted=False)
+    lessons = Lesson.objects.filter(date_time__gt=timezone.now(),
+                                    deleted=False)
 
     categories = None  # if not set to None, error
     places = None
@@ -35,7 +36,7 @@ def all_lessons(request):
             lessons = lessons.filter(place__place__in=places)
             places = Place.objects.filter(place__in=places)
 
-    # get orderlineitem model for message in modal when ordered lesson is about to be deleted
+    # get orderlineitem model for modal text when ordered lesson is deleted
     ordered_lessons = OrderLineItem.objects.values_list('lesson', flat=True)
 
     context = {
@@ -59,17 +60,24 @@ def add_lesson(request):
         form = LessonForm(request.POST)
         if form.is_valid():
             if form.cleaned_data['places_left'] is None:
-                form.cleaned_data['places_left'] = form.cleaned_data['capacity'].capacity
+                form.cleaned_data['places_left'
+                                  ] = form.cleaned_data['capacity'
+                                                        ].capacity
             form.save()
             messages.success(request, 'Successfully added lesson')
             # info message if places left is higher than capacity
-            if form.cleaned_data['places_left'] > form.cleaned_data['capacity'].capacity:
+            if form.cleaned_data['places_left'
+                                 ] > form.cleaned_data['capacity'
+                                                       ].capacity:
                 messages.info(request,
-                              'Note that places left is more than the lesson capacity.')
+                              'Note that places left is more than the lesson'
+                              'capacity.')
             # info message if date has passed
             if form.cleaned_data['date_time'] <= timezone.now():
                 messages.info(request,
-                              "The lesson's date has passed, the lesson will not be displayed but is visible in admin.")
+                              "The lesson's date has passed,"
+                              "the lesson will not be displayed but is visible"
+                              "in admin.")
             return redirect(reverse('add_lesson'))
         else:
             messages.error(request,
@@ -97,17 +105,23 @@ def edit_lesson(request, lesson_id):
         form = LessonForm(request.POST, instance=lesson)
         if form.is_valid():
             if form.cleaned_data['places_left'] is None:
-                form.cleaned_data['places_left'] = form.cleaned_data['capacity'].capacity
+                form.cleaned_data['places_left'
+                                  ] = form.cleaned_data['capacity'
+                                                        ].capacity
             form.save()
             messages.success(request, 'Successfully updated lesson.')
             # info message if places left is higher than capacity
-            if form.cleaned_data['places_left'] > form.cleaned_data['capacity'].capacity:
+            if form.cleaned_data['places_left'
+                                 ] > form.cleaned_data['capacity'
+                                                       ].capacity:
                 messages.info(request,
-                              'Note that places left is more than the lesson capacity.')
+                              'Note that places left is more than the lesson'
+                              'capacity.')
             # info message if date has passed
             if form.cleaned_data['date_time'] <= timezone.now():
                 messages.info(request,
-                              "The lesson's date has passed, the lesson will not be displayed but is visible in admin.")
+                              "The lesson's date has passed, the lesson will"
+                              "not be displayed but is visible in admin.")
             return redirect(reverse('lessons'))
         else:
             messages.error(
@@ -118,7 +132,10 @@ def edit_lesson(request, lesson_id):
 
         # info message in case this lesson already has been booked
         if OrderLineItem.objects.filter(lesson=lesson).exists():
-            messages.info(request, 'This lesson has been booked before. Users who have booked it will not be informed about changes automatically.')
+            messages.info(request,
+                          'This lesson has been booked before. Users'
+                          'who have booked it will not be informed'
+                          'about changes automatically.')
 
     template = 'lessons/edit_lesson.html'
     context = {
@@ -140,7 +157,7 @@ def delete_lesson(request, lesson_id):
 
     ordered_lessons = OrderLineItem.objects.values_list('lesson', flat=True)
     if lesson_id in ordered_lessons:
-        # does not hard delete the lesson, only flagged and removed from frontend
+        # does not hard delete the lesson, only removed from frontend
         lesson.deleted = True
         lesson.save()
         messages.success(request, 'Lesson deleted.')
