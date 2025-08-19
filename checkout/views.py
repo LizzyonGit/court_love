@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (render, redirect, reverse, get_object_or_404,
+                              HttpResponse)
 from django.views.decorators.http import require_POST
 from django.conf import settings
 from django.contrib import messages
@@ -6,7 +7,7 @@ from django.contrib import messages
 from .forms import OrderForm
 from cart.contexts import cart_contents
 
-from lessons.models import Lesson, Capacity
+from lessons.models import Lesson
 from .models import OrderLineItem, Order
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
@@ -28,7 +29,7 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be \
+        messages.error(request, 'Sorry, your payment can not be \
             processed right now. Try again later.')
         return HttpResponse(content=e, status=400)
 
@@ -63,9 +64,8 @@ def checkout(request):
                     )
 
                     # capacity handler
-                    print(f'old: {lesson.places_left}')
                     lesson.places_left -= order_line_item.quantity
-                    print(f'new: {lesson.places_left}')
+
                     lesson.save()
 
                     order_line_item.save()
@@ -73,8 +73,8 @@ def checkout(request):
                 except Lesson.DoesNotExist:
                     messages.error(request, (
                         "One of the lessons in your cart was not found"
-                        "in our database. "
-                        "Call us for assistance.")
+                        " in our database. "
+                        " Call us for assistance.")
                     )
                     order.delete()
                     return redirect(reverse('view_cart'))
@@ -98,11 +98,9 @@ def checkout(request):
         # there you get the message about removed lesson
         for item_id in list(cart):
             lesson = Lesson.objects.get(id=item_id)
-            try:
-                if lesson.places_left == 0:
-                    return redirect(reverse('view_cart'))
-            except:
-                pass
+
+            if lesson.places_left == 0:
+                return redirect(reverse('view_cart'))
 
         current_cart = cart_contents(request)
 

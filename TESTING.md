@@ -22,6 +22,28 @@ No current errors in the [HTML validator](https://validator.w3.org/). Below I li
 No errors, only mention of variables not being checked and that the border-color and background-color are the same for a checkbox, which is intentional.
 
 ### Python validator
+Before running my code through the [CI Python Linter](https://pep8ci.herokuapp.com/) I fixed the relevant Flake8 issues raised in VS Code about too long lines, bare except usage, unused imports and whitespaces.
+
+I ran the following pages through the validator:
+
+#### Cart app
+No errors: contexts.py, views.py, urls.py, apps.py.
+
+#### Checkout app
+No errors: admin.py, apps.py, forms.py, models.py, signals.py, urls.py, views.py, webhook_handler.py, webhooks.py
+
+#### Home app
+No errors: apps.py, urls.py, views.py
+
+#### Lessons app
+No errors: admin.py, apps.py, urls.py, views.py
+Ignored *line too long* because of url in comment: forms.py, models.py
+
+#### Profiles app
+No errors: admin.py, apps.py, forms.py, urls.py, views.py, widgets.py
+Ignored *line too long* because of long url in comment, and indented comment which I think should not be split: models.py
+
+
 
 ### Javascript validator
 Checking the JavaScript and jQuery in [JSHint](https://jshint.com/), I get some undefined variables for *Stripe* and *bootstrap*, which can be ignored as they are coming from the Stripe and Bootstrap scripts.
@@ -45,7 +67,8 @@ I get an accessibility warning *[aria-hidden="true"] elements contain focusable 
 
 
 
-For some page I get an issue about the footer's heading not being in descending order. This is because the footer is written in the base template, so it can not consider the heading on each page. Also, not all pages have an h2 heading, but some have, so my footer is set to ahve h3 headings. I kept this like it is.
+For some pages I get an issue about the footer's heading not being in descending order. This is because the footer is written in the base template, so it can not consider the heading on each page. Also, not all pages have an h2 heading, but some have, so my footer is set to ahve h3 headings. I kept this like it is.
+
 ### Favicon testing
 In [RealFaviconGenerator's favicon checker](https://realfavicongenerator.net/favicon-checker) my favicon gets no warnings. The only issue is a missing touch web app title, but then the website's title will be used so it is no problem.
 
@@ -158,6 +181,8 @@ remove checkbox in image selection, very weird that it stayd vlue when selected.
 
 because my image solution is different than in the walkthrough which has different views for adding and editing, I had an issue since updating hte image is in the same view, and I needed to refresh the page to see the remove button, or to see it removed. So I tried with javascript but that did not work. In the end, a simple redirect to profile url fixes this issue, now the remove option is gone directly after removing an image, and it is added directly after adding an image.
 
+Something that caused some concern is that if a user would upload a very large image, this would need to be cropped down by the website to display, which I knew causes performance issues. So I found the same concern [here on Slack](https://code-institute-room.slack.com/archives/C026PTF46F5/p1674207577510609?thread_ts=1674167504.408779&cid=C026PTF46F5), and there was a very simple solution with the use of *transformation* to make sure an image would be cropped before it would be saved in Cloudinary.
+
 #### Card error width
 By accident, when I put a card number starting with 42424242 but but still not the correct test number from Stripe, I got a long error on the **Checkout** page which changed the whole form. So I set media queries on all fields there to keep the original widths, so now nothing changes when this large error comes up.
 
@@ -192,10 +217,10 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 |Can not add same lesson more than once|When clicking **Add to cart** on already added lesson, you get a message and the lesson is not added to the cart||Pass|
 |**Cart** page|
 |Lessons appear|If you have added lessons, they are here and there is a button to pay, if not, there is a text saying there are no lessons and a link to go back to all lessons||Pass|
-|Lessons that have become fully booked but were in a user's cart are removed|If you have added lessons, they are here and there is a button to pay, if not, there is a text saying there areno lessons and a link to go back to all lessons||Pass|
+|Lessons that have become fully booked but were in a user's cart are removed|When you go to the cart and there is such a lesson, this is removed and there is toast message to inform the user|I added lessons to the cart and afterwards, I manually changed the **Places left** field to 0 for one lesson, then I went to the cart to check|Pass|
 |**Checkout** page|
 |Lessons from cart are in the overview|If you have added lessons, they are here and there is a button to pay, if not, there is a text saying there are no lessons and a link to go back to all lessons||Pass|
-|Not possible to pay for unbookable lessons|If you have passed the cart view and filled in the checkout url, any unbookable lessons that you had in the cart are removed and you are moved back to the **Cart** page with updated cart and feedback message||Pass|
+|Not possible to pay for unbookable lessons|If you have passed the cart view and filled in the checkout url, any unbookable lessons that you had in the cart are removed and you are moved back to the **Cart** page with updated cart and feedback message|I added lessons to the cart and afterwards, I manually changed the **Places left** field to 0 for one lesson, then I wrote in the checkout url page, and I got redirected straight back to the cart with the toast message to inform about the removed lesson|Pass|
 |If logged in, you can select to save phone number, if not logged in, you are advised to log in or register to save the information in the form|||Pass|
 |Stripe integration|The test card numbers from Stripe give the expected result||Pass|
 |Webhook order creation|An order is created when payment is received in Stripe, not depending on the checkout success page.||Pass|

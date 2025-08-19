@@ -6,4 +6,4 @@ from .models import UserProfile
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ['user', 'level', 'default_phone',]
+    list_display = ['user', 'level', 'default_phone', ]
