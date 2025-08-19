@@ -112,18 +112,11 @@ In [RealFaviconGenerator's favicon checker](https://realfavicongenerator.net/fav
 ### Issues
 
 #### Capacity handler
-# capacity handler (https://stackoverflow.com/questions/61310901/how-to-update-a-value-from-table-accessed-via-foreign-key-django-orm)
-                    # this does not work as the capacity model is changed, it should not. I should change this to a normal field I think. Or have new field in lesson with capacity left that gets updated?
+To handle the capacity number going down after someone booking a lesson, I tried several approaches. Initially, I thought the capacity number on the lesson model could just go down, but capacity is actually a foreign key to the Capacity model, because I wanted site admins to be able to add their own capacity values in admin with that model. So I tried implementing something like [this](https://stackoverflow.com/questions/61310901/how-to-update-a-value-from-table-accessed-via-foreign-key-django-orm), but this did not work as the Capacity model itself was changed, so 4 would just change 3 for example, and with that all lessons initially having 4 capacity would change to 3. I thought about changing the foreign key field to a normal field, but I also wanted to have two values, so that you could see the original capacity and how many places were booked or free. That was a much easier solution to have a separate field for **Places left** in the Lesson model, so I added that. This way, Capacity could just remain the same and all calculations could be done on the new field **Places left**. I put in a code to set **Places left** to the same initial value as **Capacity**, but a site admin can also manually adjust this for any reason. Then the **Places left** values decreases when the order line item is created either in the view, or via a webhook. 
 
+There is an unfixed issue which is when something goes wrong when creating an order via a webhook, and the order is deleted after an updated lesson with a new **Places left** value is saved, this would not be reversed. The reason for this is that I can not test this situation at this point, so I would rather not add any code that could break the webhook flow.
 
-
-
-
-
-10:27
-So first I wanted to use the same field but it was better with a separate field.
-
-
+#### Cart update when lesson is not bookable anymore
 Lizzy_4P
   3:11 PM
 delete order line item in checkout when places left is 0, did not work I got an error message. so I moved it to the card instead, also changed the direclyt to chekout to go to cart.
@@ -158,16 +151,8 @@ To prevent issues when a site admin 'hard deletes' a lesson in admin, I set *on_
 But then I realised that this may not fulfill the CRUD functionality, so in the end, I opted for a combination of the two. When a lesson has been booked, the site admin can not remove it from the database before deleting the connected orders in admin. But when there are no connected orders, the lesson can be permanently deleted from the database with the **Delete** button on the frontend. The modal's content after clicking on **Delete** on a lesson, informs the site admin about which of the two it will be.
 
 #### Date range (unfixed)
-Lizzy_4P
-  12:35 AM
 DateFromToRangeFilter did not work, I could not get it to work, so I remove django_filters and did something else. User story: as a site user, I can select a date range in which I want to see offered lessons so that I can easily adapt the list of lessons on dates I can attend. could have, since people can scroll
 
-
-
-
-
-
-12:37
 And there will not be super many lessons out there
 
 #### Lesson images
@@ -290,6 +275,9 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 
 #### Unfixed bugs
 You can not add a lesson to the cart more than once, but if you complete the purchase, you can add the same lesson to the empty cart and pay for it again. I left this like it is, because not a lot of people will force themselves to pay for the same lesson twice by actively adding the lesson to the cart again. If they would, it would be their mistake and they can contact Court Love to cancel it.
+
+There is an unfixed issue which is when something goes wrong when creating an order via a webhook, and the order is deleted after an updated lesson with a new **Places left** value is saved, this would not be reversed. The reason for this is that I can not test this situation at this point, so I would rather not add any code that could break the webhook flow.
+
 
 
 

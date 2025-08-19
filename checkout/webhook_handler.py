@@ -112,9 +112,16 @@ class StripeWH_Handler:
                             lesson=lesson,
                             quantity=quantity,
                         )
+
+                    # capacity handler
+                    lesson.places_left -= order_line_item.quantity
+
+                    lesson.save()
+
                     order_line_item.save()
             except Exception as e:
                 if order:
+
                     order.delete()
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
