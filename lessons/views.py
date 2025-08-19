@@ -59,6 +59,7 @@ def add_lesson(request):
     if request.method == 'POST':
         form = LessonForm(request.POST)
         if form.is_valid():
+            # cleaned_data from https://stackoverflow.com/questions/4706255/how-to-get-value-from-form-field-in-django-framework
             if form.cleaned_data['places_left'] is None:
                 form.cleaned_data['places_left'
                                   ] = form.cleaned_data['capacity'

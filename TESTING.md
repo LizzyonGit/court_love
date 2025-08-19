@@ -36,8 +36,8 @@ No errors: admin.py, apps.py, forms.py, models.py, signals.py, urls.py, views.py
 No errors: apps.py, urls.py, views.py
 
 #### Lessons app
-No errors: admin.py, apps.py, urls.py, views.py
-Ignored *line too long* because of url in comment: forms.py, models.py
+No errors: admin.py, apps.py, urls.py
+Ignored *line too long* because of url in comment: forms.py, models.py views.py
 
 #### Profiles app
 No errors: admin.py, apps.py, forms.py, urls.py, views.py, widgets.py
@@ -117,31 +117,7 @@ To handle the capacity number going down after someone booking a lesson, I tried
 There is an unfixed issue which is when something goes wrong when creating an order via a webhook, and the order is deleted after an updated lesson with a new **Places left** value is saved, this would not be reversed. The reason for this is that I can not test this situation at this point, so I would rather not add any code that could break the webhook flow.
 
 #### Cart update when lesson is not bookable anymore
-Lizzy_4P
-  3:11 PM
-delete order line item in checkout when places left is 0, did not work I got an error message. so I moved it to the card instead, also changed the direclyt to chekout to go to cart.
-
-
-Lizzy_4P
-  11:24 AM
-works good in checkout, but you can go to the cart and see the item there again. but you cant checkout with it
-11:29
-could add same code to cart view?
-
-
-Lizzy_4P
-  11:50 AM
-I put correct code in cart and removed from chekout. Also, in the toast I changed so that you have to go to cart first, so chekout get the updated cart. Now there is an issue if the user would use the chekout url and not go viacart...
-
-
-Lizzy_4P
-  11:58 AM
-i put a code in chekout that it goes back to cart incase there is a lesson with 0
-
-
-Lizzy_4P
-  11:05 AM
-now you can comple purchase and then add same lesson and pay again. Unfixed bug. But however, not a lot will force themselces to pay twice :)
+I wanted to address the possibilty of a user having lessons in the cart that have been fully booked in the meantime, so **Places left** is 0, so the user should not be able to book those kinds of lessons. They can not be added to the cart, but they could have been there already. I tried to delete those order line items in the checkout, but I got an error message. I tried also to just removed the items from the order summary, but then you could go back to the cart and have the items there again. So I moved this logic to the card instead, and instead of directing to the checkout directly from the cart logo, which I wanted initially, I changed the cart logo link to go to the cart page. Now the order summary can just be taken from the cart, so checkout does not need the logic to remove these unbookable items. Now there was only an issue if the user would use the checkout url and not go via the cart at all, so I simply wrote in a code to go back to the cart in case there is a lesson with 0 places left. The user then gets the feedback message in the cart about the removed items.
 
 #### Delete functionality
 I had implemented the same delete functionality as in Boutique Ado, but faced issues accessing orders containing only deleted lessons. Opening order lines with a deleted lesson or orders with only deleted lessons resulted in a 500 error in admin. I tried to change the OrderLineItem model setting deleted lessons to Null, but this did not fix it. So I went for a 'soft delete', as suggested on [Stackoverflow](https://stackoverflow.com/questions/42954063/storing-products-in-order-product-is-deleted-after-order-placed). So now from the frontend, site admins can delete a lesson but it will just set the *deleted* field to True, and it will not appear on the website. The site admin will still receive a notification when deleting a lesson that already has been booked before, so they can go to admin and find the order and user details to inform the user about the deletion. They simply go to Order line items, find the order line items with the delete lesson, and go to the orders via the eye ball on the order line item pages.
