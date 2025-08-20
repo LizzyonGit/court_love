@@ -72,13 +72,13 @@ def add_lesson(request):
                                                        ].capacity:
                 messages.info(request,
                               'Note that places left is more than the lesson'
-                              'capacity.')
+                              ' capacity.')
             # info message if date has passed
             if form.cleaned_data['date_time'] <= timezone.now():
                 messages.info(request,
-                              "The lesson's date has passed,"
+                              "The lesson's date has passed, "
                               "the lesson will not be displayed but is visible"
-                              "in admin.")
+                              " in admin.")
             return redirect(reverse('add_lesson'))
         else:
             messages.error(request,
@@ -117,12 +117,12 @@ def edit_lesson(request, lesson_id):
                                                        ].capacity:
                 messages.info(request,
                               'Note that places left is more than the lesson'
-                              'capacity.')
+                              ' capacity.')
             # info message if date has passed
             if form.cleaned_data['date_time'] <= timezone.now():
                 messages.info(request,
                               "The lesson's date has passed, the lesson will"
-                              "not be displayed but is visible in admin.")
+                              " not be displayed but is visible in admin.")
             return redirect(reverse('lessons'))
         else:
             messages.error(
@@ -135,8 +135,8 @@ def edit_lesson(request, lesson_id):
         if OrderLineItem.objects.filter(lesson=lesson).exists():
             messages.info(request,
                           'This lesson has been booked before. Users'
-                          'who have booked it will not be informed'
-                          'about changes automatically.')
+                          ' who have booked it will not be informed'
+                          ' about changes automatically.')
 
     template = 'lessons/edit_lesson.html'
     context = {
