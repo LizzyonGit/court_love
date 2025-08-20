@@ -12,6 +12,8 @@ from .models import OrderLineItem, Order
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
 
+from django.utils import timezone
+
 import stripe
 import json
 
@@ -93,13 +95,15 @@ def checkout(request):
             messages.error(request, "Your cart is empty")
             return redirect(reverse('lessons'))
 
-        # in case user passes cart view, when there is no place left it should
+        # in case user passes cart view, when a lesson has no place left,
+        # has been deleted or passed date, it should
         # go back to updated cart,
         # there you get the message about removed lesson
         for item_id in list(cart):
             lesson = Lesson.objects.get(id=item_id)
 
-            if lesson.places_left == 0:
+            if (lesson.places_left == 0
+               or lesson.deleted or lesson.date_time < timezone.now()):
                 return redirect(reverse('view_cart'))
 
         current_cart = cart_contents(request)

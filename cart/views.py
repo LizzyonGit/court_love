@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from lessons.models import Lesson
 
+from django.utils import timezone
+
 # Create your views here.
 
 
@@ -9,7 +11,8 @@ def view_cart(request):
     """Returns cart contents page"""
     cart = request.session.get('cart', {})
 
-    # if places_left is 0, should remove from cart and give message
+    # if places_left is 0, lesson was soft deleted, or date has passed,
+    # should remove from cart and give message
     # https://www.geeksforgeeks.org/python/python-delete-items-from-dictionary-while-iterating/
     for item_id in list(cart):
         lesson = Lesson.objects.get(id=item_id)
@@ -17,6 +20,16 @@ def view_cart(request):
             del cart[item_id]
             messages.error(request, 'One or more lessons in your cart did'
                                     ' not have places left. They have been'
+                                    ' removed.')
+        elif lesson.deleted:
+            del cart[item_id]
+            messages.error(request, 'One or more lessons in your cart are'
+                                    ' not available anymore. They have been'
+                                    ' removed.')
+        elif lesson.date_time < timezone.now():
+            del cart[item_id]
+            messages.error(request, 'One or more lessons in your cart have'
+                                    ' already been held. They have been'
                                     ' removed.')
 
     # update cart so checkout gets correct cart

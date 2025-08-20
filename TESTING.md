@@ -178,6 +178,8 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 |**Cart** page|
 |Lessons appear|If you have added lessons, they are here and there is a button to pay, if not, there is a text saying there are no lessons and a link to go back to all lessons||Pass|
 |Lessons that have become fully booked but were in a user's cart are removed|When you go to the cart and there is such a lesson, this is removed and there is toast message to inform the user|I added lessons to the cart and afterwards, I manually changed the **Places left** field to 0 for one lesson, then I went to the cart to check|Pass|
+|Lessons that have been soft deleted but were in a user's cart are removed|When you go to the cart and there is such a lesson, this is removed and there is toast message to inform the user||Pass|
+|Lessons with a passed date but were in a user's cart are removed|When you go to the cart and there is such a lesson, this is removed and there is toast message to inform the user||Pass|
 |**Checkout** page|
 |Lessons from cart are in the overview|If you have added lessons, they are here and there is a button to pay, if not, there is a text saying there are no lessons and a link to go back to all lessons||Pass|
 |Not possible to pay for unbookable lessons|If you have passed the cart view and filled in the checkout url, any unbookable lessons that you had in the cart are removed and you are moved back to the **Cart** page with updated cart and feedback message|I added lessons to the cart and afterwards, I manually changed the **Places left** field to 0 for one lesson, then I wrote in the checkout url page, and I got redirected straight back to the cart with the toast message to inform about the removed lesson|Pass|
