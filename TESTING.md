@@ -183,25 +183,23 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 |**Checkout** page|
 |Lessons from cart are in the overview|Cart lessons are listed under **Order summary**, if there are no lessons in your cart, you are direct back to **All lessons** page and get a toast message about this|Go to checkout with lessons in the cart, go to checkout url with no lessons in the cart|When I have lessons in the cart, they are listed in the checkout, when I have no lessons in the cart, and write in the checkout url, I go straight to **All lessons** and get an error message that my cart is empty|Pass|
 |Not possible to pay for unbookable lessons|If you have passed the cart view and filled in the checkout url, any unbookable lessons that you had in the cart are removed and you are moved back to the **Cart** page with updated cart and feedback message|I added lessons to the cart and afterwards, I manually changed the **Places left** field to 0, edited the date and/or deleted a lesson, in different combinations, then I wrote in the checkout url page| I got redirected straight back to the updated cart with the toast message to inform about the removed lessons|Pass|
-|Save info checkbox|If logged in, you can select to save phone number, if not logged in, you are advised to log in or register to save the information in the form|Go to checkout while logged in and not logged in|Displays either *Save phone number to my profile* or *Register or log in to save this information*|Pass|
+|Save info checkbox|If logged in, you can select to save phone number, if not logged in, you are advised to log in or register to save the information in the form|Add lesson to cart and go to checkout while logged in and not logged in|Displays either *Save phone number to my profile* or *Register or log in to save this information*|Pass|
 |Stripe integration|The test card numbers from Stripe give the expected result||Pass|
-|Webhook order creation|An order is created when payment is received in Stripe, not depending on the checkout success page.|Comment out form submit line in stripe_elements.js, and proceed to complete an order. The website hangs but the order is created.|Pass|
-|**Back to cart** button|You can go back to the **Cart** page||Pass|
+|Webhook order creation|An order is created when payment is received in Stripe, not depending on the checkout success page.|Comment out form submit line in stripe_elements.js, and proceed to complete an order|The website hangs but the order is created|Pass|
+|**Back to cart** button|You can go back to the **Cart** page|Click button|It goes to the cart|Pass|
 |**Checkout success** page|
-|After payment, the user is referred to the **Checkout success** page|||Pass|
-|**Order confirmation** email|
-|After payment, the user gets a confirmation email|||Pass|
-|**Register** page|
-|The **Register** page is only visible when a user is not logged in|||Pass|
-|When you register, you need to confirm your email|||Pass|
-|**Log in** page|
-|The **Log in** page is only visible when a user is not logged in|||Pass|
-|After confirming your email from the registration step, you can log in with your username and password|||Pass|
-|**Log out** page|
-|The **Log out** page is only visible when a user is logged in|||Pass|
-|After you click **Log out**, you are logged out|||Pass|
-|**My profile** page|
-|A logged in user can go to **My profile**|**My profile** menu option available when logged in, not available when logged out|Logged in and the option is there, logged out and the option is not there|Pass|
+|After payment, the user is referred to the **Checkout success** page|Complete order with Stripe test card number|**Checkout success** page shows|Pass|
+|Order confirmation email|
+|Order confirmation email|After payment, the user gets a confirmation email|Complete an order with Stripe test card number both via normal payment flow and when order is created via webhook|I got the order confirmation email|Pass|
+|User authentication|
+|**Register** page|The **Register** page is only visible when a user is not logged in|Logged in and out, tried to go direct to the url|**Register** page only accessible when logged out|Pass|
+|Registration process|When you register, you need to confirm your email|Submit **Register** form|I get the confirm-email page, a toast message about where the email is sent, and I get the verification email there. After confirming, I get a toast message and I go to the **Log in** page|Pass|
+|**Log in** page|The **Log in** page is only visible when a user is not logged in|Logged out and in and wrote the login url|**Log in** page only accessible when logged out|Pass|
+|Log in functionality|When you fill in the correct username and password, you are logged in|Log in|I am logged in and get a toast message saying I am logged in|Pass|
+|**Log out** page|The **Log out** page is only visible when a user is logged in|Logged out and tried to write the logout url|**Log out** is not accessible when logged out, it is when logged in|Pass|
+|Log out functionality|After you click the **Log out** button, you are logged out and there is a toast message|Clicked the button|I am logged out and the toast message appears|Pass|
+|**My profile**|
+|**My profile** page|A logged in user can go to **My profile**|**My profile** available when logged in, not available when logged out|Logged in and the option is there, logged out and tried to write in the profile url, but it send me to log in|Pass|
 |You can add, edit and delete a phone number, a self-rated level, and a profile image|||Pass|
 |If you had selected to save your phone number in the checkout page, it is updated in the profile|||Pass|
 |You can find your booking history and go to old order confirmations|||Pass|
