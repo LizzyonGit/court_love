@@ -205,26 +205,25 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 |**My profile** page|**My profile** available when logged in, not available when logged out|Logged in and out and tried to write in the profile url|**My profile** only available when logged in, when logged out and writing profile url, it sends me to log in|Pass|
 |Default personal information|You can add, edit and delete a phone number, a self-rated level, and a profile image|Filled in a phone number, selected a level, selected an image and clicked Update, then I changed them and clicked Update, then I removed them and clicked Update. I logged in and out to see if it was saved|The information is updated accoridng to what it should be, and it is saved to the profile. There is a toast message after updating the profile.|Pass|
 |Save phone number in checkout|If you had selected to save your phone number in the checkout page, it is updated in the profile|Create orders with checkbox cleared and selected, both via normal flow and via webhook, then check the profile|Regardless of how the order is created, when the checkbox is selected, the phone number gets saved in the profile, when it is cleared, it is not saved in the profile|Pass|
-|You can find your booking history and go to old order confirmations|||Pass|
-|You can go back to your profile form the old order confirmations|||Pass|
+|Booking history|You can find your booking history and go to old order confirmations|Create orders and go to profile, click on order number|I go to an old order confirmation with the order details, I get a toast message that this is an old order confirmation|Pass|
+|**Back to profile** button|You can go back to your profile form the old order confirmations|Click the button|I go back to my profile|Pass|
 |Add lessons when logged in as site admin|
-|**Add lesson** page is visible only for site admins|||Pass|
-|When you fill in the required fields and submit the form, the lesson is added to the **All lessons** page|||Pass|
-|Lessons with passed date are not visible on the **All lessons** page|||Pass|
-|When **Places left** is not filled in, it is set to the same as **Capacity**|||Pass|
-|Toast message when **Places left** is set to higher value than **Capacity**|||Pass|
-|Toast message when **Date** is in the past|||Pass|
-|Form validation|||Pass|
+|**Add lesson** page|**Add lesson** page is accessible only for site admins|Logged in as regular user or logged out, I wrote in the url for the **Add lesson** page. Logged in as site admin to compare|I get directed to **Log in**, when logging in as regular user, I get an error message that I am not authorised to do this|Pass|
+|**Add lesson** form|When you fill in the required fields and submit the form, the lesson is added to the **All lessons** page|Filled in the form and submitted it|I get a success message that the lesson is added, I go to **All lessons** and it is there|Pass|
+|Passed date|Lessons with passed date are not visible on the **All lessons** page|I added a lesson with a date in the past|I get a toast message saying the lesson will not be visible but is accessible in admin, it is not on the **All lessons** page|Pass|
+|**Places left** value|When **Places left** is not filled in, it is set to the same as **Capacity**|I added a lessons without filling in **Places left**|**Places left** is set to the same value as **Capacity**|Pass|
+|**Places left** higher than **Capacity**|Toast message when **Places left** is set to higher value than **Capacity**, but the lesson should be visible|I added a lesson and set the **Places left** to a higher value than **Capacity**|I got the toast message saying that **Places left** is higher than **Capacity**, the lesson is on the **All lessons** page|Pass|
+|Form validation|Not possible to submit an invalid form, you get field errors|Click **Add lesson** while filling in the required fields one by one|When you do not fill in name or description, it just scrolls back to those fields, but for the next fields, there is a text saying to fill in the field each time I try to add the lesson.|Pass|
 |Edit lessons when logged in as site admin|
-|**Edit** button is visible on each lesson card only for site admins|||Pass|
-|Toast message when editing and specifically when editing a lesson that has been booked|||Pass|
-|The form is prefilled with the current lesson information|||Pass|
-|Form validation|||Pass|
-|Same messages and unctionality as **Add lesson**|||Pass|
-|Edited lesson is updated on the **All lessons** page|||Pass|
+|**Edit** button|**Edit** button is visible on each lesson card only for site admins|Logged in as site admin, logged in as user and logged out to check lesson cards|Button is only visible when logged in as site admin|Pass|
+|Feedback on edited lesson|Toast message when editing and specifically when editing a lesson that has been booked|Click **Edit** on lesson that has not been booked, and on lesson that has been booked|Both give the feedback that I am edited the specific lesson, and when the lesson has been booked before, I am informaed about this in another toast message.|Pass|
+|**Edit lesson** form|The form is prefilled with the current lesson information|Click **Edit** on a lesson|The **Edit lesson** form has all the current fields filled in automatically|Pass|
+|Form validation|Not possible to submit an invalid form, you get field errors|Emptied the prefilled fields and tried to update the lesson|When you do not fill in name or description, it just scrolls back to those fields, but for the next fields, there is a text saying to fill in the field each time I try to update the lesson.|Pass|
+**Places left** and **Date time**|**Places left** and a passed date behave the same as when you add a lesson|Emptied **PLaces left**, set it to higher than **Capcoty**, set the date in the past before updating|Same toast message and functionality as for **Add lesson**|Pass|
+|Edit lesson functionality|Edited lesson is updated on the **All lessons** page|I edited a lesson|Toast message informs about updated lesson, lesson is updated on the **All lessons** page|Pass|
 |Delete lessons when logged in as site admin|
-|**Delete** button is visible on each lesson card only for site admins|||Pass|
-|**Delete** button opens modal for confirmation|||Pass|
+|**Delete** button|**Delete** button is visible on each lesson card only for site admins|Logged in as site admin, logged in as user and logged out to check lesson cards|Button is only visible when logged in as site admin|Pass|
+|Modal|**Delete** button opens modal for confirmation|Clicked **Delete**|Modal pops up asking for confirmation|Pass|
 |Modal text depends on whether or not a lesson has been booked before|||Pass|
 |When you delete a lesson that has been booked before, it will only be removed from the website. It is still visible in admin, as well as the connected orders lines. When the connected order lines are removed, the lesson can be deleted from the database.|||Pass|
 |A lesson that has not been booked before, will be deleted from the database|||Pass|
