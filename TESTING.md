@@ -199,9 +199,9 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 |**Log out** page|The **Log out** page is only visible when a user is logged in|Logged out and tried to write the logout url|**Log out** is not accessible when logged out, it is when logged in|Pass|
 |Log out functionality|After you click the **Log out** button, you are logged out and there is a toast message|Clicked the button|I am logged out and the toast message appears|Pass|
 |**My profile**|
-|**My profile** page|A logged in user can go to **My profile**|**My profile** available when logged in, not available when logged out|Logged in and the option is there, logged out and tried to write in the profile url, but it send me to log in|Pass|
-|You can add, edit and delete a phone number, a self-rated level, and a profile image|||Pass|
-|If you had selected to save your phone number in the checkout page, it is updated in the profile|||Pass|
+|**My profile** page|**My profile** available when logged in, not available when logged out|Logged in and out and tried to write in the profile url|**My profile** only available when logged in, when logged out and writing profile url, it sends me to log in|Pass|
+|Default personal information|You can add, edit and delete a phone number, a self-rated level, and a profile image|Filled in a phone number, selected a level, selected an image and clicked Update, then I changed them and clicked Update, then I removed them and clicked Update. I logged in and out to see if it was saved|The information is updated accoridng to what it should be, and it is saved to the profile. There is a toast message after updating the profile.|Pass|
+|Save phone number in checkout|If you had selected to save your phone number in the checkout page, it is updated in the profile|||Pass|
 |You can find your booking history and go to old order confirmations|||Pass|
 |You can go back to your profile form the old order confirmations|||Pass|
 |Add lessons when logged in as site admin|

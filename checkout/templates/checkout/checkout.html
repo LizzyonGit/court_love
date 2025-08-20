@@ -47,7 +47,7 @@
                         {% if user.is_authenticated %}
                         <div class="form-check form-check-inline mr-0">
                             <label class="form-check-label" for="id-save-info">Save phone number to my profile</label>
-                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info">
                         </div>
                         {% else %}
                         <div>
@@ -103,7 +103,7 @@
                         <div class="col">
                             <div class="card-body">
 
-                                <h3 class="card-title">{{ item.lesson.date_time }} - {{ item.lesson.duration }} - {{ item.lesson.name }}</h3>
+                                <h3 class="h5 card-title">{{ item.lesson.date_time }} - {{ item.lesson.duration }} - {{ item.lesson.name }}</h3>
                                 <p class="card-text"><small class="text-body-secondary">Place: {{ item.lesson.place }}</small></p>
                                 <p class="card-text">{{ item.quantity }} x $ {{ item.lesson.price | floatformat }}</p>
                                 
