@@ -174,6 +174,7 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 |**Add to cart** button adds lesson to cart|Header text changes according to which of the filter buttons is clicked||Pass|
 |**Add to cart** button gets disabled when lesson is full|Button changes text to **Not bookable** and gets disabled||Pass|
 |Can not add same lesson more than once|When clicking **Add to cart** on already added lesson, you get a message and the lesson is not added to the cart||Pass|
+|**Places_left** decreases after each order|After an order, **Places_left** decreases with 1, until 0|Complete payments to create orders via normal pay flow and via webhook, check updated value for **Places_left**|Pass|
 |**Cart** page|
 |Lessons appear|If you have added lessons, they are here and there is a button to pay, if not, there is a text saying there are no lessons and a link to go back to all lessons||Pass|
 |Lessons that have become fully booked but were in a user's cart are removed|When you go to the cart and there is such a lesson, this is removed and there is toast message to inform the user|I added lessons to the cart and afterwards, I manually changed the **Places left** field to 0 for one lesson, then I went to the cart to check|Pass|
@@ -182,7 +183,7 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 |Not possible to pay for unbookable lessons|If you have passed the cart view and filled in the checkout url, any unbookable lessons that you had in the cart are removed and you are moved back to the **Cart** page with updated cart and feedback message|I added lessons to the cart and afterwards, I manually changed the **Places left** field to 0 for one lesson, then I wrote in the checkout url page, and I got redirected straight back to the cart with the toast message to inform about the removed lesson|Pass|
 |If logged in, you can select to save phone number, if not logged in, you are advised to log in or register to save the information in the form|||Pass|
 |Stripe integration|The test card numbers from Stripe give the expected result||Pass|
-|Webhook order creation|An order is created when payment is received in Stripe, not depending on the checkout success page.||Pass|
+|Webhook order creation|An order is created when payment is received in Stripe, not depending on the checkout success page.|Comment out form submit line in stripe_elements.js, and proceed to complete an order. The website hangs but the order is created.|Pass|
 |**Back to cart** button|You can go back to the **Cart** page||Pass|
 |**Checkout success** page|
 |After payment, the user is referred to the **Checkout success** page|||Pass|
@@ -250,8 +251,7 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 #### Unfixed bugs
 You can not add a lesson to the cart more than once, but if you complete the purchase, you can add the same lesson to the empty cart and pay for it again. I left this like it is, because not a lot of people will force themselves to pay for the same lesson twice by actively adding the lesson to the cart again. If they would, it would be their mistake and they can contact Court Love to cancel it.
 
-There is an unfixed issue which is when something goes wrong when creating an order via a webhook, and the order is deleted after an updated lesson with a new **Places left** value is saved, this would not be reversed. The reason for this is that I can not test this situation at this point, so I would rather not add any code that could break the webhook flow.
+Related to this, also when an order is created via the webhook, the lesson remains in the cart. This means that a user can book it again, even if it is not allowed to book the same lesson more than once. But the user does get the order confirmation email, so it is unlikely someone would try to book it again and pay again.
 
 
-
-
+There is another unfixed issue which is when something goes wrong when creating an order via a webhook, and the order is deleted after an updated lesson with a new **Places left** value is saved, this would not be reversed. The reason for this is that I can not test this situation at this point, so I would rather not add any code that could break the webhook flow.

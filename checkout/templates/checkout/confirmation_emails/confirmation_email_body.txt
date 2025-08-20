@@ -1,8 +1,11 @@
 Hello {{ order.full_name }}!
 
+
 This is a confirmation of your booking at Court Love. 
 
+
 You booked the following lessons:
+
 
 {% for item in order.lineitems.all %}            
 
@@ -11,15 +14,19 @@ Lesson info: {{ item.lesson.date_time }} - {{ item.lesson.duration }} - {{ item.
 {% endfor %}
 
 Order number: {{ order.order_number }}
-Order date: {{ order.date }}
+Order date: {{ order.order_date }}
 Total: ${{ order.grand_total }}
+
 
 Outdoor lessons (on clay) are at Outdoor street 2, 12345 Tennisville.
 Indoor lessons (on hardcourt) are at Indoor street 1 12345 Tennicity.
 
-If you have any questions, feel free to contact us at {{ contact_email }}.
+
+If you have any questions, feel free to contact us at info@courtlove.com.
+
 
 Thank you and see you on court!
+
 
 Sincerely,
 
