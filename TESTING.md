@@ -150,6 +150,7 @@ By accident, when I put a card number starting with 42424242 but but still not t
 #### Info always saved to profile
 Regardless of whether the *Save phone number to my profile* was checked, the phone number in the checkout would always be saved to the profile after completing the order. I found the issue on Slack [here](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1605302104469800?thread_ts=1605222094.452700&cid=C7HS3U3AP) and solved it by changing the code the same way.
 
+
 ### Full testing
 
 
@@ -250,10 +251,13 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 
 
 
-#### Unfixed bugs
+#### Unfixed bugs and issues
 You can not add a lesson to the cart more than once, but if you complete the purchase, you can add the same lesson to the empty cart and pay for it again. I left this like it is, because not a lot of people will force themselves to pay for the same lesson twice by actively adding the lesson to the cart again. If they would, it would be their mistake and they can contact Court Love to cancel it.
 
 Related to this, also when an order is created via the webhook, the lesson remains in the cart. This means that a user can book it again, even if it is not allowed to book the same lesson more than once. But the user does get the order confirmation email, so it is unlikely someone would try to book it again and pay again.
 
 
 There is another unfixed issue which is when something goes wrong when creating an order via a webhook, and the order is deleted after an updated lesson with a new **Places left** value is saved, this would not be reversed. The reason for this is that I can not test this situation at this point, so I would rather not add any code that could break the webhook flow.
+
+#### Button after dismissing the Delete modal
+The red **Delete** button on each lesson card remains in the focused colour after closing down the modal it triggers (when you do not delete the lesson). While this is good for when you use keys to navigate, when you use a mouse or touchscreen, this looks a bit odd. I have found posts about this and possible solutions, but the behaviour is intentional for accessibility reasons (I found the implementation [here](https://github.com/twbs/bootstrap/issues/12364)). Also, since it is only visible for site admins, I am leaving this unfixed.
