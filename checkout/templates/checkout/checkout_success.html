@@ -40,12 +40,12 @@
         <div class="row">
             
             
-            <header>
+            <header class="col-12">
                 <h2>Order details</h2>
                 <!--too large order nr messes up responsiveness-->
                 <p>Order number: <span title="{{ order.order_number }}">{{ order.order_number|truncatechars:6 }}</span>.</p>
             </header>
-            <section class="col mb-2">
+            <section class="col-12 mb-2">
                 
                 
                 <!--iterate through order items-->
