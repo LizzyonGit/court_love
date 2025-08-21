@@ -36,7 +36,7 @@
         <div class="row">
             <div class="col">
             
-            <header>
+            <header class="justify-self-center">
                 <h2>Order details</h2>
                 <!--too large order nr messes up responsiveness-->
                 <p>Order number: <span title="{{ order.order_number }}">{{ order.order_number|truncatechars:6 }}</span>.</p>
@@ -51,7 +51,7 @@
 
                 {% for item in order.lineitems.all %} 
                 <article>           
-                <div class="card mb-3">
+                <div class="card mb-3" style="max-width: 600px;">
                     <div class="row g-0">
                         
                         <div class="col">
