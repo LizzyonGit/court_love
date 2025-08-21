@@ -34,8 +34,9 @@
 <main>
     <div class="container-fluid d-flex justify-content-center">
         <div class="row">
+            <div class="col">
             
-            <header class="col">
+            <header>
                 <h2>Order details</h2>
                 <!--too large order nr messes up responsiveness-->
                 <p>Order number: <span title="{{ order.order_number }}">{{ order.order_number|truncatechars:6 }}</span>.</p>
@@ -43,7 +44,7 @@
             
             
             
-            <section class="col mb-2">
+            <section class="mb-2">
                 
                 
                 <!--iterate through order items-->
@@ -90,7 +91,7 @@
                 
             </section>
             
-
+            </div>
         </div>
     </div>
         
