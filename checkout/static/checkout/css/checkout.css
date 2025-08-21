@@ -2,7 +2,8 @@
 
 .StripeElement,
 .stripe-style-input {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   height: 40px;
   padding: 10px 12px;
   border: 1px solid transparent;
@@ -14,11 +15,28 @@
 .StripeElement--focus,
 .stripe-style-input:focus,
 .stripe-style-input:active {
-  box-shadow: 0 1px 3px 0 #cfd7df;
+  -webkit-box-shadow: 0 1px 3px 0 #cfd7df;
+          box-shadow: 0 1px 3px 0 #cfd7df;
 }
 
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+
+.stripe-style-input::-webkit-input-placeholder {
+    color: #aab7c4;
+}
+
+.stripe-style-input::-moz-placeholder {
+    color: #aab7c4;
+}
+
+.stripe-style-input:-ms-input-placeholder {
+    color: #aab7c4;
+}
+
+.stripe-style-input::-ms-input-placeholder {
+    color: #aab7c4;
 }
 
 .stripe-style-input::placeholder {

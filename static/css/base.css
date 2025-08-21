@@ -163,7 +163,9 @@ footer * {
 /*fix buttons in checkout to be left aligned on all screens sizes larger than 330px*/
 @media screen and (width > 330px  ) {
 .checkout-buttons {
-    justify-content: start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
 
 
 }}
@@ -171,15 +173,21 @@ footer * {
 
 @media screen and (width < 330px  ) {
 .checkout-buttons {
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 
 }}
 
 /*Lesson image adjustment on screens below 768px*/
 @media screen and (width < 768px  ) {
 .lesson-image {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content:  center;
+    -webkit-box-pack:  center;
+        -ms-flex-pack:  center;
+            justify-content:  center;
 }}
 
 /*toast styling for larger screens*/
