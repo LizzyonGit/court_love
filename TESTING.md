@@ -187,7 +187,7 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 |Lessons from cart are in the overview|Cart lessons are listed under **Order summary**, if there are no lessons in your cart, you are direct back to **All lessons** page and get a toast message about this|Go to checkout with lessons in the cart, go to checkout url with no lessons in the cart|When I have lessons in the cart, they are listed in the checkout, when I have no lessons in the cart, and write in the checkout url, I go straight to **All lessons** and get an error message that my cart is empty|Pass|
 |Not possible to pay for unbookable lessons|If you have passed the cart view and filled in the checkout url, any unbookable lessons that you had in the cart are removed and you are moved back to the **Cart** page with updated cart and feedback message|I added lessons to the cart and afterwards, I manually changed the **Places left** field to 0, edited the date and/or deleted a lesson, in different combinations, then I wrote in the checkout url page| I got redirected straight back to the updated cart with the toast message to inform about the removed lessons|Pass|
 |Save info checkbox|If logged in, you can select to save phone number, if not logged in, you are advised to log in or register to save the information in the form|Add lesson to cart and go to checkout while logged in and not logged in|Displays either *Save phone number to my profile* or *Register or log in to save this information*|Pass|
-|Stripe integration|The test card numbers from Stripe give the expected result||Pass|
+|Stripe integration|The test card numbers from Stripe give the expected result|Filled in test card numbers randomly from [Stripe](https://docs.stripe.com/testing) and incorrect year or CVC|I get the correct error messages under the card number field and it passes when it should. Slight issue with longer error messages as the padding could be larger, but text is still readable. Adding padding would result in a white dot when there is no error message, so I decided to keep it like this.|Pass|
 |Webhook order creation|An order is created when payment is received in Stripe, not depending on the checkout success page.|Comment out form submit line in stripe_elements.js, and proceed to complete an order|The website hangs but the order is created|Pass|
 |**Back to cart** button|You can go back to the **Cart** page|Click button|It goes to the cart|Pass|
 |**Checkout success** page|
@@ -224,12 +224,10 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 |Delete lessons when logged in as site admin|
 |**Delete** button|**Delete** button is visible on each lesson card only for site admins|Logged in as site admin, logged in as user and logged out to check lesson cards|Button is only visible when logged in as site admin|Pass|
 |Modal|**Delete** button opens modal for confirmation|Clicked **Delete**|Modal pops up asking for confirmation|Pass|
-|Modal text depends on whether or not a lesson has been booked before|||Pass|
-|When you delete a lesson that has been booked before, it will only be removed from the website. It is still visible in admin, as well as the connected orders lines. When the connected order lines are removed, the lesson can be deleted from the database.|||Pass|
-|A lesson that has not been booked before, will be deleted from the database|||Pass|
-|Toast messages confirm deletion or permanent deletion|||Pass|
-|Toast messages|
-||||Pass|
+|Modal text| Modal text depends on whether or not a lesson has been booked before|Click **Delete** on a lesson not booked, and on a lesson that has been booked before|Modal text informs about the lesson being booked before, and how the lesson will be deleted. For unbooked lessons, it just says it will be deleted permanently.|Pass|
+|**Delete** functionality booked lesson|When you delete a lesson that has been booked before, it will only be removed from the website. It is still visible in admin, as well as the connected orders lines. When the connected order lines are removed, the lesson can be deleted from the database.|Delete lesson that has been booked before and check admin.|Toast message appears on **All lessons** page that lesson has been deleted, lesson is flagged as deleted in admin but still accessible. When you want to delete it there, it informas about which order line items should be deleted before you can delete the lesson permanently.|Pass|
+|**Delete** functionality unbooked lesson|A lesson that has not been booked before, will be deleted from the database|Delete lesson that has not been booked before and check admin|Toast message appears on **All lessons** page about the lesson begin permanently deleted, not visible in admin|Pass|
+
 
 
 
