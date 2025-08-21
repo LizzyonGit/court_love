@@ -207,8 +207,7 @@ See [TESTING.md](TESTING.md).
 - Windows Paint and Windows Photo for adjusting images
 - [TinyPNG](https://tinypng.com/) for compressing image size and converting to .webp
 - [RealFaviconGenerator](https://realfavicongenerator.net/) for creating favicon icons and the HTML code, and checking the favicon
-- DevTools for verifying responsibility and troubleshooting code
-- [Responsinator](http://www.responsinator.com/) for checking responsiveness
+- Chrome DevTools for verifying responsibility and troubleshooting code
 - [Am I Responsive](https://ui.dev/amiresponsive) for an image displaying the website on different screens
 - [Autoprefixer](https://autoprefixer.github.io/) for adding the necessary prefixes to my CSS stylesheet
 
@@ -260,22 +259,23 @@ __During development and testing__
 - Inspiration and code bits from CI walkthrough projects *I think therefore I blog* and *Boutique Ado*.
 - [Bootstrap documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/).
 - [Django documentation](https://docs.djangoproject.com/)
+- [Stripe documentation](https://docs.stripe.com/)
 - Forums for specific questions:
   - [Django forum](https://forum.djangoproject.com/)
   - [Stackoverflow](https://stackoverflow.com/)
   - [Reddit](https://www.reddit.com/)
-  - [GitHub issue](https://github.com/GoogleChrome/lighthouse/issues/16404)
-  - [GitHub django-summernote](https://github.com/lqez/django-summernote/blob/main/README.md)
   - CI Slack community.
 - Informative sources for reading up on concepts:
   - [W3schools](https://www.w3schools.com/)
   - [MDN Web Docs](https://developer.mozilla.org/en-US/)
-  - [JavaScript in Plain English](https://javascript.plainenglish.io/)
-  - [Medium.com](https://medium.com/).
+  - [Medium.com](https://medium.com/)
+  - [LearnDjango](https://learndjango.com/)
+  - [GeeksforGeeks](https://www.geeksforgeeks.org/)
+  - [Information on bare except](https://jerrynsh.com/stop-using-exceptions-like-this-in-python/)
+
 
 __Project finalisation__ 
 - [Grammarly](https://www.grammarly.com/grammar-check) spellchecker.
-- [Diffchecker](https://www.diffchecker.com/text-compare/) for checking Autoprefixer changes.
 
 ### Acknowledgments
 - My mentor Jubril for the feedback.

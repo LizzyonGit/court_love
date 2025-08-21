@@ -9,13 +9,14 @@
 ### HTML validator
 No current errors in the [HTML validator](https://validator.w3.org/). Below I list some of the fixed issues.
 
+
 - Some issue came up about h2 tags on the **All lessons** page. This is because I adjust the heading content depending on which button is clicked, and I did not separate the h2 per category or place, so this resulted in either an empty h2 tag or a trailing h2 tag. So I fixed this with separate h2 blocks and added a class to display them on one line next to each other. So in case there is both a category and a place, there is a correct heading visible, that consists of two h2 blocks next to each other.
 
 - On the **My profile** page, I got an error about a duplicate id attribute, caused by the django widget handling the image upload. [Slack](https://code-institute-room.slack.com/archives/C026VTHQDNY/p1683142277576629) helped me to understand the issue, so I replaced the id "new-image" I set with a class of the same name, and updated the jQuery for this. This worked and the error dissapeared.
 
   Another issue on the same page was that I had set a placeholder for a select element (**level**), I found a similar error on [Slack](https://code-institute-room.slack.com/archives/C026VTHQDNY/p1714631167308539). I decided to remove the code about placeholders (this was copied and adapted from other fields) because it actually only was applicable to the **Phone number** field, which already had a label. So the error also dissapeared.
 
-- 
+
 Results for pages for which you do not have to be logged in or have added lessons:
 [Home page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2F)
 [All lessons page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Flessons%2F)
@@ -23,7 +24,8 @@ Results for pages for which you do not have to be logged in or have added lesson
 [Log in page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Faccounts%2Flogin%2F)
 [Cart page](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Fcart%2F)
 
-Manually I have checked the HTML after adding lessons to the cart, in checkout, the order confirmation, the **My profile** page, and **Log out** page. And logged in as a site admin, I checked **All lessons**, **Add lesson** and **Edit lessons**.
+
+I have checked the HTML via text input for 404.html and, after adding lessons, for the cart, in checkout, and for the order confirmation. While logged in, I checked the **My profile** and **Log out** pages. And logged in as a site admin, I checked **All lessons**, **Add lesson** and **Edit lessons**. All no errors or warnings.
 
 ### CSS validator
 No errors, only mention of variables not being checked and that the border-color and background-color are the same for a checkbox, which is intentional. The Autoprefixer additions also give warnings.
@@ -31,7 +33,7 @@ No errors, only mention of variables not being checked and that the border-color
 ### Python validator
 Before running my code through the [CI Python Linter](https://pep8ci.herokuapp.com/) I fixed the relevant Flake8 issues raised in VS Code about too long lines, bare except usage, unused imports and whitespaces.
 
-I ran the following pages through the validator:
+I ran the following pages through the validator, I have added screenshots of the ignored errors:
 
 #### Cart app
 No errors: contexts.py, views.py, urls.py, apps.py.
@@ -46,9 +48,22 @@ No errors: apps.py, urls.py, views.py
 No errors: admin.py, apps.py, urls.py
 Ignored *line too long* because of url in comment: forms.py, models.py views.py
 
+
+Views.py with errors:
+
+
+Forms.py with error:
+
+
+Models.py not with error:
+
+
 #### Profiles app
 No errors: admin.py, apps.py, forms.py, urls.py, views.py, widgets.py
 Ignored *line too long* because of long url in comment, and indented comment which I think should not be split: models.py
+
+
+Models.py with error:
 
 
 
@@ -166,6 +181,8 @@ Regardless of whether the *Save phone number to my profile* was checked, the pho
 
 ### Full testing
 
+#### Responsiveness
+Checked mainly in Chrome DevTools.
 
 #### Browser testing
 
