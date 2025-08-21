@@ -103,8 +103,8 @@ In [RealFaviconGenerator's favicon checker](https://realfavicongenerator.net/fav
 |get an email after purchase so that I can review my purchase any time and see when I should go to the lesson, without the need to log in.| Order confirmation email sent after payment.|
 |register so that I can log in to the website.|**Register** page.|
 |log in so that I can see my order history and personal details.|**Log in** page.|
-|log out so that I can control whether I want to be logged in or not.|**Log out** page.|
-|see my order history so that I can check what lessons I have booked|**My profile** page with **Booking history** column.|
+|log out so that I can control whether I want to be logged in or not.|**Log out** page and button.|
+|see my order history so that I can check what lessons I have booked|**My profile** page with **Booking history** column, previous orders listed in descending order (newest first).|
 |manage my self-rated level so that I can update it along my tennis lesson journey|**Level** field on the **My profile** page.|
 |manage a profile image so that I can personalise my profile page.|**Select image**  and **Update** buttons on **My profile** to add or update an image, **Remove current profile image after Update** checkbox to remove an image.|
 
@@ -174,6 +174,7 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 |Footer|
 |Footer|Links to social media opening in new tabs|Clicked links in footer|Links open in new tabs|Pass|
 |**All lessons** page|
+|Lesson dates|Lessons are listed in ascending date order, no passed dates|Add lessons with different dates, check **All lessons** page|Ascending order, no passed dates visible|Pass|
 |Lesson filtering|Lessons filter according to the **Private lessons** and **Group lessons** buttons on home page, and the **Group - Indoor**, **Group - Outdoor**, **Private - Indoor** and **Private - Outdoor** buttons on this page|Clicked the buttons|All buttons filter the available lessons according to their name|Pass|
 |Header text adjusts to filter|Header text changes according to which of the filter buttons is clicked|Clicked the buttons|Original header text with *All lessons* and both indoor and outdoor addresses when no button is clicked, *All private lessons* or *All group lessons* and both indoor and outdoor addresses when **Private lessons** or **Group lessons** is clicked, *All group lessons - indoor* and only indoor address when **Group - Indoor** clicked, *All group lessons - outdoor* and only outdoor address when **Group - Outdoor** clicked, *All private lessons - indoor* and only indoor address when **Private - Indoor** clicked, *All private lessons - outdoor* and only outdoor address when **Private - Outdoor** clicked|Pass|
 |**Add to cart** button|Lesson is added to cart when button is clicked, toast message informs about this|Clicked button on several lessons|There is a toast message about added lesson, cart items, and navbar icon with total is updated accordingly|Pass|
@@ -183,6 +184,7 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. A
 |**Cart** page|
 |Lessons appear|If you have added lessons, they are here and there is a button to pay, if not, there is a text saying there are no lessons and a link to go back to all lessons|Go to **Cart** when I have added lessons, and when it is empty|When I have added lessons, the lesson cards are there and the **Pay** button, when I have no lessons, the text says there no lessons and there is a button to go back to **All lessons**|Pass|
 |If a user's cart has lessons that have become fully booked, have been soft deleted, and/or with a passed date, they are removed|When you go to the cart and there are such lessons, they removed and there is toast message to inform the user|I added lessons to the cart and afterwards, I manually changed the **Places left** field to 0, edited the date and/or deleted a lesson, in different combinations|I went to the cart and saw the messages and the applicable lessons were removed|Pass|
+|Remove lesson from cart|User can remove lesson from the cart|Removed a lesson from the cart|Lesson card is removed and toast message confirms it|Pass|
 |**Checkout** page|
 |Lessons from cart are in the overview|Cart lessons are listed under **Order summary**, if there are no lessons in your cart, you are direct back to **All lessons** page and get a toast message about this|Go to checkout with lessons in the cart, go to checkout url with no lessons in the cart|When I have lessons in the cart, they are listed in the checkout, when I have no lessons in the cart, and write in the checkout url, I go straight to **All lessons** and get an error message that my cart is empty|Pass|
 |Not possible to pay for unbookable lessons|If you have passed the cart view and filled in the checkout url, any unbookable lessons that you had in the cart are removed and you are moved back to the **Cart** page with updated cart and feedback message|I added lessons to the cart and afterwards, I manually changed the **Places left** field to 0, edited the date and/or deleted a lesson, in different combinations, then I wrote in the checkout url page| I got redirected straight back to the updated cart with the toast message to inform about the removed lessons|Pass|
