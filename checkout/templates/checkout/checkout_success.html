@@ -16,7 +16,11 @@
         <div class="container-fluid d-flex justify-content-center">
         
             <div class="row">
-                <div class="col"><h1>Payment successful</h1></div>
+                <div class="col">
+                    <h1>Payment successful</h1>
+                    <p>Thank you for your order.</p>
+                    <p>A confirmation will be sent to {{ order.email }}.</p>
+                </div>
             </div>
         </div>
         
@@ -31,15 +35,10 @@
     <div class="container-fluid d-flex justify-content-center">
         <div class="row">
             
-            <header class="col-md-7 mb-2">
-                
-                <h2>Thank you for your order.</h2>
-                <p>A confirmation will be sent to {{ order.email }}.</p>
-                
-            </header>
             
             
-            <section class="col-md-5 mb-2">
+            
+            <section class="col mb-2">
                 
                 <h2>Order details</h2>
                 <!--too large order nr messes up responsiveness-->

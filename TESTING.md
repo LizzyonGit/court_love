@@ -16,10 +16,17 @@ No current errors in the [HTML validator](https://validator.w3.org/). Below I li
   Another issue on the same page was that I had set a placeholder for a select element (**level**), I found a similar error on [Slack](https://code-institute-room.slack.com/archives/C026VTHQDNY/p1714631167308539). I decided to remove the code about placeholders (this was copied and adapted from other fields) because it actually only was applicable to the **Phone number** field, which already had a label. So the error also dissapeared.
 
 - 
+Results for pages for which you do not have to be logged in or have added lessons:
+[Home page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2F)
+[All lessons page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Flessons%2F)
+[Register page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Faccounts%2Fsignup%2F)
+[Log in page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Faccounts%2Flogin%2F)
+[Cart page](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Fcart%2F)
 
+Manually I have checked the HTML after adding lessons to the cart, in checkout, the order confirmation, the **My profile** page, and **Log out** page. And logged in as a site admin, I checked **All lessons**, **Add lesson** and **Edit lessons**.
 
 ### CSS validator
-No errors, only mention of variables not being checked and that the border-color and background-color are the same for a checkbox, which is intentional.
+No errors, only mention of variables not being checked and that the border-color and background-color are the same for a checkbox, which is intentional. The Autoprefixer additions also give warnings.
 
 ### Python validator
 Before running my code through the [CI Python Linter](https://pep8ci.herokuapp.com/) I fixed the relevant Flake8 issues raised in VS Code about too long lines, bare except usage, unused imports and whitespaces.
@@ -48,6 +55,9 @@ Ignored *line too long* because of long url in comment, and indented comment whi
 ### Javascript validator
 Checking the JavaScript and jQuery in [JSHint](https://jshint.com/), I get some undefined variables for *Stripe* and *bootstrap*, which can be ignored as they are coming from the Stripe and Bootstrap scripts.
 
+This is the result for all JavaScript scripts attached to templates together:
+This is the result for the stripe_elements.js file:
+
 ### Lighthouse testing
 I had some contrast issues with my main background colour and white and yellow text. I chose to change my blue from #047cc5 to a darker shade #0366A4, and any black text I had I changed to white. 
 For my red **Delete** buttons, the contrast was also not good, so I changed from #ea592c to a lighter shade of red #F56B41. 
@@ -67,7 +77,10 @@ I get an accessibility warning *[aria-hidden="true"] elements contain focusable 
 
 
 
-For some pages I get an issue about the footer's heading not being in descending order. This is because the footer is written in the base template, so it can not consider the heading on each page. Also, not all pages have an h2 heading, but some have, so my footer is set to ahve h3 headings. I kept this like it is.
+For some pages I get an issue about the footer's heading not being in descending order. This is because the footer is written in the base template, so it can not consider the heading on each page. Also, not all pages have an h2 heading, but some have, so my footer is set to have h3 headings. I kept this like it is.
+
+Below are the final results in the incognito mode.
+
 
 ### Favicon testing
 In [RealFaviconGenerator's favicon checker](https://realfavicongenerator.net/favicon-checker) my favicon gets no warnings. The only issue is a missing touch web app title, but then the website's title will be used so it is no problem.
