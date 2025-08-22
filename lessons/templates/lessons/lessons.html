@@ -59,12 +59,12 @@
                 {% endfor %}
                 {% if not current_categories %}<h2>All lessons</h2>{% endif %}
                 {% if not current_places %}
-                    <p>Indoor lessons are at Indoor street 1 12345 Tennicity (hard).</p>
+                    <p>Indoor lessons are at Indoor street 1, 12345 Tennicity (hard).</p>
                     <p>Outdoor lessons are at Outdoor street 2, 12345 Tennisville (clay).</p>
                 {% else %}
                     {% for p in current_places %}
                         {% if p.place == 'indoor' %}
-                            <p>Indoor lessons are at Indoor street 1 12345 Tennicity (hard).</p>
+                            <p>Indoor lessons are at Indoor street 1, 12345 Tennicity (hard).</p>
                         {% elif p.place == 'outdoor' %}
                             <p>Outdoor lessons are at Outdoor street 2, 12345 Tennisville (clay).</p>
                         {% endif %}
