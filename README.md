@@ -169,7 +169,7 @@ All content is written by me.
 
     ![Private indoor](docs/features/private-indoor.png)
 
-    
+
     Project file: lessons/templates/lessons/lessons.html
 
 - __Cart__
@@ -272,7 +272,7 @@ All content is written by me.
 
     Booking history: 
     
-    ![Booking history](docs/features/profile-hostory.png)
+    ![Booking history](docs/features/profile-history.png)
 
     
     Project file: profiles/templates/profiles/profile.html

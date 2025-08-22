@@ -18,11 +18,11 @@ No current errors in the [HTML validator](https://validator.w3.org/). Below I li
 
 
 Results for pages for which you do not have to be logged in or have added lessons:
-[Home page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2F)
-[All lessons page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Flessons%2F)
-[Register page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Faccounts%2Fsignup%2F)
-[Log in page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Faccounts%2Flogin%2F)
-[Cart page](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Fcart%2F)
+- [Home page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2F)
+- [All lessons page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Flessons%2F)
+- [Register page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Faccounts%2Fsignup%2F)
+- [Log in page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Faccounts%2Flogin%2F)
+- [Cart page](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fcourt-love-8302d0b2e53d.herokuapp.com%2Fcart%2F)
 
 
 I have checked the HTML via text input for 404.html and, after adding lessons, for the cart, in checkout, and for the order confirmation. While logged in, I checked the **My profile** and **Log out** pages. And logged in as a site admin, I checked **All lessons**, **Add lesson** and **Edit lessons**. All no errors or warnings.
@@ -30,15 +30,18 @@ I have checked the HTML via text input for 404.html and, after adding lessons, f
 ### CSS validator
 No errors, only mention of variables not being checked and that the border-color and background-color are the same for a checkbox, which is intentional. The Autoprefixer additions also give warnings.
 
-Result base.css: 
+Result base.css:
+
 ![Base-css](docs/testing/css-base.png)
 
 
-Result checkout.css: 
+Result checkout.css:
+
 ![Checkout-css](docs/testing/css-checkout.png)
 
 
-Result profiles.css: 
+Result profiles.css:
+ 
 ![Profile-css](docs/testing/css-profile.png)
 
 
