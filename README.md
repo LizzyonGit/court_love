@@ -119,7 +119,11 @@ All content is written by me.
     - Again the adresses for indoor and outdoor, as I did not want to have that in the lesson cards, and maybe users don't read the footer. Both addresses show when you click **All lessons**, only one shows when one of the buttons for outdoor or indoor were clicked.
     - A list of lesson cards, stacked on small screens and up to three columns on large screens.
     __Lesson card__
-    - Image, if selected by site admin. Images can have different sizes but it is advised to use vertical images.
+    - Image, if selected by site admin. Images can have different sizes but it is advised to use vertical images. An image is not required as it does not add much value to the content, it just looks nicer. Therefore, there is a minimal selection of images that can be added to a card, and they can be the same for several cards. Like the real life website Matchi.com, coaches can have their image, or it can just an image of someone on a court. For now, there are the following images:
+      - An image of Marina, Bernardo and Abel, the coaches
+      - An image of people serving, for lessons that focus on serving
+      - An image of someone hitting a colley, for lessons that focus on an attacking play style
+      - An image with tennis balls, that can be used for any kind of lesson
     - Date and time, duration, name as heading
     - Description: descriptions can differ in length and cause some distortions between 576 and 768 px screen width when the lesson cards are displayed in rows of two with the image in the top part. The cards are set to be the same height so the card footers are always aligned, but larger descriptions can make images smaller. It is therefore advised to use roughly the same description length. On screens smaller than 576 px the cards are stacked in one column so this is not an issue, and on screens larger that 767 px, the image is places to the left of the card, so it is not an issue.
     - Place: outdoor or indoor
@@ -179,29 +183,130 @@ All content is written by me.
 
 - __My profile__
     - Default personal information
-    - Profile image
+      - Link to [NTRP](https://activenetwork.my.salesforce-sites.com/usta/articles/en_US/Article/League-NTRP-Rating-Information) to assess your own level
+      - **Phone number** field where you fil in a phonenumber
+      - **Level** select field where you can select a level (1.5-7) according to the NTRP
+      - If the user has added an image:
+        - Text *Current profile image:* 
+        - The current image that the user has added 
+        - Checkbox **Remove current profile image after Update**, when you select this and click **Update** the image will be deleted from the profile
+        - Text *Select an image and click Update below*
+      - If the user has not added an image:
+        - Text *You have not added a profile image*
+
+      - **Select image** button
+      - If an image is selected, a text appears *Click Update to set image to: (name of file)*. There is no preview of the image that is selected.
+      - **Update button** to update the default personal information.
+
+      - Note that you can not select to remove the current image and select a new image and click **Update**, there will be an error toast message. You either remove the current image and click **Update**, or you just select a new image and click **Update** to override the current one.
+    
 
     - Booking history
+      - If applicable, a list of previous orders with the order date and order number, linking to the original order confirmation.
+      - If no previous orders, a text *You have no previous bookings*.
+  
+    Stacked on small screens, up to two columns on large screens.
 
-    Project file: prodiles/templates/profiles/profile.html
+    Profile with no image:
+    Profile with image:
+
+    Booking history: 
+
+    Project file: profiles/templates/profiles/profile.html
+
+
 
 
 - __Register__
+  - Link to **Log in** page for those who already have an account
+  - **E-mail** field
+  - **E-mail (again)** field
+  - **Username** field
+  - **Password** field
+  - **Password (again)** field
+  - **Register** button
+
+  Image:
+
+  Project file: templates/allauth/account/signup.html
+
+ 
+
 - __Log in__
+  - Link to **Register** page for users who do not have an account yet
+  - **Login** field where you can put your email address or username
+  - **Password** field
+  - **Remember Me** checkbox
+  - **Forgot password?** link
+  - **Log in** button
+
+  Image:
+
+  Project file: templates/allauth/account/login.html
+
 - __Log out__
+  - Intro text and **Log out** button to confirm 
+
+  Image:
+
+  Project file: templates/allauth/account/logout.html
 
 - __Feedback messages__
+  - Toast messages appear after the following actions:
+    - Log in
+
 
 - __The 404 page__
+
+  - Text *No match*, *Noting found here*
+  - Button **Home** to go to the homepage.
+
+    Image:
+
+    Project file: templates/404.html
+
 
 
 #### Site admin only
 - __Add lesson__
-    - 
+    - Form with the following fields:
+      - **Category**: select **Group lesson** or **Private lesson** (can be added to in admin, but this would hinder the website's category buttons)
+      - **Name**: write in the lesson name
+      - **Description**: write in the description
+      - **Price**: write in a price
+      - **Date time**: select a date and time from the date and time picker
+      - **Duration**: select a duration (durations can be added in admin)
+      - **Capacity**: select total nr of people that can join (capacity values can be added in admin)
+      - **Places left**: not required, write in a nr or leave blank to be set to same as **Capacity** after form submit
+      - **Level interval**: select a level interval (level intervals can be added in admin)
+      - **Place**: select **outdoor** or **indoor** (can be added to in admin, but this would hinder the website's category buttons)
+      - **Image**: not required, select one of the options. Each option is connected to a specific image in the static/images folder. Not adjustable in admin.
+    - **Cancel** button to reset the form
+    - **Add lesson** button to add the lesson
+
+
+
+    Project file: lessons/templates/lessons/add_lesson.html
+
 
 - __Edit lesson__
+  - Form with the same fields and functionality as **Add lesson**
+  - **Cancel** button to cancel changes and go back to the **All lessons** page
+  - **Update lesson** button to update the lesson and go back to the **All lessons** page
+
+    Project file: lessons/templates/lessons/add_lesson.html
 
 - __Delete lesson__
+  - Modal that opens up when you click **Delete** on a lesson card on the **All lessons** page.
+  - The text depends on whether or not the lesson has been booked before. This is useful for the admin to know if a user needs to be contacted about this and refunded, or if nothing needs to be done. 
+
+  - You can click the cross, **Do not delete** or outside the modal to close the modal.
+  - When you click **Delete lesson**, you delete the lesson.
+  - When a lesson has been booked before, you can not delete it like this, you can only remove it form the frontend. Any order lines need to be deleted in admin before you can delete the lesson from the database. When a lesson has not been booked before, it can be deleted from the database when you click **Delete lesson** in the modal.
+
+  Delete modal for lesson not booked before:
+  Delete modal for lesson booked before:
+
 
 ### Features left to implement
 
