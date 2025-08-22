@@ -30,6 +30,15 @@ I have checked the HTML via text input for 404.html and, after adding lessons, f
 ### CSS validator
 No errors, only mention of variables not being checked and that the border-color and background-color are the same for a checkbox, which is intentional. The Autoprefixer additions also give warnings.
 
+Result base.css: ![Base-css](docs/testing/css-base.png)
+
+
+Result checkout.css: ![Checkout-css](docs/testing/css-checkout.png)
+
+
+Result profiles.css: ![Profile-css](docs/testing/css-profile.png)
+
+
 ### Python validator
 Before running my code through the [CI Python Linter](https://pep8ci.herokuapp.com/) I fixed the relevant Flake8 issues raised in VS Code about too long lines, bare except usage, unused imports and whitespaces.
 
@@ -49,13 +58,13 @@ No errors: admin.py, apps.py, urls.py
 Ignored *line too long* because of url in comment: forms.py, models.py views.py
 
 
-Views.py with errors:
+Views.py with errors: ![views.py](docs/testing/python-lessons-views.png)
 
 
-Forms.py with error:
+Forms.py with error: ![forms.py](docs/testing/python-lessons-forms.png)
 
 
-Models.py not with error:
+Models.py not with error: ![models.py](docs/testing/python-lessons-models.png)
 
 
 #### Profiles app
@@ -63,15 +72,19 @@ No errors: admin.py, apps.py, forms.py, urls.py, views.py, widgets.py
 Ignored *line too long* because of long url in comment, and indented comment which I think should not be split: models.py
 
 
-Models.py with error:
+Models.py with error: ![models.py](docs/testing/python-profile.png)
 
 
 
 ### Javascript validator
 Checking the JavaScript and jQuery in [JSHint](https://jshint.com/), I get some undefined variables for *Stripe* and *bootstrap*, which can be ignored as they are coming from the Stripe and Bootstrap scripts.
 
-This is the result for all JavaScript scripts attached to templates together:
-This is the result for the stripe_elements.js file:
+
+This is the result for all JavaScript scripts attached to templates together: ![All](docs/testing/js-all.png)
+
+
+This is the result for the stripe_elements.js file: ![Stripe elements](docs/testing/js-stripe.png)
+
 
 ### Lighthouse testing
 I had some contrast issues with my main background colour and white and yellow text. I chose to change my blue from #047cc5 to a darker shade #0366A4, and any black text I had I changed to white. 
@@ -186,7 +199,7 @@ Regardless of whether the *Save phone number to my profile* was checked, the pho
 ### Full testing
 
 #### Responsiveness
-Checked mainly in Chrome DevTools.
+Checked mainly in Chrome DevTools. I found an issue that the website was moving due to some element being wider than the body. It took some time to find the issue, eventually it turned out the footer's padding caused the elements inside to be larger, so I moved the padding to the divs inside it. [This post](https://stackoverflow.com/questions/44667161/page-moving-left-and-right-while-in-mobile-browser) helped me solve it.
 
 #### Browser testing
 
