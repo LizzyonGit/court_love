@@ -97,11 +97,22 @@ All content is written by me.
 
     - The navbar holds the logo, menu links depending on the login state of the user, the cart icon (tennis rackquet) and current cost for all lessons in the cart. The logo is in the upper left corner in the expanded navbar, in the compressed navbar it is in the center.
 
+
+    Navbar logged in user:
+
     ![Navbar logged in user](docs/features/navbar-loggedin.png)
+
+    
+    Navbar logged out user:
+
     ![Navbar logged out user](docs/features/navbar-loggedout.png)
+
+    
+    Compressed navbar:
 
     ![Navbar compressed](docs/features/navbar-compressed.png)
 
+    
     Project file: templates/base.html
 
 - __Home page__
@@ -111,7 +122,9 @@ All content is written by me.
     - **How does it work** and **Register** sections and single image.
     - Stacked on small screens, up to two columns on larger screens.
 
+
     ![Home page](docs/features/homepage.png)
+
 
     Project file: home/templates/home/index.html
 
@@ -120,7 +133,9 @@ All content is written by me.
     - **Places we teach at** with outdoor and indoor adresses.
     - Stacked on small screens, up to two columns on larger screens.
 
+
     ![Footer](docs/features/footer.png)
+
 
     Project file: templates/base.html
 
@@ -145,6 +160,16 @@ All content is written by me.
     - **Add to cart** button, or when there are no places left, **Not bookable** disabled button.
     - For site admin only: **Edit** and **Delete** buttons. Intentionally this section is not styled like the rest of the card, to highlight it is part of the admin.
 
+    All lessons:
+
+    ![All lessons](docs/features/all-lessons.png)
+
+
+    Private - indoor filtered:
+
+    ![Private indoor](docs/features/private-indoor.png)
+
+    
     Project file: lessons/templates/lessons/lessons.html
 
 - __Cart__
@@ -155,6 +180,10 @@ All content is written by me.
   - Button **Pay** to go to checkout
   - If no lessons are in the cart, button to go to **All lessons**
     
+
+    ![Cart](docs/features/cart.png)
+
+
     Project file: cart/templates/cart/cart.html
 
 
@@ -171,6 +200,10 @@ All content is written by me.
       - Grand total
     - Stacked on small screens, up to two columns on larger screens.
     
+
+    ![Checkout](docs/features/checkout.png)
+
+
     Project file: checkout/templates/checkout/checkout.html
 
 
@@ -183,11 +216,19 @@ All content is written by me.
       - The grand total
       - If the user had come from the profile, there is a **Back to profile** button.
       
+
+      ![Payment successful](docs/features/checkout-success.png)
+
+
       Project file: checkout/templates/checkout/checkout_success.html
 
     - Order confirmation email
       - After a successful payment, the user will receive the order confirmation email.
       
+
+      ![Confirmation email](docs/features/confirmation-email.png)
+
+
       Project files: checkout/templates/checkout/confirmation_emails/confirmation_email_body.txt and confirmation_email_subject.txt
 
 
@@ -218,11 +259,22 @@ All content is written by me.
   
     Stacked on small screens, up to two columns on large screens.
 
-    Profile with no image: ![No image](docs/features/profile-noimage.png)
-    Profile with image: ![Image](docs/features/profile-image.png)
 
-    Booking history: ![Booking history](docs/features/profile-hostory.png)
+    Profile with no image: 
+    
+    ![No image](docs/features/profile-noimage.png)
 
+
+    Profile with image: 
+    
+    ![Image](docs/features/profile-image.png)
+
+
+    Booking history: 
+    
+    ![Booking history](docs/features/profile-hostory.png)
+
+    
     Project file: profiles/templates/profiles/profile.html
 
 
@@ -237,8 +289,10 @@ All content is written by me.
   - **Password (again)** field
   - **Register** button
 
-  Image: ![Register](docs/features/register.png)
+  
+  ![Register](docs/features/register.png)
 
+  
   Project file: templates/allauth/account/signup.html
 
  
@@ -251,15 +305,19 @@ All content is written by me.
   - **Forgot password?** link
   - **Log in** button
 
-  Image: ![Log in](docs/features/login.png)
+  
+  ![Log in](docs/features/login.png)
+
 
   Project file: templates/allauth/account/login.html
 
 - __Log out__
   - Intro text and **Log out** button to confirm 
 
-  Image: ![Log out](docs/features/logout.png)
+  
+  ![Log out](docs/features/logout.png)
 
+  
   Project file: templates/allauth/account/logout.html
 
 - __Feedback messages__
@@ -272,7 +330,9 @@ All content is written by me.
   - Text *No match*, *Noting found here*
   - Button **Home** to go to the homepage.
 
-    Image: ![404](docs/features/404.png)
+    
+    ![404](docs/features/404.png)
+
 
     Project file: templates/404.html
 
@@ -296,6 +356,8 @@ All content is written by me.
     - **Add lesson** button to add the lesson
 
 
+    ![Add lesson form](docs/features/add-lesson.png)
+
 
     Project file: lessons/templates/lessons/add_lesson.html
 
@@ -305,7 +367,11 @@ All content is written by me.
   - **Cancel** button to cancel changes and go back to the **All lessons** page
   - **Update lesson** button to update the lesson and go back to the **All lessons** page
 
-    Project file: lessons/templates/lessons/add_lesson.html
+  
+  ![Edit lesson form](docs/features/edit-lesson.png)
+
+
+  Project file: lessons/templates/lessons/add_lesson.html
 
 - __Delete lesson__
   - Modal that opens up when you click **Delete** on a lesson card on the **All lessons** page.
@@ -315,8 +381,15 @@ All content is written by me.
   - When you click **Delete lesson**, you delete the lesson.
   - When a lesson has been booked before, you can not delete it like this, you can only remove it form the frontend. Any order lines need to be deleted in admin before you can delete the lesson from the database. When a lesson has not been booked before, it can be deleted from the database when you click **Delete lesson** in the modal.
 
-  Delete modal for lesson not booked before: ![Unbooked delete](docs/features/delete-unbooked.png)
-  Delete modal for lesson booked before: ![Booked delete](docs/features/delete-booked.png)
+
+  Delete modal for lesson not booked before: 
+
+  ![Unbooked delete](docs/features/delete-unbooked.png)
+
+
+  Delete modal for lesson booked before: 
+
+  ![Booked delete](docs/features/delete-booked.png)
 
 
 ### Features left to implement

@@ -30,13 +30,16 @@ I have checked the HTML via text input for 404.html and, after adding lessons, f
 ### CSS validator
 No errors, only mention of variables not being checked and that the border-color and background-color are the same for a checkbox, which is intentional. The Autoprefixer additions also give warnings.
 
-Result base.css: ![Base-css](docs/testing/css-base.png)
+Result base.css: 
+![Base-css](docs/testing/css-base.png)
 
 
-Result checkout.css: ![Checkout-css](docs/testing/css-checkout.png)
+Result checkout.css: 
+![Checkout-css](docs/testing/css-checkout.png)
 
 
-Result profiles.css: ![Profile-css](docs/testing/css-profile.png)
+Result profiles.css: 
+![Profile-css](docs/testing/css-profile.png)
 
 
 ### Python validator
@@ -69,10 +72,11 @@ Models.py not with error: ![models.py](docs/testing/python-lessons-models.png)
 
 #### Profiles app
 No errors: admin.py, apps.py, forms.py, urls.py, views.py, widgets.py
+
 Ignored *line too long* because of long url in comment, and indented comment which I think should not be split: models.py
 
 
-Models.py with error: ![models.py](docs/testing/python-profile.png)
+Models.py with errors: ![models.py](docs/testing/python-profile.png)
 
 
 
@@ -205,7 +209,7 @@ Checked mainly in Chrome DevTools. I found an issue that the website was moving 
 
 #### Device testing
 
-Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. All works well.
+Tested extensively on a Dell laptop, and on a Lenovo laptop, iPhone 11 Pro, and Huawei phone. All works well.
 
 #### Feature testing
 |Feature|Expected outcome|Testing performed|Result|Pass/Fail|
