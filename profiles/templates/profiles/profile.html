@@ -98,6 +98,14 @@
         $('.new-image').change(function() {
             let file = $('.new-image')[0].files[0];
             $('#filename').text(`Click Update to set image to: ${file.name}`);
+            $('.custom-control.custom-checkbox').toggle();
+        });
+    </script>
+    <script>
+        $('.form-check-input-remove').change(function() {
+            $('#select-image-p').toggle();
+            $('#select-image-span').toggle();
+
         });
     </script>
 {% endblock %}

@@ -198,11 +198,11 @@ All content is written by me.
       - If an image is selected, a text appears *Click Update to set image to: (name of file)*. There is no preview of the image that is selected.
       - **Update button** to update the default personal information.
 
-      - Note that you can not select to remove the current image and select a new image and click **Update**, there will be an error toast message. You either remove the current image and click **Update**, or you just select a new image and click **Update** to override the current one.
+      - Note that you can not add a new image and remove the old image at the same time. When you select to remove the current image, the **Select image** button and text *Select an image and click Update below* becomes hidden. When you first select a new image, the checkbox **Remove current profile image after Update** becomes hidden.
     
 
     - Booking history
-      - If applicable, a list of previous orders with the order date and order number, linking to the original order confirmation.
+      - If applicable, a list of previous orders with the order date and order number, linking to the original order confirmation. The order number is shortened because it hinders responsiveness on small screens, when you hover over it, it shows the whole number.
       - If no previous orders, a text *You have no previous bookings*.
   
     Stacked on small screens, up to two columns on large screens.

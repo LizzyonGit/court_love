@@ -7,9 +7,9 @@
         <input class="form-check-input-remove" type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
         <label class="text-danger" for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
     </div>
-    {% endif %}<br><p>{{ widget.initial_text }}</p>
+    {% endif %}<br><p id="select-image-p">{{ widget.initial_text }}</p>
 {% endif %}
-<span class="btn book-button btn-file mb-1">
+<span id="select-image-span" class="btn book-button btn-file mb-1">
 Select image <input class="new-image" type="{{ widget.type }}" name="{{ widget.name }}" {% include "django/forms/widgets/attrs.html" %}>
 </span><p id="filename"></p>
 
