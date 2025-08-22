@@ -88,7 +88,7 @@ All content is written by me.
 
 - __Navbar__
 
-    - The navbar holds the logo, menu links depending on the login state of the user, the cart icon (tennis rackquet) and current cost for all lessons in the cart. 
+    - The navbar holds the logo, menu links depending on the login state of the user, the cart icon (tennis rackquet) and current cost for all lessons in the cart. The logo is in the upper left corner in the expanded navbar, in the compressed navbar it is in the center.
 
     ![Navbar logged in user]()
     ![Navbar logged out user]()
@@ -102,10 +102,16 @@ All content is written by me.
     - Buttons **Private lessons** and **Group lesson** to go to all private or group lessons.
     - **About Court Love** section with image carousel.
     - **How does it work** and **Register** sections and single image.
+    - Stacked on small screens, up to two columns on larger screens.
+
+    Project file: home/templates/home/index.html
 
 - __Footer__
     - **Contact** section with cancellation info, phone and email, social media links.
     - **Places we teach at** with outdoor and indoor adresses.
+    - Stacked on small screens, up to two columns on larger screens.
+
+    Project file: templates/base.html
 
 - __All lessons page__
     - Buttons **Group - indoor**, **Group - outdoor**, **Private - indoor** and **Private - outdoor** to filter the list of lessons.
@@ -122,13 +128,28 @@ All content is written by me.
     - Places left: how many places are left to book
     - Price
     - **Add to cart** button, or when there are no places left, **Not bookable** disabled button.
-    - For site admin only: **Edit** and **Delete** buttons.
+    - For site admin only: **Edit** and **Delete** buttons. Intentionally this section is not styled like the rest of the card, to highlight it is part of the admin.
 
 - __Cart__
+  - Overview of lesson cards showing only the date, time, duration, name, category, place, and price
+  - Always stacked in one column
+  - **Remove** button to remove the lesson form the cart
+  - Grand total
+  - Button **Pay** to go to checkout
+  - If no lessons are in the cart, button to go to **All lessons**
 
 - __Checkout__
     - Details & payment
+      - **Personal details** form
+      - Option to save phone number if logged in, otherwise links to **Register** and **Log in** pages
+      - **Payment details** with field to fill in card number and error message field (hidden if no error)
+      - Buttons **Back to cart** and **Complete payment**
+      - Note on how much will be charged
     - Order summary (number of lessons)
+      - Lesson cards from the **Cart** page
+      - Grand total
+    - Stacked on small screens, up to two columns on larger screens.
+
 
 - __Order confirmation__
     - Page
