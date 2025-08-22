@@ -48,7 +48,7 @@ form.addEventListener('submit', function(ev) {
     let submitButton = document.querySelector('#payment-button');
     submitButton.disabled = true;
 
-    let saveInfo = Boolean($('#id-save-info').is(':checked'));
+    let saveInfo = Boolean($('#id-save-info').is('checked'));
     // From using {% csrf_token %} in the form
     let csrfToken = form.querySelector('input[name="csrfmiddlewaretoken"]').value;
     let postData = {

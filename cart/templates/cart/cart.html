@@ -40,8 +40,8 @@
                                         <div class="card-body">
 
                                             <h2 class="h5 card-title">{{ item.lesson.date_time }} - {{ item.lesson.duration }} - {{ item.lesson.name }}</h2>
-                                            <p class="card-text"><small class="text-body-secondary">Place: {{ item.lesson.place }}</small></p>
-                                            
+                                            <p class="card-text"><small class="text-body-secondary">Details: {{ item.lesson.category }}, {{ item.lesson.place }}</small></p>
+
                                             <p class="card-text">{{ item.quantity }} x $ {{ item.lesson.price | floatformat }}</p>
                                             <form action="{% url 'remove_from_cart' item.lesson.id %}" method="POST">
                                                 {% csrf_token %}
