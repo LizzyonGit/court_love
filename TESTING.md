@@ -41,7 +41,7 @@ Result checkout.css:
 
 
 Result profiles.css:
- 
+
 ![Profile-css](docs/testing/css-profile.png)
 
 
@@ -198,6 +198,10 @@ I noticed that if I select to remove a current image, and then select a new imag
 
 #### Card error width
 By accident, when I put a card number starting with 42424242 but but still not the correct test number from Stripe, I got a long error on the **Checkout** page which changed the whole form. So I set media queries on all fields there to keep the original widths, so now nothing changes when this large error comes up.
+
+
+![Card error](docs/testing/card-error.png)
+
 
 #### Info always saved to profile
 Regardless of whether the *Save phone number to my profile* was checked, the phone number in the checkout would always be saved to the profile after completing the order. I found the issue on Slack [here](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1605302104469800?thread_ts=1605222094.452700&cid=C7HS3U3AP) and solved it by changing the code the same way.

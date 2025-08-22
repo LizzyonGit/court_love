@@ -322,7 +322,33 @@ All content is written by me.
 
 - __Feedback messages__
   - Toast messages appear after the following actions:
-    - Log in
+    - Register/Log in/Log out
+    - Add lesson to cart (with button to go to the cart)
+    - Try to add same lesson to cart
+    - Remove lesson from cart
+    - Successful payment
+    - Profile update
+
+
+    - Delete lesson
+    - Update lesson
+    - Add lesson
+    - Set **Places left** to higher value than **Capacity** on lesson
+    - Set date to passed date on lesson
+
+  - Errors like:
+    - Lessons that are not available anymore are in the cart
+    - Invalid forms
+    - You write in a url that you are not authorised to access
+    - Something went wrong with a payment
+
+  The messages adapt their width to the content, but there is a max-width set. Here is an example of a message whn you add a lesson to your cart:
+
+
+  ![toast](docs/features/toast-cart.png)
+
+
+
 
 
 - __The 404 page__
