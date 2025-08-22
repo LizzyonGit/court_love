@@ -114,14 +114,14 @@ All content is written by me.
     Project file: templates/base.html
 
 - __All lessons page__
-    - Buttons **Group - indoor**, **Group - outdoor**, **Private - indoor** and **Private - outdoor** to filter the list of lessons.
+    - Buttons **Group - indoor**, **Group - outdoor**, **Private - indoor** and **Private - outdoor** to filter the list of lessons. Two rows with two buttons on small screens, one row with four buttons on large screens.
     - Adjusted title **All lessons** or based on which button was clicked: **All group lessons - indoor**, **All group lessons - outdoor**, **All private lessons - indoor**, or **All private lessons - outdoor**.
     - Again the adresses for indoor and outdoor, as I did not want to have that in the lesson cards, and maybe users don't read the footer. Both addresses show when you click **All lessons**, only one shows when one of the buttons for outdoor or indoor were clicked.
-    - A list of lesson cards.
+    - A list of lesson cards, stacked on small screens and up to three columns on large screens.
     __Lesson card__
-    - Image, if selected by site admin.
+    - Image, if selected by site admin. Images can have different sizes but it is advised to use vertical images.
     - Date and time, duration, name as heading
-    - Description
+    - Description: descriptions can differ in length and cause some distortions between 576 and 768 px screen width when the lesson cards are displayed in rows of two with the image in the top part. The cards are set to be the same height so the card footers are always aligned, but larger descriptions can make images smaller. It is therefore advised to use roughly the same description length. On screens smaller than 576 px the cards are stacked in one column so this is not an issue, and on screens larger that 767 px, the image is places to the left of the card, so it is not an issue.
     - Place: outdoor or indoor
     - Level
     - Capacity: how many people can join
@@ -130,6 +130,8 @@ All content is written by me.
     - **Add to cart** button, or when there are no places left, **Not bookable** disabled button.
     - For site admin only: **Edit** and **Delete** buttons. Intentionally this section is not styled like the rest of the card, to highlight it is part of the admin.
 
+    Project file: lessons/templates/lessons/lessons.html
+
 - __Cart__
   - Overview of lesson cards showing only the date, time, duration, name, category, place, and price
   - Always stacked in one column
@@ -137,6 +139,10 @@ All content is written by me.
   - Grand total
   - Button **Pay** to go to checkout
   - If no lessons are in the cart, button to go to **All lessons**
+    
+    Project file: cart/templates/cart/cart.html
+
+
 
 - __Checkout__
     - Details & payment
@@ -149,17 +155,36 @@ All content is written by me.
       - Lesson cards from the **Cart** page
       - Grand total
     - Stacked on small screens, up to two columns on larger screens.
+    
+    Project file: checkout/templates/checkout/checkout.html
 
 
 - __Order confirmation__
-    - Page
-    - Email
+    - **Payment succesful** page
+      - After completing the payment, the user is will see this page.
+      - From **My profile**, the user also can go to **Payment successful** pages  from old orders.
+      - It has an introductory text with the order number, which you should hover over to see the whole number. This is because on small screens, this large number messes up the responiveness.
+      - The booked lesson cards display the same as in the **Cart** page, and are stacked on all screen sizes. 
+      - The grand total
+      - If the user had come from the profile, there is a **Back to profile** button.
+      
+      Project file: checkout/templates/checkout/checkout_success.html
+
+    - Order confirmation email
+      - After a successful payment, the user will receive the order confirmation email.
+      
+      Project files: checkout/templates/checkout/confirmation_emails/confirmation_email_body.txt and confirmation_email_subject.txt
+
+
 
 - __My profile__
     - Default personal information
     - Profile image
 
     - Booking history
+
+    Project file: prodiles/templates/profiles/profile.html
+
 
 - __Register__
 - __Log in__
