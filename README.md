@@ -75,8 +75,12 @@ Below is my initial database schema. I used [Lucidchart](https://lucid.app/lucid
 
 - I made some changes to the Product model, which is the Lesson model. I added **Places left** to handle the lesson having a max amount of people that can book it. I first thought I could do this with only the **Capacity** field.
 - The lesson image is not an ImagField, but a CharField with choices, where each choice sets a specific image stored in the project.
-- I coverted some fields to models, because I wanted the site admin to be able to preset these fields, and add to them. This applies to the fields **Place**, **Level interval**, **Duration**, and **Capacity**. I also added a BooleanField **Deleted**, to handle deletion of lessons that have been booked before.
-- 
+- I converted some fields to models, because I wanted the site admin to be able to preset these fields, and add to them. This applies to the fields **Place**, **Level interval**, **Duration**, and **Capacity**. I also added a BooleanField **Deleted**, to handle deletion of lessons that have been booked before.
+
+
+- To the UserProfile model, I added a CloudinaryField, so users can upload a profile image.
+
+- The OrderLineItem model does not have Category and Level, but I added UserProfile. This is so that in admin, coaches can see who is attending by checking the order lines with their lesson, without the need to check per order, and see the attendees' level.
 
 
 #### Wireframes
