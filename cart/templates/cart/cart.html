@@ -58,18 +58,21 @@
                             </article>
                             
 
-                        {% endfor %}
+                            {% endfor %}
 
-                        <div class="col"><p>Grand total: $ {{ grand_total }}</p></div>
-                        <a href="{% url 'checkout' %}" class="btn pay-button">Pay</a>
-
+                            <div class="col"><p>Grand total: $ {{ grand_total }}</p></div>
+                            <a href="{% url 'lessons' %}" class="btn book-button">Add more lessons</a>
+                            <a href="{% url 'checkout' %}" class="btn pay-button">Pay</a>
 
                         {% else %}
 
-                        <p>There are no lessons here.</p>
-                        <a href="{% url 'lessons' %}" class="btn pay-button">Go back to all lessons</a>
+                            <p>There are no lessons here.</p>
+                            <a href="{% url 'lessons' %}" class="btn book-button">Go back to all lessons</a>
 
                         {% endif %}
+                        
+                        
+                        
 
             </div>
         </div>

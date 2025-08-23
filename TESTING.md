@@ -148,7 +148,7 @@ Below are the final results in the incognito mode.
   ![All lessons mobile](docs/testing/lighthouse/mobile-lessons.png)
 
 
-- Cart page
+- Cart page (2 lessons)
 
 
   Desktop:
@@ -163,7 +163,7 @@ Below are the final results in the incognito mode.
   ![Cart mobile](docs/testing/lighthouse/mobile-cart.png)
 
 
-- Checkout page
+- Checkout page (2 lessons)
 
 
   Desktop:
@@ -178,7 +178,7 @@ Below are the final results in the incognito mode.
   ![Checkout mobile](docs/testing/lighthouse/mobile-checkout.png)
 
 
-- Checkout success page
+- Checkout success page (2 lessons)
 
 
   Desktop:
@@ -487,5 +487,5 @@ Related to this, also when an order is created via the webhook, the lesson remai
 
 There is another unfixed issue which is when something goes wrong when creating an order via a webhook, and the order is deleted after an updated lesson with a new **Places left** value is saved, this would not be reversed. The reason for this is that I can not test this situation at this point, so I would rather not add any code that could break the webhook flow.
 
-#### Button after dismissing the Delete modal
+##### Button after dismissing the Delete modal
 The red **Delete** button on each lesson card remains in the focused colour after closing down the modal it triggers (when you do not delete the lesson). While this is good for when you use keys to navigate, when you use a mouse or touchscreen, this looks a bit odd. I have found posts about this and possible solutions, but the behaviour is intentional for accessibility reasons (I found the implementation [here](https://github.com/twbs/bootstrap/issues/12364)). Also, since it is only visible for site admins, I am leaving this unfixed.
