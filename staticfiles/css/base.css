@@ -202,10 +202,10 @@ footer * {
 }
 }
 
-/*Toast styling for small screens to reduce right margin, does not fit otherwise
-5px is good but for the checkout success it's too much, so changed to 3px*/
+/*Toast styling for small screens to reduce right margin, and set left margin*/
 @media screen and (width < 361px  ) {
 .message-container{
     right: 3px;
+    left: 3px;
 }
 }
