@@ -94,24 +94,26 @@ This is the result for the stripe_elements.js file: ![Stripe elements](docs/test
 
 
 ### Lighthouse testing
-I had some contrast issues with my main background colour and white and yellow text. I chose to change my blue from #047cc5 to a darker shade #0366A4, and any black text I had I changed to white. 
+
+During testing, I encountered the following issues before I added my final screenshots:
+
+
+- I had some contrast issues with my main background colour and white and yellow text. I chose to change my blue from #047cc5 to a darker shade #0366A4, and any black text I had I changed to white. 
 For my red **Delete** buttons, the contrast was also not good, so I changed from #ea592c to a lighter shade of red #F56B41. 
 
+- A remaining accessibility issue for **All lessons** is that I have hidden form input that does not have a label, but it is hidden so I ignore this issue. A missing label also appears for **My profile**, but this is the **Select image** button so I also ignore this.
 
-A remaining accessibility issue for **All lessons** is that I have hidden form input that foes not have a label, but it is hidden so I ignore this issue.
+- Best practices warns about third party cookies from Stripe, and about issues logged to the Issue panel, also related to Stripe, so I cannot change that. Actuelly, in incognito mode, this is gone.
 
+- Performance testing did not give issues that I can fix, because I already cut down the size of my images so they would still be good at all screens sizes.
 
-Best practices warns about third party cookies from Stripe, and about issues logged to the Issue panel, also related to Stripe, so I cannot change that. Actuelly, in incognito mode, this is gone.
+- I got an accessibility warning *[aria-hidden="true"] elements contain focusable descendents*, but it refers to a Stripe element which I can not change.
 
+- For some pages I get an issue about the footer's heading not being in descending order. This is because the footer is written in the base template, so it can not consider the heading on each page. Also, not all pages have an h2 heading, but some have, so my footer is set to have h3 headings. I kept this like it is.
 
+- The lesson image connected to bernardo.webp is of low resolution so I get a best practice warning there. However, I like to keep this image, as it has been hard to find images that look like a tennis coach. I could just remove it and not have Bernardo at all, but I prefer not to do this, since the Best practice score is still high for **All lessons**.
 
-Performance testing did not give issues that I can fix, because I already cut down the size of my images so they would still be good at all screens sizes.
-
-
-I get an accessibility warning *[aria-hidden="true"] elements contain focusable descendents*, but it refers to a Stripe element which I can not change.
-
-
-For some pages I get an issue about the footer's heading not being in descending order. This is because the footer is written in the base template, so it can not consider the heading on each page. Also, not all pages have an h2 heading, but some have, so my footer is set to have h3 headings. I kept this like it is.
+- Mobile performance is a lot lower than desktop performance overall, but I did not manage to improve this. The warnings Lighthouse gives is often about unused code. For example, **Log out** is a very simple page, but still scores low. I guess because it still loads everything from the base template, but does not use it. I also do not have so many layout shifts between mobile screens and larger screens, so I do not really understand the low score. 
 
 
 Below are the final results in the incognito mode.
@@ -144,6 +146,141 @@ Below are the final results in the incognito mode.
 
 
   ![All lessons mobile](docs/testing/lighthouse/mobile-lessons.png)
+
+
+- Cart page
+
+
+  Desktop:
+
+
+  ![Cart desk](docs/testing/lighthouse/desk-cart.png)
+
+
+  Mobile:
+
+
+  ![Cart mobile](docs/testing/lighthouse/mobile-cart.png)
+
+
+- Checkout page
+
+
+  Desktop:
+
+
+  ![Checkout desk](docs/testing/lighthouse/desk-checkout.png)
+
+
+  Mobile:
+
+
+  ![Checkout mobile](docs/testing/lighthouse/mobile-checkout.png)
+
+
+- Checkout success page
+
+
+  Desktop:
+
+
+  ![Success desk](docs/testing/lighthouse/desk-success.png)
+
+
+  Mobile:
+
+
+  ![Success mobile](docs/testing/lighthouse/mobile-success.png)
+
+
+- Register page
+
+
+  Desktop:
+
+
+  ![Register desk](docs/testing/lighthouse/desktop-register.png)
+
+
+  Mobile:
+
+
+  ![Register mobile](docs/testing/lighthouse/mobile-register.png)
+
+
+- Log in page
+
+
+  Desktop:
+
+
+  ![Log in desk](docs/testing/lighthouse/desk-login.png)
+
+
+  Mobile:
+
+
+  ![Log in mobile](docs/testing/lighthouse/mobile-login.png)
+
+
+- Log out page
+
+
+  Desktop:
+
+
+  ![Log out desk](docs/testing/lighthouse/desk-logout.png)
+
+
+  Mobile:
+
+
+  ![Log out mobile](docs/testing/lighthouse/mobile-logout.png)
+
+
+- My profile page
+
+
+  Desktop:
+
+
+  ![Profile desk](docs/testing/lighthouse/desk-profile.png)
+
+
+  Mobile:
+
+
+  ![Profile mobile](docs/testing/lighthouse/mobile-profile.png)
+
+
+- Add lesson page
+
+
+  Desktop:
+
+
+  ![Add lesson desk](docs/testing/lighthouse/desk-add.png)
+
+
+  Mobile:
+
+
+  ![Add lesson mobile](docs/testing/lighthouse/mobile-add.png)
+
+
+- Edit lesson page
+
+
+  Desktop:
+
+
+  ![Edit lesson desk](docs/testing/lighthouse/desk-edit.png)
+
+
+  Mobile:
+
+
+  ![Edit lesson mobile](docs/testing/lighthouse/mobile-edit.png)
 
 
 ### Favicon testing
