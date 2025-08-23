@@ -202,7 +202,13 @@ footer * {
 }
 }
 
-/*Toast styling for small screens to reduce right margin, and set left margin*/
+/*Toast styling for screens under 480px to set left margin, so message stays in the middle*/
+@media screen and (width < 480px  ) {
+.message-container{
+    left: 15px;
+}
+}
+/*Toast styling for small screens under 361px to reduce right margin, and set left margin*/
 @media screen and (width < 361px  ) {
 .message-container{
     right: 3px;
