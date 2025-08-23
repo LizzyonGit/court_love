@@ -212,6 +212,8 @@ Regardless of whether the *Save phone number to my profile* was checked, the pho
 #### Responsiveness
 Checked mainly in Chrome DevTools. I found an issue that the website was moving due to some element being wider than the body. It took some time to find the issue, eventually it turned out the footer's padding caused the elements inside to be larger, so I moved the padding to the divs inside it. [This post](https://stackoverflow.com/questions/44667161/page-moving-left-and-right-while-in-mobile-browser) helped me solve it.
 
+In the later stages of testing, I noticed the toast messages were not good enough for small screens. I previously had added right margin becaused the lessages would be too wide otherwise, but I needed to add left margin as well since it would be good if the messages cover the whole screen width on small screens. I also added this for screens under 480 px. For smaller messages like after logging in, this was not needed and now it may seem a bit too large, but for larger messages like after payment, this looks much better. On larger screens the messages stay in the right corner, of course, they should not span the screen width then.
+
 #### Browser testing
 
 #### Device testing
