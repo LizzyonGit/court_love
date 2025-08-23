@@ -73,6 +73,52 @@ Below is my initial database schema. I used [Lucidchart](https://lucid.app/lucid
 
 Below are my initial wireframes for mobile and laptop screen sizes. I used [Figma](https://www.figma.com/) to create them.
 
+
+<details>
+    <summary>Home page</summary>Initially, I had planned some sponsor logos but instead I opted for more text on the home page on how everything works. The About section is there, and I added more images to make it more appealing. The logo moved to the center for mobile screens, and the cart icon is now to the right, like the desktop wireframe.
+
+  ![Home](docs/wireframes/wireframe-home.png)
+
+</details>
+<details>
+    <summary>All lessons page</summary>Initially, I wanted to stack all lesson cards on all screen sizes, but my mentor advised me to fill the screen more. So I now have up to three columns of lesson cards. I could not implement the calendar. I also added four buttons with all category/place combinations, instead of two, and an introductory text with the addresses.
+
+  ![All lessons](docs/wireframes/wireframe-lessons.png)
+
+</details>
+<details>
+    <summary>Cart</summary>The cart looks mainly the same as the wireframe, as the lesson cards have less information and the image is removed, they are smaller and they are added in one column on all screens. The buttons' placement has changed slightly. I have implemented a button to go back to all lessons also when there are lessons in the cart late in the process, after feedback. I had it in my wireframe but did not think it was needed because the page is easily accessible in the menu.
+
+  ![Cart](docs/wireframes/wireframe-cart.png)
+
+</details>
+<details>
+    <summary>Checkout/checkout success</summary>The checkout is inspired by Boutique Ado, and the next page after a successful payment (checkout_success.html), was intended to look like this, just without the payment form (left part on desktop screens). In the end, the checkout success page looks more like the cart page, as the left part does take too much place for just an intro text, so it's also one column on desktop screens.
+
+  ![Checkout](docs/wireframes/wireframe-checkout.png)
+
+</details>
+<details>
+    <summary>Profile</summary>The profile is inspired by Boutique Ado with a form and the order history in separate colums, stacked on mobile screens. After feedback from my mentor, I added the possibility to add a profile image, which is not in the wireframes. Also, name and email are not in the form.
+
+  ![Profile](docs/wireframes/wireframe-profile.png)
+
+</details>
+<details>
+    <summary>Add/edit lesson</summary>The page to add a lesson to the website is simply a form in one column on all screen sizes. I added a button to cancel, and the buttons are left aligned instead of right aligned. The page to edit a lesson is the same.
+
+  ![Add lesson](docs/wireframes/wireframe-add.png)
+
+</details>
+<details>
+    <summary>Log in/Log out/Register</summary>The pages to register and log in simply consist of a form and a button to submit, the page to log out simply of a confirmation question and a button to log out.
+
+  ![Login](docs/wireframes/wireframe-login.png)
+
+</details>
+
+
+
 #### Colour schemes
 I used colours related to tennis with a shade of blue, red and green to reflect the different surfaces hard court, clay and grass. Yellow is derived from the tennis ball colour, white is the line colour, and black is used as a contrast colour.
 
@@ -175,10 +221,11 @@ All content is written by me.
 - __Cart__
   - Overview of lesson cards showing only the date, time, duration, name, category, place, and price
   - Always stacked in one column
-  - **Remove** button to remove the lesson form the cart
+  - **Remove** button on each lesson card to remove the lesson form the cart
   - Grand total
+  - Button **Add more lessons** to go to **All lessons** page
   - Button **Pay** to go to checkout
-  - If no lessons are in the cart, button to go to **All lessons**
+  - If no lessons are in the cart: appropriate text and button to go to **All lessons**
     
 
     ![Cart](docs/features/cart.png)
