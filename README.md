@@ -69,6 +69,16 @@ See [project board](https://github.com/users/LizzyonGit/projects/6/views/1) for 
 #### Database
 Below is my initial database schema. I used [Lucidchart](https://lucid.app/lucidchart/2079b9e7-4f65-4200-8337-c7328cfd5e1e/edit?invitationId=inv_4a4f8b69-07b0-4019-82a4-0720dfb4bfd0&page=mkFtcNkq6Rib#) to create it.
 
+
+![Initial ERD](docs/db-initial.png)
+
+
+- I made some changes to the Product model, which is the Lesson model. I added **Places left** to handle the lesson having a max amount of people that can book it. I first thought I could do this with only the **Capacity** field.
+- The lesson image is not an ImagField, but a CharField with choices, where each choice sets a specific image stored in the project.
+- I coverted some fields to models, because I wanted the site admin to be able to preset these fields, and add to them. This applies to the fields **Place**, **Level interval**, **Duration**, and **Capacity**. I also added a BooleanField **Deleted**, to handle deletion of lessons that have been booked before.
+- 
+
+
 #### Wireframes
 
 Below are my initial wireframes for mobile and laptop screen sizes. I used [Figma](https://www.figma.com/) to create them.
