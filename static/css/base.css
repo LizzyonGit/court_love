@@ -215,3 +215,9 @@ footer * {
     left: 3px;
 }
 }
+
+/*Toast styling for horizontal mobile screens and shorter screens*/
+@media screen and (height < 625px  ) {
+.cart-notification-wrapper {
+    max-height: 250px;
+}}

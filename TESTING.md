@@ -33,6 +33,7 @@
       * [No reset places_left when webhook deletes order](#no-reset-of-places_left-when-webhook-deletes-order)
       * [Button after dismissing the Delete modal](#button-after-dismissing-the-delete-modal)
       * [Phone number field validation](#phone-number-field-validation)
+      * [Toast on mobile horizontal display](#toast-on-mobile-horizontal-display)
 
 
 ## Automated testing
@@ -511,3 +512,6 @@ The red **Delete** button on each lesson card remains in the focused colour afte
 
 ##### Phone number field validation
 Fields for phone numbers (**My profile**, **Checkout**) are of the type CharField, therefore also letters will be accepted. This is based on Boutique Ado. I checked Slack and found that this was intentional because there was no built in phone number field for validation [post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1596366800324200?thread_ts=1596314290.315400&cid=C7HS3U3AP). My project has the same for the MVP. It is now up to the user to fill in the correct phone number so they can be contacted by phone, otherwise it's only possible to be contacted via email.
+
+##### Toast on mobile horizontal display
+Last minute, I found that when you have lessons in your cart, and you get a success toast message with those cart items, and you have your mobile screen horizontally, the toast message has too much height so it does not fit. Actually, I would like to remove the cart items section in this case, because even one lesson makes the button to go to the cart invisible. Scrolling does not work on my phone since I am just scrolling the page. This is a bug that requires restructuring the toast message, as I would then only want the success message, header and button to appear on smaller screen heights. At this point, this is out of scope.
