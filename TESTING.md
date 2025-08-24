@@ -29,6 +29,10 @@
     * [Device testing](#device-testing)
     * [Feature testing](#feature-testing)
     * [Unfixed bugs](#unfixed-bugs)
+      * [Order lesson more than once](#order-lesson-more-than-once)
+      * [No reset places_left when webhook deletes order](#no-reset-of-places_left-when-webhook-deletes-order)
+      * [Button after dismissing the Delete modal](#button-after-dismissing-the-delete-modal)
+      * [Phone number field validation](#phone-number-field-validation)
 
 
 ## Automated testing
@@ -78,16 +82,16 @@ Before running my code through the [CI Python Linter](https://pep8ci.herokuapp.c
 
 I ran the following pages through the validator, I have added screenshots of the ignored errors below. Note that I added docstrings later, so the line numbers may not match.
 
-#### Cart app
+- Cart app
 No errors: contexts.py, views.py, urls.py, apps.py.
 
-#### Checkout app
+- Checkout app
 No errors: admin.py, apps.py, forms.py, models.py, signals.py, urls.py, views.py, webhook_handler.py, webhooks.py
 
-#### Home app
+- Home app
 No errors: apps.py, urls.py, views.py
 
-#### Lessons app
+- Lessons app
 No errors: admin.py, apps.py, urls.py
 Ignored *line too long* because of url in comment: forms.py, models.py views.py
 
@@ -101,7 +105,7 @@ Forms.py with error: ![forms.py](docs/testing/python-lessons-forms.png)
 Models.py not with error: ![models.py](docs/testing/python-lessons-models.png)
 
 
-#### Profiles app
+- Profiles app
 No errors: admin.py, apps.py, forms.py, urls.py, views.py, widgets.py
 
 Ignored *line too long* because of long url in comment, and indented comment which I think should not be split: models.py
@@ -505,5 +509,5 @@ There is another unfixed issue which is when something goes wrong when creating 
 ##### Button after dismissing the Delete modal
 The red **Delete** button on each lesson card remains in the focused colour after closing down the modal it triggers (when you do not delete the lesson). While this is good for when you use keys to navigate, when you use a mouse or touchscreen, this looks a bit odd. I have found posts about this and possible solutions, but the behaviour is intentional for accessibility reasons (I found the implementation [here](https://github.com/twbs/bootstrap/issues/12364)). Also, since it is only visible for site admins, I am leaving this unfixed.
 
-#### Phone number field validation
+##### Phone number field validation
 Fields for phone numbers (**My profile**, **Checkout**) are of the type CharField, therefore also letters will be accepted. This is based on Boutique Ado. I checked Slack and found that this was intentional because there was no built in phone number field for validation [post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1596366800324200?thread_ts=1596314290.315400&cid=C7HS3U3AP). My project has the same for the MVP. It is now up to the user to fill in the correct phone number so they can be contacted by phone, otherwise it's only possible to be contacted via email.
