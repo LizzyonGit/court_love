@@ -48,7 +48,7 @@ Result profiles.css:
 ### Python validator
 Before running my code through the [CI Python Linter](https://pep8ci.herokuapp.com/) I fixed the relevant Flake8 issues raised in VS Code about too long lines, bare except usage, unused imports and whitespaces.
 
-I ran the following pages through the validator, I have added screenshots of the ignored errors:
+I ran the following pages through the validator, I have added screenshots of the ignored errors below. Note that I added docstrings later, so the line numbers may not match.
 
 #### Cart app
 No errors: contexts.py, views.py, urls.py, apps.py.

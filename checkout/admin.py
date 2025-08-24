@@ -33,7 +33,7 @@ class OrderAdmin(admin.ModelAdmin):
 @admin.register(OrderLineItem)
 class OrderLineItemAdmin(admin.ModelAdmin):
     """
-    Specifies which fields are in list dispalay,
+    Specifies which fields are in list display,
     and which can be filtered.
     """
     list_display = ('order', 'lesson', 'lesson__date_time',

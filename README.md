@@ -85,6 +85,9 @@ Below is my initial database schema. I used [Lucidchart](https://lucid.app/lucid
 - The OrderLineItem model does not have the fields **date_time**, **category** and **level**, but I added **user_profile**. This is so that in admin, coaches can see who is attending by checking the order lines with their lesson, without the need to check per order, and see the attendees' level and prepare for that. Also, they can change the level if the user want this, after a lesson after their own assessment.
 
 
+Final ERD:
+
+
 ![Final ERD](docs/db-final.png)
 
 
