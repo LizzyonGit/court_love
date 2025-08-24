@@ -19,6 +19,7 @@ import json
 
 # Code below adapted from Boutique Ado
 
+
 @require_POST
 def cache_checkout_data(request):
     """

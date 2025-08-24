@@ -12,7 +12,7 @@ class OrderLineItemAdminInline(admin.TabularInline):
 
 class OrderAdmin(admin.ModelAdmin):
     """
-    Specifies fields, readonly fields, which fields are in list dispaly,
+    Specifies fields, readonly fields, which fields are in list display,
     which field can be searched, order to display orders
     """
     inlines = (OrderLineItemAdminInline,)
