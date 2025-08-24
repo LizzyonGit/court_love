@@ -2,7 +2,6 @@ import uuid
 
 from django.db import models
 from django.db.models import Sum
-from django.conf import settings
 
 from lessons.models import Lesson
 from profiles.models import UserProfile
@@ -11,6 +10,9 @@ from profiles.models import UserProfile
 
 
 class Order(models.Model):
+    """
+    Stores a single order related to :model:`profiles.UserProfile`.
+    """
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True,
@@ -55,6 +57,10 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
+    """
+    Stores a single order line related to :model:`checkout.Order`,
+    :model:`profiles.UserProfile`, :model:`lessons.Lesson`.
+    """
     order = models.ForeignKey(Order, null=False, blank=False,
                               on_delete=models.CASCADE,
                               related_name='lineitems')

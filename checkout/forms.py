@@ -3,7 +3,11 @@ from .models import Order
 
 
 class OrderForm(forms.ModelForm):
-    """Adapted from Boutique Ado"""
+    """
+    Adapted from Boutique Ado
+    Form class for users to fill in
+    personal info when completing payment
+    """
     class Meta:
         model = Order
         fields = ('full_name', 'email', 'phone',)

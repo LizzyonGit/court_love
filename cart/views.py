@@ -8,7 +8,21 @@ from django.utils import timezone
 
 
 def view_cart(request):
-    """Returns cart contents page"""
+    """
+    Returns cart contents page
+    **Context**
+    ``cart``
+        Get cart contents from the session
+    ``lesson``
+        Instance of :model:`lessons.Lesson`.
+    ``on_cart_page``
+        Boolean value which is true in template,
+        to adapt toast message on cart page
+
+    **Template**
+
+    :template:`cart/cart.html`
+    """
     cart = request.session.get('cart', {})
 
     # if places_left is 0, lesson was soft deleted, or date has passed,
@@ -44,7 +58,21 @@ def view_cart(request):
 
 
 def add_to_cart(request, item_id):
-    """Add lesson to cart"""
+    """
+    Adds lesson to cart
+    **Context**
+    ``cart``
+        Get cart contents from the session,
+        updates cart after adding lesson
+    ``lesson``
+        Instance of :model:`lessons.Lesson`.
+    ``quantity``
+        Get quantity value from added lesson,
+        convert to integer (always 1)
+    ``redirect_url``
+        Get redirect url, where the user came from
+        when clicking Add to cart
+    """
     # get lessons for message
     lesson = get_object_or_404(Lesson, pk=item_id)
 
@@ -68,7 +96,18 @@ def add_to_cart(request, item_id):
 
 
 def remove_from_cart(request, item_id):
-    """Remove item from cart"""
+    """
+    Removes item from cart
+    **Context**
+    ``lesson``
+        Instance of :model:`lessons.Lesson`.
+    ``redirect_url``
+        Get redirect url, where the user came from
+        when removing lesson from cart
+    ``cart``
+        Get cart contents from the session,
+        updates cart after removing lesson
+    """
     lesson = get_object_or_404(Lesson, pk=item_id)
 
     redirect_url = request.POST.get('redirect_url')
