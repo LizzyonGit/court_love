@@ -381,6 +381,7 @@ Checked mainly in Chrome DevTools. I found an issue that the website was moving 
 In the later stages of testing, I noticed the toast messages were not good enough for small screens. I previously had added right margin becaused the lessages would be too wide otherwise, but I needed to add left margin as well since it would be good if the messages cover the whole screen width on small screens. I also added this for screens under 480 px. For smaller messages like after logging in, this was not needed and now it may seem a bit too large, but for larger messages like after payment, this looks much better. On larger screens the messages stay in the right corner, of course, they should not span the screen width then.
 
 #### Browser testing
+Tested on Chrome, FireFoxs, Edge and Safari on iPhone. Edge has some side scrolling, which appears to be an Edge setting, not related to my website's responsiveness (see [this explanation](https://www.bing.com/videos/riverview/relatedvideo?pglt=299&q=website+moves+sideways+edge&cvid=092884b05cc54465b71850501e851cd5&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQg0ODE5ajBqMagCALACAA&adppc=EDGEESS&PC=U531&ru=%2fsearch%3fpglt%3d299%26q%3dwebsite%2bmoves%2bsideways%2bedge%26cvid%3d092884b05cc54465b71850501e851cd5%26gs_lcrp%3dEgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQg0ODE5ajBqMagCALACAA%26FORM%3dANNTA1%26adppc%3dEDGEESS%26PC%3dU531&mmscn=vwrc&mid=FB04738CA70DD682D7DFFB04738CA70DD682D7DF&FORM=WRVORC&ntb=1&msockid=242c382880d611f08afec5cc835fe362)).
 
 #### Device testing
 
@@ -491,3 +492,6 @@ There is another unfixed issue which is when something goes wrong when creating 
 
 ##### Button after dismissing the Delete modal
 The red **Delete** button on each lesson card remains in the focused colour after closing down the modal it triggers (when you do not delete the lesson). While this is good for when you use keys to navigate, when you use a mouse or touchscreen, this looks a bit odd. I have found posts about this and possible solutions, but the behaviour is intentional for accessibility reasons (I found the implementation [here](https://github.com/twbs/bootstrap/issues/12364)). Also, since it is only visible for site admins, I am leaving this unfixed.
+
+#### Phone number field validation
+Fields for phone numbers (**MY profile**, **Checkout**) are of the type CharField, therefore also letters will be accepted. This is based on Boutique Ado. I checked Slack and found that this was intentional because there was no built in phone number field for validation [post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1596366800324200?thread_ts=1596314290.315400&cid=C7HS3U3AP). My project has the same for the MVP. It is now up to the user to fill in the correct phone number so they can be contacted. 
