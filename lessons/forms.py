@@ -3,8 +3,15 @@ from .models import Lesson, Category
 
 
 class LessonForm(forms.ModelForm):
-
+    """
+    Form class for site admin to
+    add and edit lessons
+    """
     class Meta:
+        """
+        Specifies the model, excluded field,
+        widget for date_time field
+        """
         model = Lesson
         exclude = ('deleted',)
         # code below by 'Kriss' from https://stackoverflow.com/questions/68491041/django-forms-datetimeinput-widgets-instace-value

@@ -37,7 +37,11 @@ class Category(models.Model):
 
 
 class Lesson(models.Model):
-    """Store the lesson product"""
+    """
+    Stores a single lesson related to :model:`lessons.Category`,
+    :model:`lessons.Duration`, :model:`lessons.Capacity`,
+    :model:`lessons.Level`, :model:`lessons.Place`.
+    """
     category = models.ForeignKey('Category', null=True,
                                  on_delete=models.SET_NULL,
                                  related_name="lessons")

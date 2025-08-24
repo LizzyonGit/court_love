@@ -7,7 +7,7 @@ from .models import Lesson, Category, Duration, Capacity, Level, Place
 @admin.register(Lesson)
 class LessonAdmin(admin.ModelAdmin):
     """
-    Adds fields to table and adds filter.
+    Adds fields to list display and adds filter.
     """
     list_display = ('name', 'date_time', 'category',
                     'capacity', 'places_left', 'place',

@@ -12,8 +12,7 @@ LEVEL = [(i/2, i/2) for i in range(3, 15, 1)]
 
 class UserProfile(models.Model):
     """
-    A user profile model for maintaining default
-    personal information and order history
+    Stores a single user profile related to :model:`auth.User`
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_phone = models.CharField(max_length=20, null=True, blank=True)

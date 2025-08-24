@@ -14,8 +14,26 @@ from django.utils import timezone
 
 def all_lessons(request):
     """
-    A view to show all future lessons,
-    sorting and categories
+    A view to show all future, not
+    deleted lessons,
+    filter by place and category
+    **Context**
+
+    ``lessons``
+        Instances of :model:`lessons.Lesson` with date
+        in future and not deleted.
+    ``current_categories``
+        Categories that can be requested by the user.
+    ``current_places``
+        Places that can be requested by the user.
+    ``ordered_lessons``
+        Gets list of lessons ids that are in
+        :model:`checkout.OrderLineItem` (so they
+        have been booked)
+
+    **Template**
+
+    :template:`lessons/lessons.html`
     """
     # lessons with future date and not deleted
     lessons = Lesson.objects.filter(date_time__gt=timezone.now(),
@@ -51,7 +69,15 @@ def all_lessons(request):
 
 @login_required
 def add_lesson(request):
-    """Add lesson to website"""
+    """
+    Adds lesson to website
+    **Context**
+    ``form``
+        An instance of :form:`lessons.LessonForm`
+
+    **Template**
+    :template:`lessons/add_lesson.html`
+    """
     if not request.user.is_superuser:
         messages.error(request, 'You are not authorised to do this.')
         return redirect(reverse('home'))
@@ -96,7 +122,15 @@ def add_lesson(request):
 
 @login_required
 def edit_lesson(request, lesson_id):
-    """ Edit a lesson on the website"""
+    """ Edit a lesson on the website
+    **Context**
+    ``form``
+        An instance of :form:`lessons.LessonForm`
+    ``lesson``
+        A single lesson to be edited`
+    **Template**
+    :template:`lessons/edit_lesson.html`
+    """
     if not request.user.is_superuser:
         messages.error(request, 'You are not authorised to do this.')
         return redirect(reverse('home'))
@@ -149,7 +183,17 @@ def edit_lesson(request, lesson_id):
 
 @login_required
 def delete_lesson(request, lesson_id):
-    """ Delete a lesson from the website"""
+    """
+    Delete a lesson from the website
+    **Context**
+
+    ``lesson``
+        A single lesson to be deleted.
+    ``ordered_lessons``
+        Gets list of lessons ids that are in
+        :model:`checkout.OrderLineItem` (so they
+        have been booked)
+    """
     if not request.user.is_superuser:
         messages.error(request, 'You are not authorised to do this.')
         return redirect(reverse('home'))

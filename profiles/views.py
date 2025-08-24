@@ -10,7 +10,24 @@ from checkout.models import Order
 
 @login_required
 def profile(request):
-    """ Display the user's profile. """
+    """
+    Displays the user's profile.
+    **Context**
+
+    ``form``
+        Instance of :form:`profiles.UserProfileForm`.
+    ``orders``
+        All orders by the user.
+    ``on_profile_page``
+        Boolean value which is true in template,
+        to adapt toast message on profile page
+    ``profile``
+        Instance of :model:`profiles.UserProfile`
+
+    **Template**
+
+    :template:`profiles/profile.html`
+    """
     profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
@@ -41,6 +58,20 @@ def profile(request):
 
 
 def order_history(request, order_number):
+    """
+    Displays a previous order confirmation
+    for the user
+    **Context**
+    ``order``
+        A single order by the user.
+    ``from_profile_page``
+        Boolean value which is true for this request,
+        to display button to go back to profile
+
+    **Template**
+
+    :template:`checkout/checkout_success.html`
+    """
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, (

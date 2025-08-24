@@ -3,11 +3,18 @@ from .models import Order, OrderLineItem
 
 
 class OrderLineItemAdminInline(admin.TabularInline):
+    """
+    Displays order line items in the order.
+    """
     model = OrderLineItem
     readonly_fields = ('lineitem_total',)
 
 
 class OrderAdmin(admin.ModelAdmin):
+    """
+    Specifies fields, readonly fields, which fields are in list dispaly,
+    which field can be searched, order to display orders
+    """
     inlines = (OrderLineItemAdminInline,)
 
     readonly_fields = ('order_number', 'order_date',
@@ -25,6 +32,10 @@ class OrderAdmin(admin.ModelAdmin):
 
 @admin.register(OrderLineItem)
 class OrderLineItemAdmin(admin.ModelAdmin):
+    """
+    Specifies which fields are in list dispalay,
+    and which can be filtered.
+    """
     list_display = ('order', 'lesson', 'lesson__date_time',
                     'lesson__level_interval',
                     'order__user_profile', 'order__user_profile__level',)

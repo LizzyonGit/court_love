@@ -9,6 +9,10 @@ class OrderForm(forms.ModelForm):
     personal info when completing payment
     """
     class Meta:
+        """
+        Specifies the model and
+        included fields
+        """
         model = Order
         fields = ('full_name', 'email', 'phone',)
 
