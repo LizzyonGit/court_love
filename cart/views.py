@@ -35,7 +35,12 @@ def view_cart(request):
     # update cart so checkout gets correct cart
     request.session['cart'] = cart
 
-    return render(request, 'cart/cart.html')
+    template = 'cart/cart.html'
+    context = {
+        'on_cart_page': True,
+    }
+
+    return render(request, template, context)
 
 
 def add_to_cart(request, item_id):
