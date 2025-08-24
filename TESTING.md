@@ -384,7 +384,9 @@ In the later stages of testing, I noticed the toast messages were not good enoug
 
 #### Device testing
 
-Tested extensively on a Dell laptop, and on a Lenovo laptop, iPhone 11 Pro, and Huawei phone. All works well.
+Tested extensively on a Dell laptop, iPhone 11 Pro, and Huawei phone. All works well.
+
+Testing on a phone triggered me to do some last-minute adjustment into not showing the cart items in the success message when removing a lesson from the cart, while there are still lessons left in the cart. Feedback from usage on the iPhone also triggered me to add an **Add more lessons** button also when there are lessons in the cart.
 
 #### Feature testing
 |Feature|Expected outcome|Testing performed|Result|Pass/Fail|
@@ -458,7 +460,7 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, iPhone 11 Pro, and 
 |Modal text| Modal text depends on whether or not a lesson has been booked before|Click **Delete** on a lesson not booked, and on a lesson that has been booked before|Modal text informs about the lesson being booked before, and how the lesson will be deleted. For unbooked lessons, it just says it will be deleted permanently.|Pass|
 |**Delete** functionality booked lesson|When you delete a lesson that has been booked before, it will only be removed from the website. It is still visible in admin, as well as the connected orders lines. When the connected order lines are removed, the lesson can be deleted from the database.|Delete lesson that has been booked before and check admin.|Toast message appears on **All lessons** page that lesson has been deleted, lesson is flagged as deleted in admin but still accessible. When you want to delete it there, it informas about which order line items should be deleted before you can delete the lesson permanently.|Pass|
 |**Delete** functionality unbooked lesson|A lesson that has not been booked before, will be deleted from the database|Delete lesson that has not been booked before and check admin|Toast message appears on **All lessons** page about the lesson begin permanently deleted, not visible in admin|Pass|
-
+|Toast success message with cart items|When success toast is triggered while on **My profile**, **Cart** or when there is no grand total, the cart does not show in the toast message|Add lessons to cart and update profile, remove a lesson from the cart while there are still lessons left, log out|Toast message appears without cart items and link to cart|Pass|
 
 
 

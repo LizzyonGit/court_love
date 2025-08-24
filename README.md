@@ -67,20 +67,25 @@ See [project board](https://github.com/users/LizzyonGit/projects/6/views/1) for 
 
 ### Design
 #### Database
-Below is my initial database schema. I used [Lucidchart](https://lucid.app/lucidchart/2079b9e7-4f65-4200-8337-c7328cfd5e1e/edit?invitationId=inv_4a4f8b69-07b0-4019-82a4-0720dfb4bfd0&page=mkFtcNkq6Rib#) to create it.
+Below is my initial database schema. I used [Lucidchart](https://lucid.app/lucidchart/2079b9e7-4f65-4200-8337-c7328cfd5e1e/edit?viewport_loc=-356%2C-467%2C3696%2C1829%2CmkFtcNkq6Rib&invitationId=inv_4a4f8b69-07b0-4019-82a4-0720dfb4bfd0) to create it. I used Boutique Ado as a start an built upon that. 
 
 
 ![Initial ERD](docs/db-initial.png)
 
 
-- I made some changes to the Product model, which is the Lesson model. I added **Places left** to handle the lesson having a max amount of people that can book it. I first thought I could do this with only the **Capacity** field.
+- I made some changes to the Product model, which is the Lesson model. I added **Places left** to handle the lesson having a max amount of people that can book it. I first thought I could do this with only the **Capacity** field, which did not work.
 - The lesson image is not an ImagField, but a CharField with choices, where each choice sets a specific image stored in the project.
 - I converted some fields to models, because I wanted the site admin to be able to preset these fields, and add to them. This applies to the fields **Place**, **Level interval**, **Duration**, and **Capacity**. I also added a BooleanField **Deleted**, to handle deletion of lessons that have been booked before.
+- I looked into using DurationField for the lesson's duration, but this was overly complicated and I would not need to have calculations with durations, so I opted for a simple FK model with a CharField, and added duration values in admin.
 
 
 - To the UserProfile model, I added a CloudinaryField, so users can upload a profile image.
 
-- The OrderLineItem model does not have Category and Level, but I added UserProfile. This is so that in admin, coaches can see who is attending by checking the order lines with their lesson, without the need to check per order, and see the attendees' level.
+
+- The OrderLineItem model does not have the fields **date_time**, **category** and **level**, but I added **user_profile**. This is so that in admin, coaches can see who is attending by checking the order lines with their lesson, without the need to check per order, and see the attendees' level and prepare for that. Also, they can change the level if the user want this, after a lesson after their own assessment.
+
+
+![Final ERD](docs/db-final.png)
 
 
 #### Wireframes
