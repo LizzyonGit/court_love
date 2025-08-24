@@ -2,6 +2,34 @@
 
 [Live link to website](https://court-love-8302d0b2e53d.herokuapp.com/)
 
+## Contents
+
+* [Automated testing](#automated-testing)
+  * [HTML validator](#html-validator)
+  * [CSS validator](#css-validator)
+  * [Python validator](#python-validator)
+  * [JavaScript validator](#javascript-validator)
+  * [Lighthouse testing](#lighthouse-testing)
+  * [Favicon testing](#favicon-testing)
+* [Manual testing](#manual-testing)
+  * [User story testing](#user-story-testing)
+  * [Issues](#issues)
+    * [Capacity handler](#capacity-handler)
+    * [Cart update when lesson is not bookable anymore](#cart-update-when-lesson-is-not-bookable-anymore)
+    * [Delete functionality](#delete-functionality)
+    * [Date range (unfixed)](#date-range-unfixed)
+    * [Lesson images](#lesson-images)
+    * [Whitespace validation](#whitespace-validation)
+    * [Profile image](#profile-image)
+    * [Card error width](#card-error-width)
+    * [Info always saved to profile](#info-always-saved-to-profile)
+  * [Full testing](#full-testing)
+    * [Responsiveness](#responsiveness)
+    * [Browser testing](#browser-testing)
+    * [Device testing](#device-testing)
+    * [Feature testing](#feature-testing)
+    * [Unfixed bugs](#unfixed-bugs)
+
 
 ## Automated testing
 
@@ -464,30 +492,14 @@ Testing on a phone triggered me to do some last-minute adjustment into not showi
 |Toast success message with cart items|When success toast is triggered while on **My profile**, **Cart** or when there is no grand total, the cart does not show in the toast message|Add lessons to cart and update profile, remove a lesson from the cart while there are still lessons left, log out|Toast message appears without cart items and link to cart|Pass|
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #### Unfixed bugs and issues
+##### Order lesson more than once
 You can not add a lesson to the cart more than once, but if you complete the purchase, you can add the same lesson to the empty cart and pay for it again. I left this like it is, because not a lot of people will force themselves to pay for the same lesson twice by actively adding the lesson to the cart again. If they would, it would be their mistake and they can contact Court Love to cancel it.
+
 
 Related to this, also when an order is created via the webhook, the lesson remains in the cart. This means that a user can book it again, even if it is not allowed to book the same lesson more than once. But the user does get the order confirmation email, so it is unlikely someone would try to book it again and pay again.
 
-
+##### No reset of places_left when webhook deletes order
 There is another unfixed issue which is when something goes wrong when creating an order via a webhook, and the order is deleted after an updated lesson with a new **Places left** value is saved, this would not be reversed. The reason for this is that I can not test this situation at this point, so I would rather not add any code that could break the webhook flow.
 
 ##### Button after dismissing the Delete modal
