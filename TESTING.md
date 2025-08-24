@@ -23,6 +23,7 @@
     * [Profile image](#profile-image)
     * [Card error width](#card-error-width)
     * [Info always saved to profile](#info-always-saved-to-profile)
+    * [Toast on mobile horizontal display](#toast-on-mobile-horizontal-display)
   * [Full testing](#full-testing)
     * [Responsiveness](#responsiveness)
     * [Browser testing](#browser-testing)
@@ -33,7 +34,6 @@
       * [No reset places_left when webhook deletes order](#no-reset-of-places_left-when-webhook-deletes-order)
       * [Button after dismissing the Delete modal](#button-after-dismissing-the-delete-modal)
       * [Phone number field validation](#phone-number-field-validation)
-      * [Toast on mobile horizontal display](#toast-on-mobile-horizontal-display)
 
 
 ## Automated testing
@@ -406,6 +406,10 @@ By accident, when I put a card number starting with 42424242 but but still not t
 Regardless of whether the *Save phone number to my profile* was checked, the phone number in the checkout would always be saved to the profile after completing the order. I found the issue on Slack [here](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1605302104469800?thread_ts=1605222094.452700&cid=C7HS3U3AP) and solved it by changing the code the same way.
 
 
+#### Toast on mobile horizontal display
+Last minute, I found that when you have lessons in your cart, and you get a success toast message with those cart items, and you have your mobile screen horizontally, the toast message has too much height so it does not fit, the button to go to the cart becomes unreachable. This is due to that I had previously set a max-height for these message so they would not be so short on taller screens. I did not think about that this would cause an issue on tilted mobile screens. So I added a media query for this for short screens.
+
+
 ### Full testing
 
 #### Responsiveness
@@ -512,6 +516,3 @@ The red **Delete** button on each lesson card remains in the focused colour afte
 
 ##### Phone number field validation
 Fields for phone numbers (**My profile**, **Checkout**) are of the type CharField, therefore also letters will be accepted. This is based on Boutique Ado. I checked Slack and found that this was intentional because there was no built in phone number field for validation [post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1596366800324200?thread_ts=1596314290.315400&cid=C7HS3U3AP). My project has the same for the MVP. It is now up to the user to fill in the correct phone number so they can be contacted by phone, otherwise it's only possible to be contacted via email.
-
-##### Toast on mobile horizontal display
-Last minute, I found that when you have lessons in your cart, and you get a success toast message with those cart items, and you have your mobile screen horizontally, the toast message has too much height so it does not fit. Actually, I would like to remove the cart items section in this case, because even one lesson makes the button to go to the cart invisible. Scrolling does not work on my phone since I am just scrolling the page. This is a bug that requires restructuring the toast message, as I would then only want the success message, header and button to appear on smaller screen heights. At this point, this is out of scope.
