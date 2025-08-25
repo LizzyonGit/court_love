@@ -85,19 +85,19 @@ Before running my code through the [CI Python Linter](https://pep8ci.herokuapp.c
 I ran the following pages through the validator, I have added screenshots of the ignored errors below. Note that I added docstrings later, so the line numbers may not match.
 
 - Cart app
-  No errors: contexts.py, views.py, urls.py, apps.py.
+  - No errors: contexts.py, views.py, urls.py, apps.py.
 
 - Checkout app
-  No errors: admin.py, apps.py, forms.py, models.py, signals.py, urls.py, views.py, webhook_handler.py, webhooks.py
+  - No errors: admin.py, apps.py, forms.py, models.py, signals.py, urls.py, views.py, webhook_handler.py, webhooks.py
 
 - Home app
-  No errors: apps.py, urls.py, views.py
+  - No errors: apps.py, urls.py, views.py
 
 - Lessons app
-  No errors: admin.py, apps.py, urls.py
+  - No errors: admin.py, apps.py, urls.py
 
 
-  Ignored *line too long* because of url in comment: forms.py, models.py views.py
+  - Ignored *line too long* because of url in comment: forms.py, models.py views.py
 
 
   Views.py with errors: ![views.py](docs/testing/python-lessons-views.png)
@@ -110,10 +110,10 @@ I ran the following pages through the validator, I have added screenshots of the
 
 
 - Profiles app
-  No errors: admin.py, apps.py, forms.py, urls.py, views.py, widgets.py
+  - No errors: admin.py, apps.py, forms.py, urls.py, views.py, widgets.py
 
   
-  Ignored *line too long* because of long url in comment, and indented comment which I think should not be split: models.py
+  - Ignored *line too long* because of long url in comment, and indented comment which I think should not be split: models.py
 
 
   Models.py with errors: ![models.py](docs/testing/python-profile.png)
