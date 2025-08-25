@@ -76,7 +76,7 @@ Closed milestones are under the **Issues** tab. See [project board](https://gith
 
 ### Design
 #### Database
-Below is my initial database schema. I used [Lucidchart](https://lucid.app/lucidchart/2079b9e7-4f65-4200-8337-c7328cfd5e1e/edit?viewport_loc=-356%2C-467%2C3696%2C1829%2CmkFtcNkq6Rib&invitationId=inv_4a4f8b69-07b0-4019-82a4-0720dfb4bfd0) to create it. I used Boutique Ado as a start and+p0o built upon that. 
+Below is my initial database schema. I used [Lucidchart](https://lucid.app/lucidchart/2079b9e7-4f65-4200-8337-c7328cfd5e1e/edit?viewport_loc=-356%2C-467%2C3696%2C1829%2CmkFtcNkq6Rib&invitationId=inv_4a4f8b69-07b0-4019-82a4-0720dfb4bfd0) to create it. I used Boutique Ado as a start and built upon that. 
 
 
 ![Initial ERD](docs/db-initial.png)
@@ -106,7 +106,7 @@ Below are my initial wireframes for mobile and laptop screen sizes. I used [Figm
 
 
 <details>
-    <summary>Home page</summary>Initially, I had planned some sponsor logos but instead I opted for more text on the home page on how everything works. The **About** section is there, and I added more images to make it more appealing. The logo moved to the center and menu to the left on mobile screens, and the cart icon is on the right on mobiles, like the desktop wireframe.
+    <summary>Home page</summary>Initially, I had planned some sponsor logos but instead I opted for more text on the home page on how everything works. The About section is there, and I added more images to make it more appealing. The logo moved to the center and menu to the left on mobile screens, and the cart icon is on the right on mobiles, like the desktop wireframe.
 
   ![Home](docs/wireframes/wireframe-home.png)
 
@@ -226,21 +226,21 @@ All content is written by me.
     - Again the adresses for indoor and outdoor, as I did not want to have that in the lesson cards, and maybe users don't read the footer. Both addresses show when you click **All lessons** (menu), **Private lessons** or **Group lessons** (home page), only one shows when one of the buttons for outdoor or indoor were clicked.
     - A list of lesson cards, stacked on small screens and up to three columns on large screens.
     
-    -__Lesson card__
-      - Image, if selected by site admin. The available images have different sizes, vertical images fit best. An image is not required as it does not add much value to the content, it just looks nicer. Therefore, there is a minimal selection of images that can be added to a card, and they can be the same for several cards. Like the real life website Matchi.com, coaches can have their image, or it can just be an image of someone on a court. For now, the following images are available:
-        - An image of Marina, Bernardo and Abel, the coaches
-        - An image of people serving, for lessons that focus on serving
-        - An image of someone hitting a volley, for lessons that focus on an attacking play style
-        - An image with tennis balls, that can be used for any kind of lesson
-      - Date and time, duration, name as heading
-      - Description: descriptions can differ in length and cause some distortions between 576 and 768 px screen width when the lesson cards are displayed in rows of two with the image in the top part. The cards are set to be the same height so the card footers are always aligned, but larger descriptions can make images smaller. It is therefore advised to use roughly the same description length. On screens smaller than 576 px the cards are stacked in one column so this is not an issue, and on screens larger that 767 px, the image is placed to the left of the card, so it is not an issue.
-      - Place: outdoor or indoor
-      - Level
-      - Capacity: how many people can join
-      - Places left: how many places are left to book
-      - Price
-      - **Add to cart** button, or when there are no places left, **Not bookable** disabled button.
-      - For site admin only: **Edit** and **Delete** buttons. Intentionally this section is not styled like the rest of the card, to highlight it is part of the admin.
+    - __Lesson card__
+        - Image, if selected by site admin. The available images have different sizes, vertical images fit best. An image is not required as it does not add much value to the content, it just looks nicer. Therefore, there is a minimal selection of images that can be added to a card, and they can be the same for several cards. Like the real life website Matchi.com, coaches can have their image, or it can just be an image of someone on a court. For now, the following images are available:
+          - An image of Marina, Bernardo and Abel, the coaches
+          - An image of people serving, for lessons that focus on serving
+          - An image of someone hitting a volley, for lessons that focus on an attacking play style
+          - An image with tennis balls, that can be used for any kind of lesson
+        - Date and time, duration, name as heading
+        - Description: descriptions can differ in length and cause some distortions between 576 and 768 px screen width when the lesson cards are displayed in rows of two with the image in the top part. The cards are set to be the same height so the card footers are always aligned, but larger descriptions can make images smaller. It is therefore advised to use roughly the same description length. On screens smaller than 576 px the cards are stacked in one column so this is not an issue, and on screens larger that 767 px, the image is placed to the left of the card, so it is not an issue.
+        - Place: outdoor or indoor
+        - Level
+        - Capacity: how many people can join
+        - Places left: how many places are left to book
+        - Price
+        - **Add to cart** button, or when there are no places left, **Not bookable** disabled button.
+        - For site admin only: **Edit** and **Delete** buttons. Intentionally this section is not styled like the rest of the card, to highlight it is part of the admin.
 
     All lessons:
 
