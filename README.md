@@ -29,7 +29,7 @@ Inspired by [Matchi](https://www.matchi.se/) and [Grands](https://playgrands.com
 
 ### User stories
 
-See [project board](https://github.com/users/LizzyonGit/projects/6/views/1) for the agile methodology followed during this project and the end result. Implemented features in the **Done** column, future features and unfixed bugs in the **Won't do** column.
+Closed milestones are under the **Issues** tab. See [project board](https://github.com/users/LizzyonGit/projects/6/views/1) for the agile methodology followed during this project and the end result. Note that issues closed as *not planned* also appear in the **Done** column.
 
 #### As a site admin, I can:
 **Website layout milestone**
@@ -53,7 +53,7 @@ See [project board](https://github.com/users/LizzyonGit/projects/6/views/1) for 
 **Product information milestone**
 - find neccessary information about lessons so that I can book lessons that suit my needs.
 - narrow down the list of lessons to specific characteristics so that I can easily view lessons that match my needs.
-- see how many have booked lesson so that I can see how many will be joining.
+- see how many have booked a lesson so that I can see how many will be joining.
 
 **Book lesson milestone**
 - add lessons to my cart so that I can proceed to payment.
@@ -76,22 +76,22 @@ See [project board](https://github.com/users/LizzyonGit/projects/6/views/1) for 
 
 ### Design
 #### Database
-Below is my initial database schema. I used [Lucidchart](https://lucid.app/lucidchart/2079b9e7-4f65-4200-8337-c7328cfd5e1e/edit?viewport_loc=-356%2C-467%2C3696%2C1829%2CmkFtcNkq6Rib&invitationId=inv_4a4f8b69-07b0-4019-82a4-0720dfb4bfd0) to create it. I used Boutique Ado as a start an built upon that. 
+Below is my initial database schema. I used [Lucidchart](https://lucid.app/lucidchart/2079b9e7-4f65-4200-8337-c7328cfd5e1e/edit?viewport_loc=-356%2C-467%2C3696%2C1829%2CmkFtcNkq6Rib&invitationId=inv_4a4f8b69-07b0-4019-82a4-0720dfb4bfd0) to create it. I used Boutique Ado as a start and+p0o built upon that. 
 
 
 ![Initial ERD](docs/db-initial.png)
 
 
-- I made some changes to the Product model, which is the Lesson model. I added **Places left** to handle the lesson having a max amount of people that can book it. I first thought I could do this with only the **Capacity** field, which did not work.
-- The lesson image is not an ImagField, but a CharField with choices, where each choice sets a specific image stored in the project.
-- I converted some fields to models, because I wanted the site admin to be able to preset these fields, and add to them. This applies to the fields **Place**, **Level interval**, **Duration**, and **Capacity**. I also added a BooleanField **Deleted**, to handle deletion of lessons that have been booked before.
+- I made some changes to the **Product** model, which is the **Lesson** model. I added the field **places left** to handle the lesson having a max amount of people that can book it. I first thought I could do this with only the **capacity** field, which did not work.
+- The lesson image is not an ImageField, but a CharField with choices, where each choice sets a specific image stored in the project.
+- I converted some fields to models, because I wanted the site admin to be able to preset these fields, and add to them. This applies to the fields **place**, **level_interval**, **duration**, and **capacity**. I also added a BooleanField **deleted**, to handle deletion of lessons that have been booked before.
 - I looked into using DurationField for the lesson's duration, but this was overly complicated and I would not need to have calculations with durations, so I opted for a simple FK model with a CharField, and added duration values in admin.
 
 
-- To the UserProfile model, I added a CloudinaryField, so users can upload a profile image.
+- To the **UserProfile** model, I added a CloudinaryField, so users can upload a profile image.
 
 
-- The OrderLineItem model does not have the fields **date_time**, **category** and **level**, but I added **user_profile**. This is so that in admin, coaches can see who is attending by checking the order lines with their lesson, without the need to check per order, and see the attendees' level and prepare for that. Also, they can change the level if the user want this, after a lesson after their own assessment.
+- The **OrderLineItem** model does not have the fields **date_time**, **category** and **level**, but I added **user_profile**. This is so that in admin in the list display, coaches can see who is attending by checking the order lines with their lesson, without the need to check per order, and see the attendees' level (if filled in) and prepare for that. Also, they can easier access the level to change it, if the user wants this, after a lesson after their own assessment.
 
 
 Final ERD:
@@ -102,11 +102,11 @@ Final ERD:
 
 #### Wireframes
 
-Below are my initial wireframes for mobile and laptop screen sizes. I used [Figma](https://www.figma.com/) to create them.
+Below are my initial wireframes for mobile and laptop screen sizes. I used [Figma](https://www.figma.com/design/DCu83bY8O4E97RYqVB82XO/MP4?node-id=0-1&t=krsBZBOKChjTqski-1) to create them.
 
 
 <details>
-    <summary>Home page</summary>Initially, I had planned some sponsor logos but instead I opted for more text on the home page on how everything works. The About section is there, and I added more images to make it more appealing. The logo moved to the center for mobile screens, and the cart icon is now to the right, like the desktop wireframe.
+    <summary>Home page</summary>Initially, I had planned some sponsor logos but instead I opted for more text on the home page on how everything works. The **About** section is there, and I added more images to make it more appealing. The logo moved to the center and menu to the left on mobile screens, and the cart icon is on the right on mobiles, like the desktop wireframe.
 
   ![Home](docs/wireframes/wireframe-home.png)
 
@@ -118,13 +118,13 @@ Below are my initial wireframes for mobile and laptop screen sizes. I used [Figm
 
 </details>
 <details>
-    <summary>Cart</summary>The cart looks mainly the same as the wireframe, as the lesson cards have less information and the image is removed, they are smaller and they are added in one column on all screens. The buttons' placement has changed slightly. I have implemented a button to go back to all lessons also when there are lessons in the cart late in the process, after feedback. I had it in my wireframe but did not think it was needed because the page is easily accessible in the menu.
+    <summary>Cart</summary>The cart looks mainly the same as the wireframe, as the lesson cards have less information and the image is removed, they are smaller and they are stacked in one column on all screen sizes. The buttons' placement has changed slightly. Wit no cart items, there is just and intro text and one button under it, in the same template.
 
   ![Cart](docs/wireframes/wireframe-cart.png)
 
 </details>
 <details>
-    <summary>Checkout/checkout success</summary>The checkout is inspired by Boutique Ado, and the next page after a successful payment (checkout_success.html), was intended to look like this, just without the payment form (left part on desktop screens). In the end, the checkout success page looks more like the cart page, as the left part does take too much place for just an intro text, so it's also one column on desktop screens.
+    <summary>Checkout/checkout success</summary>The checkout is inspired by Boutique Ado, and the next page after a successful payment (checkout_success.html), was intended to look the same, just with an intro text instead of the payment form (left part on desktop screens). In the end, the checkout success page looks more like the cart page, as the left part does take too much place for just an intro text, so it's also one column on desktop screens.
 
   ![Checkout](docs/wireframes/wireframe-checkout.png)
 
@@ -142,7 +142,7 @@ Below are my initial wireframes for mobile and laptop screen sizes. I used [Figm
 
 </details>
 <details>
-    <summary>Log in/Log out/Register</summary>The pages to register and log in simply consist of a form and a button to submit, the page to log out simply of a confirmation question and a button to log out.
+    <summary>Log in/Register/Log out/404</summary>The pages to register and log in simply consist of a form and a button to submit, the page to log out simply of a confirmation question and a button to log out. My 404 page also has the same layout as the page to log out.
 
   ![Login](docs/wireframes/wireframe-login.png)
 
@@ -151,12 +151,12 @@ Below are my initial wireframes for mobile and laptop screen sizes. I used [Figm
 
 
 #### Colour schemes
-I used colours related to tennis with a shade of blue, red and green to reflect the different surfaces hard court, clay and grass. Yellow is derived from the tennis ball colour, white is the line colour, and black is used as a contrast colour.
+I used colours related to tennis with a shade of blue, red and green to reflect the different surfaces: hard court, clay and grass. Yellow is derived from the tennis ball colour, white is the line colour, and black is used as a contrast colour.
 
 This is my palette: https://coolors.co/0366A4-ffffff-F56B41-82b23d-000000-e3f121
 
 #### Fonts
-I used a font recommended with my logo from Canva from Daily Creative (https://www.canva.com/design/DAGr7kiK5zA/dRQFAGHjN97D28Y8rcLtyg/edit?ui=eyJHIjp7IkQiOnsiRCI6eyJBPyI6IkYifX19fQ): IBM Plex Sans. In google fonts, it was recommended to pair it with IBM Plex Serif (https://fonts.google.com/specimen/IBM+Plex+Serif/about?preview.text=Court%20Love&query=IBM+Plex)
+I used a font recommended with my logo from Canva from Daily Creative (https://www.canva.com/design/DAGr7kiK5zA/dRQFAGHjN97D28Y8rcLtyg/edit?ui=eyJHIjp7IkQiOnsiRCI6eyJBPyI6IkYifX19fQ): IBM Plex Sans. In google fonts, it was recommended to pair it with IBM Plex Serif (https://fonts.google.com/specimen/IBM+Plex+Serif/about?preview.text=Court%20Love&query=IBM+Plex).
 
 #### Logos and images
 I created the logo from a template in Canva. 
@@ -172,7 +172,7 @@ All content is written by me.
 
 - __Navbar__
 
-    - The navbar holds the logo, menu links depending on the login state of the user, the cart icon (tennis rackquet) and current cost for all lessons in the cart. The logo is in the upper left corner in the expanded navbar, in the compressed navbar it is in the center.
+    - The navbar holds the logo, menu links depending on the login state of the user, the cart icon (tennis rackquet) and current cost for all lessons in the cart. The logo is in the upper left corner in the expanded navbar, in the compressed navbar it is in the center. When the compressed navbar is opened, it is bottom left.
 
 
     Navbar logged in user:
@@ -188,6 +188,10 @@ All content is written by me.
     Compressed navbar:
 
     ![Navbar compressed](docs/features/navbar-compressed.png)
+
+    Opened compressed navbar:
+
+    ![Navbar compressed open](docs/features/navbar-compressed-open.png)
 
     
     Project file: templates/base.html
@@ -218,33 +222,44 @@ All content is written by me.
 
 - __All lessons page__
     - Buttons **Group - indoor**, **Group - outdoor**, **Private - indoor** and **Private - outdoor** to filter the list of lessons. Two rows with two buttons on small screens, one row with four buttons on large screens.
-    - Adjusted title **All lessons** or based on which button was clicked: **All group lessons - indoor**, **All group lessons - outdoor**, **All private lessons - indoor**, or **All private lessons - outdoor**.
-    - Again the adresses for indoor and outdoor, as I did not want to have that in the lesson cards, and maybe users don't read the footer. Both addresses show when you click **All lessons**, only one shows when one of the buttons for outdoor or indoor were clicked.
+    - Adjusted title **All lessons** or based on which button was clicked: **All group lessons - indoor**, **All group lessons - outdoor**, **All private lessons - indoor**, or **All private lessons - outdoor**. If clicked one of the buttons from the home page, it says **All private lessons** or **All group lessons**.
+    - Again the adresses for indoor and outdoor, as I did not want to have that in the lesson cards, and maybe users don't read the footer. Both addresses show when you click **All lessons** (menu), **Private lessons** or **Group lessons** (home page), only one shows when one of the buttons for outdoor or indoor were clicked.
     - A list of lesson cards, stacked on small screens and up to three columns on large screens.
-    __Lesson card__
-    - Image, if selected by site admin. Images can have different sizes but it is advised to use vertical images. An image is not required as it does not add much value to the content, it just looks nicer. Therefore, there is a minimal selection of images that can be added to a card, and they can be the same for several cards. Like the real life website Matchi.com, coaches can have their image, or it can just an image of someone on a court. For now, there are the following images:
-      - An image of Marina, Bernardo and Abel, the coaches
-      - An image of people serving, for lessons that focus on serving
-      - An image of someone hitting a colley, for lessons that focus on an attacking play style
-      - An image with tennis balls, that can be used for any kind of lesson
-    - Date and time, duration, name as heading
-    - Description: descriptions can differ in length and cause some distortions between 576 and 768 px screen width when the lesson cards are displayed in rows of two with the image in the top part. The cards are set to be the same height so the card footers are always aligned, but larger descriptions can make images smaller. It is therefore advised to use roughly the same description length. On screens smaller than 576 px the cards are stacked in one column so this is not an issue, and on screens larger that 767 px, the image is places to the left of the card, so it is not an issue.
-    - Place: outdoor or indoor
-    - Level
-    - Capacity: how many people can join
-    - Places left: how many places are left to book
-    - Price
-    - **Add to cart** button, or when there are no places left, **Not bookable** disabled button.
-    - For site admin only: **Edit** and **Delete** buttons. Intentionally this section is not styled like the rest of the card, to highlight it is part of the admin.
+    
+    -__Lesson card__
+      - Image, if selected by site admin. The available images have different sizes, vertical images fit best. An image is not required as it does not add much value to the content, it just looks nicer. Therefore, there is a minimal selection of images that can be added to a card, and they can be the same for several cards. Like the real life website Matchi.com, coaches can have their image, or it can just be an image of someone on a court. For now, the following images are available:
+        - An image of Marina, Bernardo and Abel, the coaches
+        - An image of people serving, for lessons that focus on serving
+        - An image of someone hitting a volley, for lessons that focus on an attacking play style
+        - An image with tennis balls, that can be used for any kind of lesson
+      - Date and time, duration, name as heading
+      - Description: descriptions can differ in length and cause some distortions between 576 and 768 px screen width when the lesson cards are displayed in rows of two with the image in the top part. The cards are set to be the same height so the card footers are always aligned, but larger descriptions can make images smaller. It is therefore advised to use roughly the same description length. On screens smaller than 576 px the cards are stacked in one column so this is not an issue, and on screens larger that 767 px, the image is placed to the left of the card, so it is not an issue.
+      - Place: outdoor or indoor
+      - Level
+      - Capacity: how many people can join
+      - Places left: how many places are left to book
+      - Price
+      - **Add to cart** button, or when there are no places left, **Not bookable** disabled button.
+      - For site admin only: **Edit** and **Delete** buttons. Intentionally this section is not styled like the rest of the card, to highlight it is part of the admin.
 
     All lessons:
 
     ![All lessons](docs/features/all-lessons.png)
 
 
+    All private lessons - normal user - large screen:
+
+    ![All private lessons](docs/features/private-all-normal.png)
+
+
     Private - indoor filtered:
 
     ![Private indoor](docs/features/private-indoor.png)
+
+
+    Group - indoor filtered on mobile:
+
+    ![Group indoor](docs/features/group-indoor.png)
 
 
     Project file: lessons/templates/lessons/lessons.html
@@ -258,13 +273,16 @@ All content is written by me.
   - Button **Pay** to go to checkout
   - If no lessons are in the cart: appropriate text and button to go to **All lessons**
     
+    With lessons:
 
     ![Cart](docs/features/cart.png)
 
+    Empty:
+
+    ![Cart empty](docs/features/empty-cart.png)
+
 
     Project file: cart/templates/cart/cart.html
-
-
 
 - __Checkout__
     - Details & payment
@@ -284,18 +302,23 @@ All content is written by me.
 
     Project file: checkout/templates/checkout/checkout.html
 
-
 - __Order confirmation__
     - **Payment succesful** page
       - After completing the payment, the user is will see this page.
-      - From **My profile**, the user also can go to **Payment successful** pages  from old orders.
-      - It has an introductory text with the order number, which you should hover over to see the whole number. This is because on small screens, this large number messes up the responiveness.
+      - From **My profile**, the user also can go to **Payment successful** pages from old orders.
+      - It has an introductory text with the order number, which you should hover over to see the whole number. This is not good for mobiles and tablets, but this is because on small screens, this large number messes up the responiveness. 
       - The booked lesson cards display the same as in the **Cart** page, and are stacked on all screen sizes. 
       - The grand total
       - If the user had come from the profile, there is a **Back to profile** button.
       
+      After payment:
 
       ![Payment successful](docs/features/checkout-success.png)
+
+
+      From profile:
+
+      ![From profile](docs/features/confirmation-profile.png)
 
 
       Project file: checkout/templates/checkout/checkout_success.html
@@ -309,12 +332,10 @@ All content is written by me.
 
       Project files: checkout/templates/checkout/confirmation_emails/confirmation_email_body.txt and confirmation_email_subject.txt
 
-
-
 - __My profile__
     - Default personal information
       - Link to [NTRP](https://activenetwork.my.salesforce-sites.com/usta/articles/en_US/Article/League-NTRP-Rating-Information) to assess your own level
-      - **Phone number** field where you fil in a phonenumber
+      - **Phone number** field where you fil in a phone number
       - **Level** select field where you can select a level (1.5-7) according to the NTRP
       - If the user has added an image:
         - Text *Current profile image:* 
@@ -330,7 +351,6 @@ All content is written by me.
 
       - Note that you can not add a new image and remove the old image at the same time. When you select to remove the current image, the **Select image** button and text *Select an image and click Update below* becomes hidden. When you first select a new image, the checkbox **Remove current profile image after Update** becomes hidden.
     
-
     - Booking history
       - If applicable, a list of previous orders with the order date and order number, linking to the original order confirmation. The order number is shortened because it hinders responsiveness on small screens, when you hover over it, it shows the whole number.
       - If no previous orders, a text *You have no previous bookings*.
@@ -338,7 +358,7 @@ All content is written by me.
     Stacked on small screens, up to two columns on large screens.
 
 
-    Profile with no image: 
+    Profile with no image but selected image before updating: 
     
     ![No image](docs/features/profile-noimage.png)
 
@@ -355,9 +375,6 @@ All content is written by me.
     
     Project file: profiles/templates/profiles/profile.html
 
-
-
-
 - __Register__
   - Link to **Log in** page for those who already have an account
   - **E-mail** field
@@ -372,8 +389,6 @@ All content is written by me.
 
   
   Project file: templates/allauth/account/signup.html
-
- 
 
 - __Log in__
   - Link to **Register** page for users who do not have an account yet
@@ -408,26 +423,23 @@ All content is written by me.
     - Profile update
 
 
-    - Delete lesson
-    - Update lesson
-    - Add lesson
-    - Set **Places left** to higher value than **Capacity** on lesson
-    - Set date to passed date on lesson
+    - Site admin:
+      - Delete lesson
+      - Update lesson
+      - Add lesson
+      - Set **Places left** to higher value than **Capacity** on lesson
+      - Set date to passed date on lesson
 
-  - Errors like:
-    - Lessons that are not available anymore are in the cart
-    - Invalid forms
-    - You write in a url that you are not authorised to access
-    - Something went wrong with a payment
+    - Errors like:
+      - Lessons that are not available anymore are in the cart
+      - Invalid forms
+      - You write in a url that you are not authorised to access
+      - Something went wrong with a payment
 
   The messages adapt their width to the content, but there is a max-width set. Here is an example of a message whn you add a lesson to your cart:
 
 
   ![toast](docs/features/toast-cart.png)
-
-
-
-
 
 - __The 404 page__
 
@@ -439,7 +451,6 @@ All content is written by me.
 
 
     Project file: templates/404.html
-
 
 
 #### Site admin only
@@ -465,7 +476,6 @@ All content is written by me.
 
     Project file: lessons/templates/lessons/add_lesson.html
 
-
 - __Edit lesson__
   - Form with the same fields and functionality as **Add lesson**
   - **Cancel** button to cancel changes and go back to the **All lessons** page
@@ -483,7 +493,7 @@ All content is written by me.
 
   - You can click the cross, **Do not delete** or outside the modal to close the modal.
   - When you click **Delete lesson**, you delete the lesson.
-  - When a lesson has been booked before, you can not delete it like this, you can only remove it form the frontend. Any order lines need to be deleted in admin before you can delete the lesson from the database. When a lesson has not been booked before, it can be deleted from the database when you click **Delete lesson** in the modal.
+  - When a lesson has been booked before, you can not delete it like this, you can only remove it from the frontend. Any order lines need to be deleted in admin before you can delete the lesson from the database. When a lesson has not been booked before, it can be deleted from the database by clicking **Delete lesson** in the modal.
 
 
   Delete modal for lesson not booked before: 
@@ -499,7 +509,7 @@ All content is written by me.
 ### Features left to implement
 
 - Possibility to select a date range to filter the lesson list.
-- Email address field on My profile with possibility to change it and prepopulate checkout form with it.
+- Email address field on **My profile** with possibility to change it and prepopulate checkout form with it.
 - Link directly to lesson after editing/adding a lesson, and for the user, from the cart page.
 - When site admin cancels an order in admin, lessons' **Places left** is increased automatically.
 

@@ -35,6 +35,10 @@ class OrderLineItemAdmin(admin.ModelAdmin):
     """
     Specifies which fields are in list display,
     and which can be filtered.
+    User's level is there so coaches can
+    go to the order lines, search on their lesson,
+    and see which levels (if filled in by user)
+    are attending
     """
     list_display = ('order', 'lesson', 'lesson__date_time',
                     'lesson__level_interval',
