@@ -340,7 +340,7 @@ All content is written by me.
       - If the user has added an image:
         - Text *Current profile image:* 
         - The current image that the user has added 
-        - Checkbox **Remove current profile image after Update**, when you select this and click **Update** the image will be deleted from the profile
+        - Checkbox **Remove current image after Update**, when you select this and click **Update** the image will be deleted from the profile
         - Text *Select an image and click Update below*
       - If the user has not added an image:
         - Text *You have not added a profile image*
@@ -349,7 +349,7 @@ All content is written by me.
       - If an image is selected, a text appears *Click Update to set image to: (name of file)*. There is no preview of the image that is selected.
       - **Update button** to update the default personal information.
 
-      - Note that you can not add a new image and remove the old image at the same time. When you select to remove the current image, the **Select image** button and text *Select an image and click Update below* becomes hidden. When you first select a new image, the checkbox **Remove current profile image after Update** becomes hidden.
+      - Note that you can not add a new image and remove the old image at the same time. When you select to remove the current image, the **Select image** button and text *Select an image and click Update below* becomes hidden. When you first select a new image, the checkbox **Remove current image after Update** becomes hidden.
     
     - Booking history
       - If applicable, a list of previous orders with the order date and order number, linking to the original order confirmation. The order number is shortened because it hinders responsiveness on small screens, when you hover over it, it shows the whole number.
@@ -365,7 +365,7 @@ All content is written by me.
 
     Profile with image: 
     
-    ![Image](docs/features/profile-image.png)
+    ![Image](docs/features/profile-image-updated.png)
 
 
     Booking history: 
