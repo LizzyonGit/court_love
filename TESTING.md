@@ -325,6 +325,7 @@ In [RealFaviconGenerator's favicon checker](https://realfavicongenerator.net/fav
 
 ## Manual testing
 
+Note that, because of extensive manual testing, lessons may have been booked even if the values for capacity and places_left is the same. I reset places_left in some cases to be able to book lessons again.
 
 ### User story testing
 
