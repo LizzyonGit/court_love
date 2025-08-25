@@ -91,9 +91,11 @@
 </main>
 {% endblock %}
 
-<!--From Boutique Ado-->
+
 {% block postloadjs %}
     {{ block.super }}
+    <!--From Boutique Ado, adds text what image is selected, if selected-->
+    <!--Toggles checkbox if user selects image-->
     <script>
         $('.new-image').change(function() {
             let file = $('.new-image')[0].files[0];
@@ -101,6 +103,7 @@
             $('.custom-control.custom-checkbox').toggle();
         });
     </script>
+    <!--Toggles select image elements if remove image checkbox is clicked-->
     <script>
         $('.form-check-input-remove').change(function() {
             $('#select-image-p').toggle();
