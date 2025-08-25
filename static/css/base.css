@@ -222,7 +222,7 @@ footer * {
     max-height: 250px;
 }}
 
-@media screen and (height < 350px  ) {
+@media screen and (height < 370px  ) {
 .cart-notification-wrapper {
     max-height: 200px;
 }}
