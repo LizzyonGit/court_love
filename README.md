@@ -51,7 +51,7 @@ Closed milestones are under the **Issues** tab. See [project board](https://gith
 - get back to the top of the page with one click when there are a lot of lessons, so that I can easily get back to the menu.
 
 **Product information milestone**
-- find neccessary information about lessons so that I can book lessons that suit my needs.
+- find necessary information about lessons so that I can book lessons that suit my needs.
 - narrow down the list of lessons to specific characteristics so that I can easily view lessons that match my needs.
 - see how many have booked a lesson so that I can see how many will be joining.
 
@@ -61,7 +61,7 @@ Closed milestones are under the **Issues** tab. See [project board](https://gith
 - remove lessons from the cart so that I can manage what I am about to buy.
 - navigate to a checkout page so that I can pay for my lessons.
 - complete a payment so that I am allowed to attend the lesson.
-- see a confirmation after payment so that I know that my payment has been successfull.
+- see a confirmation after payment so that I know that my payment has been successful.
 - get an email after purchase so that I can review my purchase any time and see when I should go to the lesson, without the need to log in.
 
 **Authentication milestone**
@@ -91,7 +91,7 @@ Below is my initial database schema. I used [Lucidchart](https://lucid.app/lucid
 - To the **UserProfile** model, I added a CloudinaryField, so users can upload a profile image.
 
 
-- The **OrderLineItem** model does not have the fields **date_time**, **category** and **level**, but I added **user_profile**. This is so that in admin in the list display, coaches can see who is attending by checking the order lines with their lesson, without the need to check per order, and see the attendees' level (if filled in) and prepare for that. Also, they can easier access the level to change it, if the user wants this, after a lesson after their own assessment.
+- The **OrderLineItem** model does not have the fields **date_time**, **category** and **level**, but I added **user_profile**. This is so that in admin in the list display, coaches can see who is attending by checking the order lines with their lesson, without the need to check per order, and see the attendees' level (if filled in) and prepare for that. Also, they can more easily access the level to change it, if the user wants this, after a lesson after their own assessment.
 
 
 Final ERD:
@@ -172,7 +172,7 @@ All content is written by me.
 
 - __Navbar__
 
-    - The navbar holds the logo, menu links depending on the login state of the user, the cart icon (tennis rackquet) and current cost for all lessons in the cart. The logo is in the upper left corner in the expanded navbar, in the compressed navbar it is in the center. When the compressed navbar is opened, it is bottom left.
+    - The navbar holds the logo, menu links depending on the login state of the user, the cart icon (tennis racquet) and current cost for all lessons in the cart. The logo is in the upper left corner in the expanded navbar, in the compressed navbar it is in the center. When the compressed navbar is opened, it is bottom left.
 
 
     Navbar logged in user:
@@ -211,7 +211,7 @@ All content is written by me.
 
 - __Footer__
     - **Contact** section with cancellation info, phone and email, social media links.
-    - **Places we teach at** with outdoor and indoor adresses.
+    - **Places we teach at** with outdoor and indoor addresses.
     - Stacked on small screens, up to two columns on larger screens.
 
 
@@ -223,7 +223,7 @@ All content is written by me.
 - __All lessons page__
     - Buttons **Group - indoor**, **Group - outdoor**, **Private - indoor** and **Private - outdoor** to filter the list of lessons. Two rows with two buttons on small screens, one row with four buttons on large screens.
     - Adjusted title **All lessons** or based on which button was clicked: **All group lessons - indoor**, **All group lessons - outdoor**, **All private lessons - indoor**, or **All private lessons - outdoor**. If clicked one of the buttons from the home page, it says **All private lessons** or **All group lessons**.
-    - Again the adresses for indoor and outdoor, as I did not want to have that in the lesson cards, and maybe users don't read the footer. Both addresses show when you click **All lessons** (menu), **Private lessons** or **Group lessons** (home page), only one shows when one of the buttons for outdoor or indoor were clicked.
+    - Again the addresses for indoor and outdoor, as I did not want to have that in the lesson cards, and maybe users don't read the footer. Both addresses show when you click **All lessons** (menu), **Private lessons** or **Group lessons** (home page), only one shows when one of the buttons for outdoor or indoor were clicked.
     - A list of lesson cards, stacked on small screens and up to three columns on large screens.
     
     - __Lesson card__
@@ -436,7 +436,7 @@ All content is written by me.
       - You write in a url that you are not authorised to access
       - Something went wrong with a payment
 
-  The messages adapt their width to the content, but there is a max-width set. Here is an example of a message whn you add a lesson to your cart:
+  The messages adapt their width to the content, but there is a max-width set. Here is an example of a message when you add a lesson to your cart:
 
 
   ![toast](docs/features/toast-cart.png)
