@@ -118,7 +118,7 @@ Below are my initial wireframes for mobile and laptop screen sizes. I used [Figm
 
 </details>
 <details>
-    <summary>Cart</summary>The cart looks mainly the same as the wireframe, as the lesson cards have less information and the image is removed, they are smaller and they are stacked in one column on all screen sizes. The buttons' placement has changed slightly. Wit no cart items, there is just and intro text and one button under it, in the same template.
+    <summary>Cart</summary>The cart looks mainly the same as the wireframe, as the lesson cards have less information and the image is removed, they are smaller and they are stacked in one column on all screen sizes. The buttons' placement has changed slightly. With no cart items, there is just an intro text and one button under it, in the same template.
 
   ![Cart](docs/wireframes/wireframe-cart.png)
 
@@ -625,6 +625,7 @@ __During development and testing__
   - [Django forum](https://forum.djangoproject.com/)
   - [Stackoverflow](https://stackoverflow.com/)
   - [Reddit](https://www.reddit.com/)
+  - [Groups Google](https://groups.google.com/)
   - CI Slack community.
 - Informative sources for reading up on concepts:
   - [W3schools](https://www.w3schools.com/)

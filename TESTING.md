@@ -29,11 +29,12 @@
     * [Browser testing](#browser-testing)
     * [Device testing](#device-testing)
     * [Feature testing](#feature-testing)
-    * [Unfixed bugs](#unfixed-bugs)
+    * [Unfixed bugs and issues](#unfixed-bugs-and-issues)
       * [Order lesson more than once](#order-lesson-more-than-once)
       * [No reset places_left when webhook deletes order](#no-reset-of-places_left-when-webhook-deletes-order)
       * [Button after dismissing the Delete modal](#button-after-dismissing-the-delete-modal)
       * [Phone number field validation](#phone-number-field-validation)
+      * [Long order number](#long-order-number)
 
 
 ## Automated testing
@@ -47,7 +48,7 @@ No current errors in the [HTML validator](https://validator.w3.org/). Below I li
 
 - On the **My profile** page, I got an error about a duplicate id attribute, caused by the django widget handling the image upload. [Slack](https://code-institute-room.slack.com/archives/C026VTHQDNY/p1683142277576629) helped me to understand the issue, so I replaced the id "new-image" I set with a class of the same name, and updated the jQuery for this. This worked and the error dissapeared.
 
-  Another issue on the same page was that I had set a placeholder for a select element (**level**), I found a similar error on [Slack](https://code-institute-room.slack.com/archives/C026VTHQDNY/p1714631167308539). I decided to remove the code about placeholders (this was copied and adapted from other fields) because it actually only was applicable to the **Phone number** field, which already had a label. So the error also dissapeared.
+  Another issue on the same page was that I had set a placeholder for a select element (**Level**), I found a similar error on [Slack](https://code-institute-room.slack.com/archives/C026VTHQDNY/p1714631167308539). I decided to remove the code about placeholders (this was copied and adapted from other fields) because it actually only was applicable to the **Phone number** field, which already had a label. So the error also dissapeared.
 
 
 Results for pages for which you do not have to be logged in or have added lessons:
@@ -84,35 +85,38 @@ Before running my code through the [CI Python Linter](https://pep8ci.herokuapp.c
 I ran the following pages through the validator, I have added screenshots of the ignored errors below. Note that I added docstrings later, so the line numbers may not match.
 
 - Cart app
-No errors: contexts.py, views.py, urls.py, apps.py.
+  No errors: contexts.py, views.py, urls.py, apps.py.
 
 - Checkout app
-No errors: admin.py, apps.py, forms.py, models.py, signals.py, urls.py, views.py, webhook_handler.py, webhooks.py
+  No errors: admin.py, apps.py, forms.py, models.py, signals.py, urls.py, views.py, webhook_handler.py, webhooks.py
 
 - Home app
-No errors: apps.py, urls.py, views.py
+  No errors: apps.py, urls.py, views.py
 
 - Lessons app
-No errors: admin.py, apps.py, urls.py
-Ignored *line too long* because of url in comment: forms.py, models.py views.py
+  No errors: admin.py, apps.py, urls.py
 
 
-Views.py with errors: ![views.py](docs/testing/python-lessons-views.png)
+  Ignored *line too long* because of url in comment: forms.py, models.py views.py
 
 
-Forms.py with error: ![forms.py](docs/testing/python-lessons-forms.png)
+  Views.py with errors: ![views.py](docs/testing/python-lessons-views.png)
 
 
-Models.py not with error: ![models.py](docs/testing/python-lessons-models.png)
+  Forms.py with error: ![forms.py](docs/testing/python-lessons-forms.png)
+
+
+  Models.py not with error: ![models.py](docs/testing/python-lessons-models.png)
 
 
 - Profiles app
-No errors: admin.py, apps.py, forms.py, urls.py, views.py, widgets.py
+  No errors: admin.py, apps.py, forms.py, urls.py, views.py, widgets.py
 
-Ignored *line too long* because of long url in comment, and indented comment which I think should not be split: models.py
+  
+  Ignored *line too long* because of long url in comment, and indented comment which I think should not be split: models.py
 
 
-Models.py with errors: ![models.py](docs/testing/python-profile.png)
+  Models.py with errors: ![models.py](docs/testing/python-profile.png)
 
 
 
@@ -138,13 +142,13 @@ For my red **Delete** buttons, the contrast was also not good, so I changed from
 
 - Best practices warns about third party cookies from Stripe, and about issues logged to the Issue panel, also related to Stripe, so I cannot change that. Actuelly, in incognito mode, this is gone.
 
-- Performance testing did not give issues that I can fix, because I already cut down the size of my images so they would still be good at all screens sizes.
+- Performance testing did not give issues that I can fix, because I already cut down the size of my images so they would still be good on all screen sizes.
 
 - I got an accessibility warning *[aria-hidden="true"] elements contain focusable descendents*, but it refers to a Stripe element which I can not change.
 
 - For some pages I get an issue about the footer's heading not being in descending order. This is because the footer is written in the base template, so it can not consider the heading on each page. Also, not all pages have an h2 heading, but some have, so my footer is set to have h3 headings. I kept this like it is.
 
-- The lesson image connected to bernardo.webp is of low resolution so I get a best practice warning there for mobile. However, I like to keep this image, as it has been hard to find images that look like a tennis coach. I could just remove it and not have Bernardo at all, but I prefer not to do this, since the Best practice score is still high for **All lessons**.
+- The lesson image connected to bernardo.webp is of low resolution so I get a best practice warning there for mobile. However, I like to keep this image, as it has been hard to find images of people who look like a tennis coach. I could just remove it and not have Bernardo at all, but I prefer not to do this, since the Best practice score is still high for **All lessons**.
 
 - Mobile performance is a lot lower than desktop performance overall, but I did not manage to improve this. The warnings Lighthouse gives is often about unused code. For example, **Log out** is a very simple page, but still scores low. I guess because it still loads everything from the base template, but does not use it. I also do not have so many layout shifts between mobile screens and larger screens, so I do not really understand the low scores. **Edit lesson** also gives a very low score for mobile performance, it seems like the toast message(s) that come up on page load could be causing this is the toast-body is *largest contentful paint element*, but I of course want to keep those messages. **My profile**'s mobile performance score is better for a user with less orders, then I get 71%, but for one with a lot of orders I got 64%. Not having an image also improves the score, so I decided to leave this.
 
@@ -340,55 +344,55 @@ In [RealFaviconGenerator's favicon checker](https://realfavicongenerator.net/fav
 |get back to the top of the page with one click when there are a lot of lessons, so that I can easily get back to the menu.|A little icon with an arrow up which you can click at any time on the bottom right of the **All lessons** page, taking you to the top of the page|
 |find neccessary information about lessons so that I can book lessons that suit my needs.|The lesson cards with date, time, duration, description, place, level, capacity and price, and the addresses on top of the **All lessons** page, and in the footer.|
 |narrow down the list of lessons to specific characteristics so that I can easily view lessons that match my needs.|From the home page, you can click **Private lessons** and **Group lessons**, to filter on those categories. On the **All lessons** page, there are buttons to filter on **Group - Indoor**, **Group - Outdoor**, **Private - Indoor** or **Private - Outdoor**.|
-|see how many have booked lesson so that I can see how many will be joining.|**Places left** on the lesson cards, and in the booking history when you go to an old order confirmation, the updated **Places left** is there as well.|
+|see how many have booked a lesson so that I can see how many will be joining.|**Places left** on the lesson cards, and in the booking history when you go to an old order confirmation, the updated **Places left** is there as well.|
 |add lessons to my cart so that I can proceed to payment.|**Add to cart** button on each lesson card, if not fully booked already.|
 |see an overview of my cart so that I can see which lessons I am about to buy.|**Cart** page via the tennis racquet icon to the right in the navigation bar, or via the button in the toast messages coming up after adding a lesson to the cart.|
-|remove lessons from the cart so that I can manage what I am about to buy.|**Remove** button on each lesson card in the **Cart** page.|
-|navigate to a checkout page so that I can pay for my lessons.|On the **Cart** page, there is a **Pay** button taking you to the **Checkout** page. The **Checkout** page hase|
+|remove lessons from the cart so that I can manage what I am about to buy.|**Remove** button on each lesson card on the **Cart** page.|
+|navigate to a checkout page so that I can pay for my lessons.|On the **Cart** page, there is a **Pay** button taking you to the **Checkout** page.|
 |complete a payment so that I am allowed to attend the lesson.|**Complete payment** button on the **Checkout** page, **Stripe** integrations and webhooks in case something goes wrong, so the order is still added.|
-|see a confirmation after payment so that I know that my payment has been successfull.|**Checkout successful** page and toast message after payment.|
+|see a confirmation after payment so that I know that my payment has been successfull.|**Payment successful** page and toast message after payment.|
 |get an email after purchase so that I can review my purchase any time and see when I should go to the lesson, without the need to log in.| Order confirmation email sent after payment.|
 |register so that I can log in to the website.|**Register** page.|
 |log in so that I can see my order history and personal details.|**Log in** page.|
 |log out so that I can control whether I want to be logged in or not.|**Log out** page and button.|
-|see my order history so that I can check what lessons I have booked|**My profile** page with **Booking history** column, previous orders listed in descending order (newest first).|
+|see my order history so that I can check what lessons I have booked|**My profile** page with **Booking history** column, previous orders listed in descending order (newest first). Links to old **Payment successful** pages.|
 |manage my self-rated level so that I can update it along my tennis lesson journey|**Level** field on the **My profile** page.|
-|manage a profile image so that I can personalise my profile page.|**Select image**  and **Update** buttons on **My profile** to add or update an image, **Remove current profile image after Update** checkbox to remove an image.|
+|manage a profile image so that I can personalise my profile page.|**Select image**  and **Update** buttons on **My profile** to add or update an image, **Remove current image after Update** checkbox to remove an image.|
 
 
 ### Issues
 
 #### Capacity handler
-To handle the capacity number going down after someone booking a lesson, I tried several approaches. Initially, I thought the capacity number on the lesson model could just go down, but capacity is actually a foreign key to the Capacity model, because I wanted site admins to be able to add their own capacity values in admin with that model. So I tried implementing something like [this](https://stackoverflow.com/questions/61310901/how-to-update-a-value-from-table-accessed-via-foreign-key-django-orm), but this did not work as the Capacity model itself was changed, so 4 would just change 3 for example, and with that all lessons initially having 4 capacity would change to 3. I thought about changing the foreign key field to a normal field, but I also wanted to have two values, so that you could see the original capacity and how many places were booked or free. That was a much easier solution to have a separate field for **Places left** in the Lesson model, so I added that. This way, Capacity could just remain the same and all calculations could be done on the new field **Places left**. I put in a code to set **Places left** to the same initial value as **Capacity**, but a site admin can also manually adjust this for any reason. Then the **Places left** values decreases when the order line item is created either in the view, or via a webhook. 
+To handle the capacity number going down after someone booking a lesson, I tried several approaches. Initially, I thought the capacity number on the lesson model could just go down, but capacity is actually a foreign key to the Capacity model, because I wanted site admins to be able to add their own capacity values in admin with that model. So I tried implementing something like [this](https://stackoverflow.com/questions/61310901/how-to-update-a-value-from-table-accessed-via-foreign-key-django-orm), but this did not work as the **Capacity** model itself was changed, so 4 would just change to 3 for example, and with that all lessons initially having 4 capacity would change to 3. I thought about changing the foreign key field to a normal field, but I also wanted to have two values, so that you could see the original capacity and how many places were booked or free. It was a much easier solution to have a separate field for **Places left** in the **Lesson** model, so I added that. This way, the capacity value could just remain the same and all calculations could be done on the new field **Places left**. I put in a code to set **Places left** to the same initial value as **Capacity**, but a site admin can also manually adjust this for any reason. Then the **Places left** values decreases when the order line item is created either in the view, or via a webhook. 
 
 There is an unfixed issue which is when something goes wrong when creating an order via a webhook, and the order is deleted after an updated lesson with a new **Places left** value is saved, this would not be reversed. The reason for this is that I can not test this situation at this point, so I would rather not add any code that could break the webhook flow.
 
 #### Cart update when lesson is not bookable anymore
-I wanted to address the possibilty of a user having lessons in the cart that have been fully booked in the meantime, so **Places left** is 0, so the user should not be able to book those kinds of lessons. They can not be added to the cart, but they could have been there already. I tried to delete those order line items in the checkout, but I got an error message. I tried also to just removed the items from the order summary, but then you could go back to the cart and have the items there again. So I moved this logic to the card instead, and instead of directing to the checkout directly from the cart logo, which I wanted initially, I changed the cart logo link to go to the cart page. Now the order summary can just be taken from the cart, so checkout does not need the logic to remove these unbookable items. Now there was only an issue if the user would use the checkout url and not go via the cart at all, so I simply wrote in a code to go back to the cart in case there is a lesson with 0 places left. The user then gets the feedback message in the cart about the removed items.
+I wanted to address the possibilty of a user having lessons in the cart that have been fully booked in the meantime, so **Places left** is 0, so the user should not be able to book those kinds of lessons. They can not be added to the cart, but they could have been there already. I tried to delete those order line items in the checkout, but I got an error message. I tried also to just remove the items from the order summary, but then you could go back to the cart and have the items there again. So I moved this logic to the cart instead, and instead of directing to the checkout directly from the cart logo, which I wanted initially, I changed the cart logo link to go to the cart page. Now the order summary can just be taken from the cart, so checkout does not need the logic to remove these unbookable items. Now there was only an issue if the user would use the checkout url and not go via the cart at all, so I simply wrote in a code to go back to the cart in case there is a lesson with 0 places left. The user then gets the feedback message in the cart about the removed items.
 
 Later I realised I should add this also for soft deleted lessons, as now it only handled hard deleted lessons, and lessons with a passed date. So I added this the same way.
 
 #### Delete functionality
-I had implemented the same delete functionality as in Boutique Ado, but faced issues accessing orders containing only deleted lessons. Opening order lines with a deleted lesson or orders with only deleted lessons resulted in a 500 error in admin. I tried to change the OrderLineItem model setting deleted lessons to Null, but this did not fix it. So I went for a 'soft delete', as suggested on [Stackoverflow](https://stackoverflow.com/questions/42954063/storing-products-in-order-product-is-deleted-after-order-placed). So now from the frontend, site admins can delete a lesson but it will just set the *deleted* field to True, and it will not appear on the website. The site admin will still receive a notification when deleting a lesson that already has been booked before, so they can go to admin and find the order and user details to inform the user about the deletion. They simply go to Order line items, find the order line items with the delete lesson, and go to the orders via the eye ball on the order line item pages.
+I had implemented the same delete functionality as in Boutique Ado, but faced issues accessing orders containing only deleted lessons. Opening order lines with a deleted lesson or orders with only deleted lessons resulted in a 500 error in admin. I tried to change the **OrderLineItem** model setting deleted lessons to Null, but this did not fix it. So I went for a 'soft delete', as suggested on [Stackoverflow](https://stackoverflow.com/questions/42954063/storing-products-in-order-product-is-deleted-after-order-placed). So now from the frontend, site admins can delete a lesson but it will just set the *deleted* field to True, and it will not appear on the website. The site admin will still receive a notification when deleting a lesson that already has been booked before, so they can go to admin and find the order and user details to inform the user about the deletion. They simply go to Order line items, find the order line items with the deleted lesson, and go to the orders via the eye ball on the order line item pages.
 
-To prevent issues when a site admin 'hard deletes' a lesson in admin, I set *on_delete=models.PROTECT* for the lesson foreign key on the OrderLineItem model, so site admins should first manually delete order lines/orders if they want to delete a lesson. 
+To prevent issues when a site admin 'hard deletes' a lesson in admin, I set *on_delete=models.PROTECT* for the lesson foreign key on the **OrderLineItem** model, so site admins should first manually delete order lines/orders if they want to delete a lesson. 
 
 But then I realised that this may not fulfill the CRUD functionality, so in the end, I opted for a combination of the two. When a lesson has been booked, the site admin can not remove it from the database before deleting the connected orders in admin. But when there are no connected orders, the lesson can be permanently deleted from the database with the **Delete** button on the frontend. The modal's content after clicking on **Delete** on a lesson, informs the site admin about which of the two it will be.
 
 #### Date range (unfixed)
-I wanted to give the user the possibility to show lessons within a specified date range. I found *DateFromToRangeFilter* which should work with my DateTimeFields, but I could not get it to work. Hence the user story *As a site user, I can select a date range in which I want to see offered lessons so that I can easily adapt the list of lessons on dates I can attend* could not be omplemented. It is a *could have* story, because users can scroll, so it is up to the site admin to not have lessons published over too large of a date span. The real life case this project was based on, Matchi, also does not have this date range selection per venue, only when lessons from all venues are listed. Example [here](https://www.matchi.se/facilities/salk), when you scroll down to *Activities*.
+I wanted to give the user the possibility to show lessons within a specified date range. I found *DateFromToRangeFilter* which should work with my DateTimeFields, but I could not get it to work. Hence the user story *As a site user, I can select a date range in which I want to see offered lessons so that I can easily adapt the list of lessons on dates I can attend* could not be implemented. It is a *could have* story, because users can scroll, so it is up to the site admin to not have lessons published over too large of a date span. The real life case this project was based on, Matchi, also does not have this date range selection per venue, only when lessons from all venues are listed. Example [here](https://www.matchi.se/facilities/salk), when you scroll down to *Activities*.
 
 #### Lesson images
-I wanted to have images with the lesson, even though it is not neccesary. So I did not want to give the user the possibility of uploading an image, as it is not neccessary, but I still want to give some choice to the user in which image will be used. So I fount this interesting option of using choices (https://stackoverflow.com/questions/31948172/python-django-form-where-user-selects-from-a-list-of-images, by Pynchia), which seemed easy and enough for the MVP. To make this work, I also followed the instructions of Melvyn Sopacua here (https://groups.google.com/g/django-users/c/iP2TmUHwdDI). 
+I wanted to have images with the lesson, even though it is not neccesary. So I did not want to give the user the possibility of uploading an image, as it is not neccessary, but I still want to give some choice to the user in which image will be used. So I found this interesting option of using choices (https://stackoverflow.com/questions/31948172/python-django-form-where-user-selects-from-a-list-of-images, by Pynchia), which seemed easy and enough for the MVP. To make this work, I also followed the instructions of Melvyn Sopacua here (https://groups.google.com/g/django-users/c/iP2TmUHwdDI). 
 
 #### Whitespace validation
-The **Add lesson** form has the CharField **Name** and TextField **Description**. They are requered fields, but when I tested to fill in white spaces and click **Add lesson**, it did not give an error. I searched for this issue and found that Django does allow Char- and TextFields to have an empty string even if they are required (i.e. https://forum.djangoproject.com/t/charfield-not-enforcing-null-constraint/35127). So I looked at a solution with customising the form field for these two fields, adding a validator to check for a minimum length of 1 (*validators=[MinLengthValidator(1)]*). But this did not change anything. I then retested the form and treid to fill in the other fields and whitespaces in the **Name** and **Description** field, and then I actually got errors on those fields that they are required. So apparently, these errors are not triggered when most of the fields are empty, but they are triggered when a few are empty.
+The **Add lesson** form has the CharField **Name** and TextField **Description**. They are requered fields, but when I tested to fill in white spaces and click **Add lesson**, it did not give an error. I searched for this issue and found that Django does allow Char- and TextFields to have an empty string even if they are required (i.e. https://forum.djangoproject.com/t/charfield-not-enforcing-null-constraint/35127). So I looked at a solution with customising the form field for these two fields, adding a validator to check for a minimum length of 1 (*validators=[MinLengthValidator(1)]*). But this did not change anything. I then retested the form by filling in the other fields and whitespaces in the **Name** and **Description** fields, and then I actually got errors on those fields that they are required. So apparently, these errors are not triggered when most of the fields are empty, but they are triggered when a few are empty.
 
 #### Profile image
-The checkbox to remove an image on the **My profile** page, had an issue when I tried to change the background colour when checked. It stayed blue when selected, I suspect this has something to do with bootstrap. In the Chrome devtools, the correct background colour was set on the element when I selected this checkbox, but it was actually blue. Even though I managed to override it in the checkout form to green, I did not manage to change it to red in the profile. So I changed this element to a white background with red text, like I have used in the checkout form as well.
+The checkbox to remove an image on the **My profile** page, had an issue when I tried to change the background colour when checked. It stayed blue when selected, I suspect this has something to do with bootstrap. In the Chrome devtools, the correct background colour was set on the element when I selected this checkbox, but it was actually blue. Even though I managed to override it in the checkout form to green, I did not manage to change it to red in the profile. So I changed this element to a white background with red text, like I have used in the checkout form as well for info on the amount charged.
 
 
-Because my image solution is different than in the walkthrough, which has different views for adding and editing, I had an issue since updating and adding the image is in one and the same view, and I needed to refresh the page to see the remove checkbox, or to see it removed when it should not be there. So I tried with JavaScript to toggle this checkbox without the need of refreshing the page, but that did not work. In the end, a simple redirect to profile url fixed this issue, now the remove option is gone directly after removing an image, and it is added directly after adding an image, without the need for manually refreshing, since it is already done automatically.
+Because my image solution is different than in the walkthrough, which has different views for adding and editing, I had an issue, since updating and adding the image is in one and the same view, and I needed to refresh the page to see the remove checkbox, or to see it removed when it should not be there. So I tried with JavaScript to toggle this checkbox without the need of refreshing the page, but that did not work. In the end, a simple redirect to profile url fixed this issue, now the remove option is gone directly after removing an image, and it is added directly after adding an image, without the need for manually refreshing, since it is already done automatically.
 
 
 Something that caused some concern is that if a user would upload a very large image, this would need to be cropped down by the website to display, which I knew causes performance issues. So I found the same concern [here on Slack](https://code-institute-room.slack.com/archives/C026PTF46F5/p1674207577510609?thread_ts=1674167504.408779&cid=C026PTF46F5), and there was a very simple solution with the use of *transformation* to make sure an image would be cropped before it would be saved in Cloudinary.
@@ -415,7 +419,7 @@ Last minute, I found that when you have lessons in your cart, and you get a succ
 #### Responsiveness
 Checked mainly in Chrome DevTools. I found an issue that the website was moving due to some element being wider than the body. It took some time to find the issue, eventually it turned out the footer's padding caused the elements inside to be larger, so I moved the padding to the divs inside it. [This post](https://stackoverflow.com/questions/44667161/page-moving-left-and-right-while-in-mobile-browser) helped me solve it.
 
-In the later stages of testing, I noticed the toast messages were not good enough for small screens. I previously had added right margin becaused the lessages would be too wide otherwise, but I needed to add left margin as well since it would be good if the messages cover the whole screen width on small screens. I also added this for screens under 480 px. For smaller messages like after logging in, this was not needed and now it may seem a bit too large, but for larger messages like after payment, this looks much better. On larger screens the messages stay in the right corner, of course, they should not span the screen width then.
+In the later stages of testing, I noticed the toast messages were not good enough for small screens. I previously had added right margin because the messages would be too wide otherwise, but I needed to add left margin as well since it would be good if the messages cover the whole screen width on small screens. I also added this for screens under 480 px. For smaller messages like after logging in, this was not needed and now it may seem a bit too large, but for larger messages like after payment, this looks much better. On larger screens the messages stay in the right corner, of course, they should not span the screen width then.
 
 #### Browser testing
 Tested on Chrome, FireFox, Edge and Safari on iPhone. Edge has some side scrolling, which appears to be an Edge setting, not related to my website's responsiveness (see [this explanation](https://www.bing.com/videos/riverview/relatedvideo?pglt=299&q=website+moves+sideways+edge&cvid=092884b05cc54465b71850501e851cd5&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQg0ODE5ajBqMagCALACAA&adppc=EDGEESS&PC=U531&ru=%2fsearch%3fpglt%3d299%26q%3dwebsite%2bmoves%2bsideways%2bedge%26cvid%3d092884b05cc54465b71850501e851cd5%26gs_lcrp%3dEgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQg0ODE5ajBqMagCALACAA%26FORM%3dANNTA1%26adppc%3dEDGEESS%26PC%3dU531&mmscn=vwrc&mid=FB04738CA70DD682D7DFFB04738CA70DD682D7DF&FORM=WRVORC&ntb=1&msockid=242c382880d611f08afec5cc835fe362)).
@@ -424,7 +428,7 @@ Tested on Chrome, FireFox, Edge and Safari on iPhone. Edge has some side scrolli
 
 Tested extensively on a Dell laptop, iPhone 11 Pro, and Huawei phone. All works well.
 
-Testing on a phone triggered me to do some last-minute adjustment into not showing the cart items in the success message when removing a lesson from the cart, while there are still lessons left in the cart. Feedback from usage on the iPhone also triggered me to add an **Add more lessons** button also when there are lessons in the cart.
+Testing on a phone triggered me to do some last-minute adjustment into not showing the cart items in the success message when removing a lesson from the cart, while there are still lessons left in the cart.
 
 #### Feature testing
 |Feature|Expected outcome|Testing performed|Result|Pass/Fail|
@@ -433,24 +437,24 @@ Testing on a phone triggered me to do some last-minute adjustment into not showi
 |Navbar links when logged out|**Log in** and **Register** appear when not logged in, and they do not appear when logged in|Made sure I am logged out and clicked the links, logged in|The links appear and go to the correct pages, they do not appear when logged in|Pass|
 |Navbar links when logged in as user|**Log out** and **My profile** appear when logged in, and the do not appear when logged out|Made sure I am logged in and clicked the links, logged out|The links appear and go to the correct pages, they do not appear when logged out|Pass|
 |Navbar links when logged in as admin|**Add lesson** appears when logged in as site admin, it does not appear when logged in as user or logged out. **Log out** and **My profile** appear when logged in as site admin|Made sure I am logged in as site admin and clicked the links, compared to logged in as user and logged out|**Add lesson** appears only when logged in as site admin and links to correct page, logged in as user or logged out does not have **Add lesson**|Pass|
-|Navbar links to Home|**Home** is always visible, both **Home** and logo go to first home page|Clicked the links|Logo and **Home** go to the home page|Pass|
+|Navbar links to Home|**Home** is always visible, both **Home** and logo go to home page|Clicked the links|Logo and **Home** go to the home page|Pass|
 |Navbar cart icon and total|Shows total of lessons in cart, shifts from grey to green when there are lessons, links to **Cart** page|Click on cart icon, add lesson to cart and click again on icon|Cart icon is grey when total is 0, after adding lessons the icon is green and total updated|Pass|
 |Home page|
 |**Private lessons** and **Group lessons** buttons|Linked to **All lessons** page showing only the private or only the group lessons|Clicked the buttons|The **Private lessons** goes to a page listing only private lessons, the **Group lessons** goes to a page listing only group lessons|Pass|
-|Carousel|Starts roling when you initiate yourself|On page load, I checked if it would run, then I clicked the carousel arrows|The carouseldoes not run on page load, it starts running after clicking one of the arrows|Pass|
+|Carousel|Starts roling when you initiate yourself|On page load, I checked if it would run, then I clicked the carousel arrows|The carousel does not run on page load, it starts running after clicking one of the arrows|Pass|
 |Footer|
 |Footer|Links to social media opening in new tabs|Clicked links in footer|Links open in new tabs|Pass|
 |**All lessons** page|
 |Lesson dates|Lessons are listed in ascending date order, no passed dates|Add lessons with different dates, check **All lessons** page|Ascending order, no passed dates visible|Pass|
 |Lesson filtering|Lessons filter according to the **Private lessons** and **Group lessons** buttons on home page, and the **Group - Indoor**, **Group - Outdoor**, **Private - Indoor** and **Private - Outdoor** buttons on this page|Clicked the buttons|All buttons filter the available lessons according to their name|Pass|
 |Header text adjusts to filter|Header text changes according to which of the filter buttons is clicked|Clicked the buttons|Original header text with *All lessons* and both indoor and outdoor addresses when no button is clicked, *All private lessons* or *All group lessons* and both indoor and outdoor addresses when **Private lessons** or **Group lessons** is clicked, *All group lessons - indoor* and only indoor address when **Group - Indoor** clicked, *All group lessons - outdoor* and only outdoor address when **Group - Outdoor** clicked, *All private lessons - indoor* and only indoor address when **Private - Indoor** clicked, *All private lessons - outdoor* and only outdoor address when **Private - Outdoor** clicked|Pass|
-|**Add to cart** button|Lesson is added to cart when button is clicked, toast message informs about this|Clicked button on several lessons|There is a toast message about added lesson, cart items, and navbar icon with total is updated accordingly|Pass|
+|**Add to cart** button|Lesson is added to cart when button is clicked, toast message informs about this|Clicked button on several lessons|There is a toast message about added lesson, cart items and navbar icon with total are updated accordingly|Pass|
 |**Add to cart** button when lesson is full|Button changes text to **Not bookable** and gets disabled|Manually changed **Places left** to 0 and completed payments for a lesson so it goes to 0|Button changes to **Not bookable** and is not clickable anymore|Pass|
 |Can not add same lesson more than once|When clicking **Add to cart** on already added lesson, you get a message and the lesson is not added to the cart|Added lesson to the cart and then try to add it again|There is a message saying you already have this lesson in the cart, and the lesson is not added to the cart again|Pass|
 |**Places_left** decreases after each order|After an order, **Places_left** decreases with 1, until 0|Completed payments to create orders via normal pay flow and via webhook|The value for **Places_left** decreases after every order, until it is 0 and you can not pay for it anymore|Pass|
 |**Cart** page|
 |Lessons appear|If you have added lessons, they are here and there is a button to add more lessons and one to pay, if not, there is a text saying there are no lessons and a button to go back to all lessons|Go to **Cart** when I have added lessons, and when it is empty|When I have added lessons, the lesson cards are there and the **Add more lessons** and **Pay** buttons, when I have no lessons, the text says there no lessons and there is a button **Go back to all lessons**|Pass|
-|If a user's cart has lessons that have become fully booked, have been soft deleted, and/or with a passed date, they are removed|When you go to the cart and there are such lessons, they removed and there is toast message to inform the user|I added lessons to the cart and afterwards, I manually changed the **Places left** field to 0, edited the date and/or deleted a lesson, in different combinations|I went to the cart and saw the messages and the applicable lessons were removed|Pass|
+|If a user's cart has lessons that have become fully booked, have been soft deleted, and/or with a passed date, they are removed|When you go to the cart and there are such lessons, they are removed and there is toast message to inform the user|I added lessons to the cart and afterwards, I manually changed the **Places left** field to 0, edited the date and/or deleted a lesson, in different combinations|I went to the cart and saw the messages and the applicable lessons were removed|Pass|
 |Remove lesson from cart|User can remove lesson from the cart|Removed a lesson from the cart|Lesson card is removed and toast message confirms it|Pass|
 |**Checkout** page|
 |Lessons from cart are in the overview|Cart lessons are listed under **Order summary**, if there are no lessons in your cart, you are direct back to **All lessons** page and get a toast message about this|Go to checkout with lessons in the cart, go to checkout url with no lessons in the cart|When I have lessons in the cart, they are listed in the checkout, when I have no lessons in the cart, and write in the checkout url, I go straight to **All lessons** and get an error message that my cart is empty|Pass|
@@ -459,8 +463,8 @@ Testing on a phone triggered me to do some last-minute adjustment into not showi
 |Stripe integration|The test card numbers from Stripe give the expected result|Filled in test card numbers randomly from [Stripe](https://docs.stripe.com/testing) and incorrect year or CVC|I get the correct error messages under the card number field and it passes when it should. Slight issue with longer error messages as the padding could be larger, but text is still readable. Adding padding would result in a white dot when there is no error message, so I decided to keep it like this.|Pass|
 |Webhook order creation|An order is created when payment is received in Stripe, not depending on the checkout success page.|Comment out form submit line in stripe_elements.js, and proceed to complete an order|The website hangs but the order is created|Pass|
 |**Back to cart** button|You can go back to the **Cart** page|Click button|It goes to the cart|Pass|
-|**Checkout success** page|
-|After payment, the user is referred to the **Checkout success** page|Complete order with Stripe test card number|**Checkout success** page shows|Pass|
+|**Payment successful** page|
+|Checkout success|After payment, the user is referred to the **Payment successful** page, toast success message appears|Complete order with Stripe test card number|**Payment successful** page and success toast message shows|Pass|
 |Order confirmation email|
 |Order confirmation email|After payment, the user gets a confirmation email|Complete an order with Stripe test card number both via normal payment flow and when order is created via webhook|I got the order confirmation email|Pass|
 |User authentication|
@@ -472,7 +476,7 @@ Testing on a phone triggered me to do some last-minute adjustment into not showi
 |Log out functionality|After you click the **Log out** button, you are logged out and there is a toast message|Clicked the button|I am logged out and the toast message appears|Pass|
 |**My profile**|
 |**My profile** page|**My profile** available when logged in, not available when logged out|Logged in and out and tried to write in the profile url|**My profile** only available when logged in, when logged out and writing profile url, it sends me to log in|Pass|
-|Default personal information|You can add, edit and delete a phone number, a self-rated level, and a profile image|Filled in a phone number, selected a level, selected an image and clicked Update, then I changed them and clicked Update, then I removed them and clicked Update. I logged in and out to see if it was saved|The information is updated accoridng to what it should be, and it is saved to the profile. There is a toast message after updating the profile.|Pass|
+|Default personal information|You can add, edit and delete a phone number, a self-rated level, and a profile image|Filled in a phone number, selected a level, selected an image and clicked Update, then I changed them and clicked Update, then I removed them and clicked Update. I logged in and out to see if it was saved|The information is updated according to what it should be, and it is saved to the profile. There is a toast message after updating the profile.|Pass|
 |Save phone number in checkout|If you had selected to save your phone number in the checkout page, it is updated in the profile|Create orders with checkbox cleared and selected, both via normal flow and via webhook, then check the profile|Regardless of how the order is created, when the checkbox is selected, the phone number gets saved in the profile, when it is cleared, it is not saved in the profile|Pass|
 |Remove current profile image| When you select to remove the current image, it is not possible to select a new image| After adding a profile image, I selected the checkbox to remove it| The **Select image** button and text *Select an image and click Update below* becomes hidden| Pass| 
 |Update current image|When you first select a new image, you can not remove the old image, this would give a form error| After adding an image, I clicked **Select image** and selected a new image|The checkbox **Remove current profile image after Update** becomes hidden.|Pass|
@@ -487,17 +491,17 @@ Testing on a phone triggered me to do some last-minute adjustment into not showi
 |Form validation|Not possible to submit an invalid form, you get field errors|Click **Add lesson** while filling in the required fields one by one, fill in too long price|When you do not fill in name or description, it just scrolls back to those fields, but for the next fields, there is a text saying to fill in the field each time I try to add the lesson. When the price is too long, you get an error toast message and there is a text under the field saying to not have more than 6 digits.|Pass|
 |Edit lessons when logged in as site admin|
 |**Edit** button|**Edit** button is visible on each lesson card only for site admins|Logged in as site admin, logged in as user and logged out to check lesson cards|Button is only visible when logged in as site admin|Pass|
-|Feedback on edited lesson|Toast message when editing and specifically when editing a lesson that has been booked|Click **Edit** on lesson that has not been booked, and on lesson that has been booked|Both give the feedback that I am edited the specific lesson, and when the lesson has been booked before, I am informaed about this in another toast message.|Pass|
+|Feedback on edited lesson|Toast message when editing and specifically when editing a lesson that has been booked|Click **Edit** on lesson that has not been booked, and on lesson that has been booked|Both give the feedback that I am editing the specific lesson, and when the lesson has been booked before, I am informed about this in another toast message.|Pass|
 |**Edit lesson** form|The form is prefilled with the current lesson information|Click **Edit** on a lesson|The **Edit lesson** form has all the current fields filled in automatically|Pass|
-|Form validation|Not possible to submit an invalid form, you get field errors|Emptied the prefilled fields and tried to update the lesson, filled in too long price|When you do not fill in name or description, it just scrolls back to those fields, but for the next fields, there is a text saying to fill in the field each time I try to update the lesson. When the price is too long, you get an error toast emssage and there is a text under the field saying to not have more than 6 digits|Pass|
-**Places left** and **Date time**|**Places left** and a passed date behave the same as when you add a lesson|Emptied **PLaces left**, set it to higher than **Capcoty**, set the date in the past before updating|Same toast message and functionality as for **Add lesson**|Pass|
+|Form validation|Not possible to submit an invalid form, you get field errors|Emptied the prefilled fields and tried to update the lesson, filled in too long price|When you do not fill in name or description, it just scrolls back to those fields, but for the next fields, there is a text saying to fill in the field each time I try to update the lesson. When the price is too long, you get an error toast message and there is a text under the field saying to not have more than 6 digits|Pass|
+**Places left** and **Date time**|**Places left** and a passed date behave the same as when you add a lesson|Emptied **PLaces left**, set it to higher than **Capacity**, set the date in the past before updating|Same toast message and functionality as for **Add lesson**|Pass|
 |Edit lesson functionality|Edited lesson is updated on the **All lessons** page|I edited a lesson|Toast message informs about updated lesson, lesson is updated on the **All lessons** page|Pass|
 |Delete lessons when logged in as site admin|
 |**Delete** button|**Delete** button is visible on each lesson card only for site admins|Logged in as site admin, logged in as user and logged out to check lesson cards|Button is only visible when logged in as site admin|Pass|
 |Modal|**Delete** button opens modal for confirmation|Clicked **Delete**|Modal pops up asking for confirmation|Pass|
 |Modal text| Modal text depends on whether or not a lesson has been booked before|Click **Delete** on a lesson not booked, and on a lesson that has been booked before|Modal text informs about the lesson being booked before, and how the lesson will be deleted. For unbooked lessons, it just says it will be deleted permanently.|Pass|
-|**Delete** functionality booked lesson|When you delete a lesson that has been booked before, it will only be removed from the website. It is still visible in admin, as well as the connected orders lines. When the connected order lines are removed, the lesson can be deleted from the database.|Delete lesson that has been booked before and check admin.|Toast message appears on **All lessons** page that lesson has been deleted, lesson is flagged as deleted in admin but still accessible. When you want to delete it there, it informas about which order line items should be deleted before you can delete the lesson permanently.|Pass|
-|**Delete** functionality unbooked lesson|A lesson that has not been booked before, will be deleted from the database|Delete lesson that has not been booked before and check admin|Toast message appears on **All lessons** page about the lesson begin permanently deleted, not visible in admin|Pass|
+|**Delete** functionality booked lesson|When you delete a lesson that has been booked before, it will only be removed from the website. It is still visible in admin, as well as the connected order lines. When the connected order lines are removed, the lesson can be deleted from the database.|Delete lesson that has been booked before and check admin.|Toast message appears on **All lessons** page that lesson has been deleted, lesson is flagged as deleted in admin but still accessible. When you want to delete it there, it informs about which order line items should be deleted before you can delete the lesson permanently.|Pass|
+|**Delete** functionality unbooked lesson|A lesson that has not been booked before, will be deleted from the database|Delete lesson that has not been booked before, or after deleting connected order lines in admin, and check admin|Toast message appears on **All lessons** page about the lesson begin permanently deleted, not visible in admin|Pass|
 |Toast success message with cart items|When success toast is triggered while on **My profile**, **Cart** or when there is no grand total, the cart does not show in the toast message|Add lessons to cart and update profile, remove a lesson from the cart while there are still lessons left, log out|Toast message appears without cart items and link to cart|Pass|
 
 
@@ -509,10 +513,13 @@ You can not add a lesson to the cart more than once, but if you complete the pur
 Related to this, also when an order is created via the webhook, the lesson remains in the cart. This means that a user can book it again, even if it is not allowed to book the same lesson more than once. But the user does get the order confirmation email, so it is unlikely someone would try to book it again and pay again.
 
 ##### No reset of places_left when webhook deletes order
-There is another unfixed issue which is when something goes wrong when creating an order via a webhook, and the order is deleted after an updated lesson with a new **Places left** value is saved, this would not be reversed. The reason for this is that I can not test this situation at this point, so I would rather not add any code that could break the webhook flow.
+There is another unfixed issue which is when something goes wrong when creating an order via a webhook, and the order is deleted after an updated lesson with a new **Places left** value is saved, this would not be reversed. The reason for this is that I can not test this situation at this point, so I would rather not add any code that could break the webhook flow. Potentially, the lesson could still have places left then even if the field is set to 0, so site admins may need to double check lessons that have 0 places left, and manually change that value if needed.
 
 ##### Button after dismissing the Delete modal
 The red **Delete** button on each lesson card remains in the focused colour after closing down the modal it triggers (when you do not delete the lesson). While this is good for when you use keys to navigate, when you use a mouse or touchscreen, this looks a bit odd. I have found posts about this and possible solutions, but the behaviour is intentional for accessibility reasons (I found the implementation [here](https://github.com/twbs/bootstrap/issues/12364)). Also, since it is only visible for site admins, I am leaving this unfixed.
 
 ##### Phone number field validation
 Fields for phone numbers (**My profile**, **Checkout**) are of the type CharField, therefore also letters will be accepted. This is based on Boutique Ado. I checked Slack and found that this was intentional because there was no built in phone number field for validation [post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1596366800324200?thread_ts=1596314290.315400&cid=C7HS3U3AP). My project has the same for the MVP. It is now up to the user to fill in the correct phone number so they can be contacted by phone, otherwise it's only possible to be contacted via email.
+
+##### Long order number
+Currently, I display only part of the order numbers and you have to hover over it to check the whole number. For mobiles and tables, this is not good. I initially had a smaller font but since these order numbers are very large, I opted for the truncate solution instead to make sure it never gets too long. Users can still see their order number in their email, so for now, I did not look for another solution to this. 
