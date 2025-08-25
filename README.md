@@ -240,7 +240,7 @@ All content is written by me.
         - Places left: how many places are left to book
         - Price
         - **Add to cart** button, or when there are no places left, **Not bookable** disabled button.
-        - For site admin only: **Edit** and **Delete** buttons. Intentionally this section is not styled like the rest of the card, to highlight it is part of the admin.
+        - For site admin only: **Edit** and **Delete** buttons. Intentionally, this section is not styled like the rest of the card, to highlight it is part of the admin.
 
     All lessons:
 
